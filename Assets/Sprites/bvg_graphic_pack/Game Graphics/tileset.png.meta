@@ -1,0 +1,202 @@
+fileFormatVersion: 2
+guid: c1900131821434f98a5a6cc0179efb0d
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 30
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: tileset_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 114
+        width: 28
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_1
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 97
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_2
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 101
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_3
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 106
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_4
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 97
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 67
+        width: 44
+        height: 28
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_6
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 67
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_7
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 50
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_8
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 58
+        width: 15
+        height: 4
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_9
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 18
+        width: 45
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_10
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 56
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_11
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 54
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_12
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 49
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_13
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 55
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_14
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 18
+        width: 45
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_15
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 18
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: ground
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 294
+        width: 48
+        height: 4
+      alignment: 2
+      pivot: {x: .5, y: 1}
+  spritePackingTag: 
+  userData: 
