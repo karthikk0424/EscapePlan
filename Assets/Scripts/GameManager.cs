@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
 	#endregion
 
 	// Update is called once per frame
-	void Update () 
+	private void Update () 
 	{
 		// Left Movement
 		if(Input.GetKeyDown(AssignedKeys[0]))
@@ -132,8 +132,6 @@ public class GameManager : MonoBehaviour
 
 		}
 	}
-
-
 
 	internal void GotAChip()
 	{
