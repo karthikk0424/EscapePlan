@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public sealed class PlayerInventoryManager 
+public sealed class DataManager 
 {
 	#region Singleton created on access
-	private static PlayerInventoryManager instance = null;
-	private PlayerInventoryManager() {}
+	private static DataManager instance = null;
+	private DataManager() {}
 
-	public static PlayerInventoryManager Instance
+	public static DataManager Instance
 	{
 		get
 		{
 			if(instance == null)
 			{
-				instance = new PlayerInventoryManager();
+				instance = new DataManager();
 			}
 			return instance;
 		}
