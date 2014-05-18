@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WeaponHub : WeaponBase
+public sealed class WeaponHub : WeaponBase
 {
 	public GameObject Projectile;
-	
+
 	private ObjectRecycler weaponCache;
 	private GameObject currentObject;
 
@@ -30,7 +30,4 @@ public class WeaponHub : WeaponBase
 		weaponCache.Despawn(_go);
 		playerFired--;
 	}
-
-
-
 }
