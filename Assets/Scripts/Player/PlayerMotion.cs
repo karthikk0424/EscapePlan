@@ -135,7 +135,7 @@ public sealed class PlayerMotion : MonoBehaviour
 				GameManager.Instance.OpenDoor();
 				break;
 
-			case "DoorEntry":
+			case "EntryDoor":
 				GameManager.Instance.EnterLevel();
 				break;
 			

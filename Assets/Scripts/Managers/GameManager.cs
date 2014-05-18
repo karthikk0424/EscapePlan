@@ -174,7 +174,6 @@ public class GameManager : MonoBehaviour
 			UIEscapPlan.SetActive(!hideLevel);
 			TransitionScene.SetActive(hideLevel);
 			playerPosition = StaticVariablesContainer.TRANSITION_SPAWNPOINT;
-			Debug.Log(playerPosition);
 
 		}
 		else
@@ -184,6 +183,7 @@ public class GameManager : MonoBehaviour
 			currentSceneInstance.SetActive(!hideLevel);
 		}
 		MyPlayer.TelePortPlayer(playerPosition);
+		LevelManager.Instance.CheckForLevelEvents();
 	}
 
 	private void ToggleScene(bool hide)

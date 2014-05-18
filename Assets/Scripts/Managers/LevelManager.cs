@@ -1,7 +1,14 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿/// <summary>
+/// Class that triggers events in the level
+/// Game Manager notifies level manager anthing related to level happens
+/// </summary>
 
-public class LevelManager : MonoBehaviour
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+
+public class LevelManager
 {
 	#region Singleton created on access
 	private static LevelManager instance = null;
@@ -19,4 +26,33 @@ public class LevelManager : MonoBehaviour
 		}
 	}
 	#endregion
+
+	private List<GameObject> TweenerList = new List<GameObject>();
+
+	public void RegisterToPlayAnimation(GameObject item)
+	{
+		TweenerList.Add(item);
+		Debug.Log("+++++ Registered gameObject is " + item.gameObject.name );
+	}
+
+	public void ClearEventList()
+	{
+		TweenerList.Clear();
+	}
+
+	//This method receives state updates from Scenemanager
+	public void CheckForLevelEvents()
+	{
+		if(TweenerList.Count > 0)
+		{
+			foreach(GameObject go in TweenerList)
+			{
+				Debug.Log(go.activeSelf);
+				if(go.activeSelf)
+				{
+					go.GetComponent<PositionTweener>().PlayAnimation();
+				}
+			}
+		}
+	}
 }
