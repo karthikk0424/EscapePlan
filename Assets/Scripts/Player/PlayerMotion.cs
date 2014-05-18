@@ -290,6 +290,18 @@ public sealed class PlayerMotion : MonoBehaviour
 		isJUMPING = false;
 	}
 
+
+	/// <summary>
+	/// When a Scene Transition occurs
+	/// </summary>
+	/// <description>
+	///	
+	/// </description>
+	internal void TelePortPlayer(Vector3 position)
+	{
+		transform.localPosition = position;
+	}
+
 	/// <summary>
 	/// When a Projectile has to be fired by the Player. 
 	/// </summary>
