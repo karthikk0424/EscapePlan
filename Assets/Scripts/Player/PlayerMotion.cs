@@ -311,7 +311,18 @@ public sealed class PlayerMotion : MonoBehaviour
 	/// </description>
 	internal void FireAProjectile()
 	{
-		WeaponCache.FireForPlayer(this.transform.position, Quaternion.Euler(0,0,-70));
+		if(currentMotionState < 0)
+		{
+			WeaponCache.FireForPlayer(this.transform.position, Quaternion.Euler(0,0,90));
+		}
+		else if(currentMotionState > 0)
+		{
+			WeaponCache.FireForPlayer(this.transform.position, Quaternion.Euler(0,0,-90));
+		}
+		else 
+		{
+			WeaponCache.FireForPlayer(this.transform.position, Quaternion.identity);
+		}
 	}
 	#endregion
 }
