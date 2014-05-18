@@ -29,4 +29,17 @@ public sealed class Projectile : WeaponBase
 			yield return null;
 		}
 	}
+
+	private void OnTriggerEnter2D(Collider2D hit)
+	{
+
+	}
+
+	private void OnCollisionEnter2D(Collision2D hit)
+	{
+		if(hit.collider.tag == "Ground")
+		{
+			base.Despawn(this.gameObject);
+		}
+	}
 }

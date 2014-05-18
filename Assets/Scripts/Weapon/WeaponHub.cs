@@ -15,4 +15,9 @@ public class WeaponHub : WeaponBase
 	{
 		base.FireAProjectile(worldPosition, rot);
 	}
+
+	private void Update()
+	{
+		base.DebugRecylcer();
+	}
 }
