@@ -20,7 +20,7 @@ public sealed class WeaponHub : WeaponBase
 		if(playerFired < 3)
 		{
 			currentObject = weaponCache.Spawn(worldPosition, rot);
-			currentObject.GetComponent<Projectile>().propertiesForThisProjectile(this.gameObject);
+			currentObject.GetComponent<Projectile>().propertiesForThisProjectile(this.gameObject, true);
 			playerFired++;
 		}
 	}
