@@ -82,20 +82,26 @@ public class PlayerMotion : MonoBehaviour
 		switch(hit.collider2D.tag)
 		{
 			case "Chips":
-			if(GameManager.Instance != null)
-			{
-				GameManager.Instance.GotAChip();
-			}
-			hit.gameObject.SetActive(false);
-			break;
+				if(GameManager.Instance != null)
+				{
+					GameManager.Instance.GotAChip();
+				}
+				hit.gameObject.SetActive(false);
+				break;
 
 			case "HackKit":
-			hit.gameObject.SetActive(false);
+				hit.gameObject.SetActive(false);
+				GameManager.Instance.GotHackKit();
 				break;
 
 			case "Door":
+				GameManager.Instance.OpenDoor();
 				break;
 
+			case "DoorEntry":
+				GameManager.Instance.EnterLevel();
+				break;
+			
 		}
 	}
 

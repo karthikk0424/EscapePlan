@@ -4,6 +4,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour 
 {
 	public PlayerMotion MyPlayer;
+	public int LevelNumber;
 
 	public KeyCode[] AssignedKeys;
 
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
 	{
 		instance = this;
 		this.transform.name = "_GameManager";
+
+		LoadLevel(LevelNumber);
+
 		if((AssignedKeys[0] != null) || (AssignedKeys[0] == KeyCode.None))
 		{
 			AssignedKeys = new KeyCode[4];
@@ -123,19 +127,37 @@ public class GameManager : MonoBehaviour
 
 
 
-
-
-
 		// Fire a projectile
 		if(Input.GetKeyDown(AssignedKeys[3]))
 		{
 
 		}
 	}
+	private void LoadLevel(int levelNumber)
+	{
+		GameObject instance = (GameObject)Instantiate(Resources.Load("Scenes/Scene_" + levelNumber.ToString()));
+	}
 
 	internal void GotAChip()
 	{
-		totalChipsThisScene++;
-		Debug.Log("Chips this scene = " + totalChipsThisScene);
+		DataManager.Instance.ChipLootSac = StaticVariablesContainer.CHIP_VALUE;
+		//totalChipsThisScene++;
+		//Debug.Log("Chips this scene = " + totalChipsThisScene);
+	}
+
+	internal void GotHackKit()
+	{
+		DataManager.Instance.HackKit = true;
+	}
+
+	internal void OpenDoor()
+	{
+		if(DataManager.Instance.HackKit)
+		{
+			Debug.Log("Level Complete");
+		}
+	}
+	internal void EnterLevel()
+	{
 	}
 }
