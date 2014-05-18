@@ -41,18 +41,4 @@ public class LevelManager
 	}
 
 	//This method receives state updates from Scenemanager
-	public void CheckForLevelEvents()
-	{
-		if(TweenerList.Count > 0)
-		{
-			foreach(GameObject go in TweenerList)
-			{
-				Debug.Log(go.transform.parent.gameObject.activeSelf);
-				if(go.activeSelf)
-				{
-					go.GetComponent<PositionTweener>().PlayAnimation();
-				}
-			}
-		}
-	}
 }

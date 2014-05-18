@@ -183,7 +183,6 @@ public class GameManager : MonoBehaviour
 			currentSceneInstance.SetActive(!hideLevel);
 		}
 		MyPlayer.TelePortPlayer(playerPosition);
-		LevelManager.Instance.CheckForLevelEvents();
 	}
 
 	private void ToggleScene(bool hide)

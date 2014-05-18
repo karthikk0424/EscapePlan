@@ -9,14 +9,10 @@ using System.Collections;
 
 public class PositionTweener : MonoBehaviour 
 {	
-	public Vector2 From;
-	public Vector2 To;
+	public Vector2 TweenFrom;
+	public Vector2 TweenTo;
 	public float Speed = 0.25f;
-
-	public void Awake()
-	{
-		LevelManager.Instance.RegisterToPlayAnimation(this.gameObject);
-	}
+	public bool ResetOnLoad = false;
 
 	public void PlayAnimation()
 	{
@@ -27,19 +23,13 @@ public class PositionTweener : MonoBehaviour
 	{
 
 		float lastTime = Time.timeSinceLevelLoad;
-		float timer = 0, vel = 0;
+		float timer = 0;
 		while ((timer < 1))
 		{
-			Debug.Log(timer);
-			transform.localPosition = Vector2.Lerp(From, To, timer);
+			transform.localPosition = Vector2.Lerp(TweenFrom, TweenTo, timer);
 			timer += ((Time.timeSinceLevelLoad - lastTime) * Speed);
 			lastTime = Time.timeSinceLevelLoad;
 			yield return null;
 		}
-	}
-
-	public void ResetPosition()
-	{
-
 	}
 }
