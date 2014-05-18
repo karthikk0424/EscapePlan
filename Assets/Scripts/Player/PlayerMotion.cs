@@ -1,24 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class PlayerMotion : MonoBehaviour 
 {
 	public Animator PlayerAnimator;
-	public Rigidbody2D PlayerRigidbody;
+	private Rigidbody2D PlayerRigidbody;
 
 	private bool isMOVING = false, isJUMPING = false;
 	private int currentMotionState = 0;
 	private float deltaTime = 0;
 	private Vector2 playerVelocity = Vector2.zero;
 
-	private void Awake()
+	protected virtual void Awake()
 	{
+		Debug.Log("Awaken");
 		this.transform.name = "MainPlayer";
 		this.transform.tag = "Player";
 	}
 
-	private void OnEnable()
+	protected virtual void OnEnable()
 	{
+		Debug.Log("Player Motion OnEnable");
 		if(PlayerAnimator == null)
 		{
 			PlayerAnimator = this.GetComponentInChildren<Animator>();
@@ -29,8 +32,9 @@ public class PlayerMotion : MonoBehaviour
 		}
 	}
 
-	private IEnumerator Start()
+	protected virtual IEnumerator Start()
 	{
+		Debug.Log("Start");
 		while(true)
 		{
 			deltaTime = (Time.deltaTime * 45f);
@@ -61,7 +65,7 @@ public class PlayerMotion : MonoBehaviour
 		PlayerAnimator.SetInteger("MotionState", state);
 	}
 
-	private void OnCollisionEnter2D(Collision2D hit) 
+	protected virtual void OnCollisionEnter2D(Collision2D hit) 
 	{
 		if(hit.collider.tag == "Ground")
 		{
