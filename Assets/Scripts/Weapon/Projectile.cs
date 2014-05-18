@@ -10,12 +10,14 @@ public sealed class Projectile : WeaponBase
 	private bool isTRAVELLING = false;
 	private Vector2 rigidVelocity = Vector2.zero;
 	private float deltaTime = 0f;
+	private GameObject myRecyler;
 
-	internal void propertiesForThisProjectile()
+	internal void propertiesForThisProjectile(GameObject parent)
 	{
 		isTRAVELLING = true;
 		rigidVelocity = (Vector2.right * 20 * (Time.deltaTime * 45));
 		this.transform.rigidbody2D.velocity = rigidVelocity;
+		myRecyler = parent;
 		//StartCoroutine(this.moveProjectile());
 	}
 
@@ -39,7 +41,7 @@ public sealed class Projectile : WeaponBase
 	{
 		if(hit.collider.tag == "Ground")
 		{
-			base.Despawn(this.gameObject);
+			myRecyler.GetComponent<WeaponHub>().DespawnMe(this.gameObject);
 		}
 	}
 }
