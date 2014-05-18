@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 	public KeyCode[] AssignedKeys;
 
 	private int totalChipsThisScene = 0;
+	private GameObject currentSceneInstance;
 
 	private void Awake()
 	{
@@ -120,13 +121,6 @@ public class GameManager : MonoBehaviour
 			MyPlayer.MakeThePlayerToJump();
 		}
 
-
-
-
-
-
-
-
 		// Fire a projectile
 		if(Input.GetKeyDown(AssignedKeys[3]))
 		{
@@ -135,7 +129,7 @@ public class GameManager : MonoBehaviour
 	}
 	private void LoadLevel(int levelNumber)
 	{
-		GameObject instance = (GameObject)Instantiate(Resources.Load("Scenes/Scene_" + levelNumber.ToString()));
+		currentSceneInstance = (GameObject)Instantiate(Resources.Load("Scenes/Scene_" + levelNumber.ToString()));
 	}
 
 	internal void GotAChip()
@@ -159,5 +153,6 @@ public class GameManager : MonoBehaviour
 	}
 	internal void EnterLevel()
 	{
+
 	}
 }
