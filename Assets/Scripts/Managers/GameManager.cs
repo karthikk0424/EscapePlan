@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
 		// Fire a projectile
 		if(Input.GetKeyDown(AssignedKeys[3]))
 		{
-
+			MyPlayer.FireAProjectile();
 		}
 	}
 	private void LoadLevel(int levelNumber)

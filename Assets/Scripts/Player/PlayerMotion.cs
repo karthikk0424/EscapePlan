@@ -2,9 +2,10 @@
 using System.Collections;
 
 
-public class PlayerMotion : MonoBehaviour 
+public sealed class PlayerMotion : MonoBehaviour 
 {
 	public Animator PlayerAnimator;
+	public WeaponHub WeaponCache;
 	private Rigidbody2D PlayerRigidbody;
 
 	private bool isMOVING = false, isJUMPING = false;
@@ -12,16 +13,18 @@ public class PlayerMotion : MonoBehaviour
 	private float deltaTime = 0;
 	private Vector2 playerVelocity = Vector2.zero;
 
-	protected virtual void Awake()
+	private void Awake()
 	{
-		Debug.Log("Awaken");
 		this.transform.name = "MainPlayer";
 		this.transform.tag = "Player";
 	}
 
-	protected virtual void OnEnable()
+	private void OnEnable()
 	{
-		Debug.Log("Player Motion OnEnable");
+		if(WeaponCache == null)
+		{
+			WeaponCache = GameObject.Find("WeaponHub").GetComponent<WeaponHub>();
+		}
 		if(PlayerAnimator == null)
 		{
 			PlayerAnimator = this.GetComponentInChildren<Animator>();
@@ -32,9 +35,8 @@ public class PlayerMotion : MonoBehaviour
 		}
 	}
 
-	protected virtual IEnumerator Start()
+	private IEnumerator Start()
 	{
-		Debug.Log("Start");
 		while(true)
 		{
 			deltaTime = (Time.deltaTime * 45f);
@@ -65,7 +67,7 @@ public class PlayerMotion : MonoBehaviour
 		PlayerAnimator.SetInteger("MotionState", state);
 	}
 
-	protected virtual void OnCollisionEnter2D(Collision2D hit) 
+	private void OnCollisionEnter2D(Collision2D hit) 
 	{
 		if(hit.collider.tag == "Ground")
 		{
@@ -181,5 +183,10 @@ public class PlayerMotion : MonoBehaviour
 		{ 
 			setMotion(0);
 		}
+	}
+
+	internal void FireAProjectile()
+	{
+		WeaponCache.FireAProjectile(this.transform.position, Quaternion.Euler(0,0,-70));
 	}
 }

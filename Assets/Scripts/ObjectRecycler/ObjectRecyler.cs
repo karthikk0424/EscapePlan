@@ -18,7 +18,7 @@ interface RecyclerContract
 	{	get;}
 	
 	//void Spawn();
-	void Spawn(Vector3 _worldPosition);
+	GameObject Spawn(Vector3 _worldPosition, Quaternion _rotation);
 	//void Spawn(Vector3 _worldPosition, Quaternion _rot);
 
 	void Despawn(GameObject go);
@@ -30,7 +30,7 @@ public class ObjectRecycler : RecyclerContract
 	private GameObject theObject, parentGameObject, lastActiveObject;
 	private List<GameObject> recyledObjects = new List<GameObject>();
 	private int totalRecyledObjects = 0, totalActiveObjects = 0, totalInactiveObjects = 0;
-	
+	private string gameObjectName = System.String.Empty;
 	#region Getters & Setters
 	public int TotalRecycled
 	{
@@ -63,13 +63,14 @@ public class ObjectRecycler : RecyclerContract
 
 		parentGameObject = parent;
 		theObject = go;
-		
+		gameObjectName = go.name;
+
 		for(int i = 0; i < count; i++)
 		{
 			GameObject temp  = Object.Instantiate(theObject, Vector3.zero, Quaternion.identity) as GameObject;
 			recyledObjects.Add(temp);
 			totalRecyledObjects++;
-			temp.name += ("_" + totalRecyledObjects);
+			temp.name = (gameObjectName + "_" + totalRecyledObjects);
 			temp.transform.parent = parent.transform;
 			temp.SetActive(false);
 		}
@@ -193,7 +194,7 @@ public class ObjectRecycler : RecyclerContract
 	}
 	*/
 
-	public void Spawn(Vector3 _worldPosition)
+	public GameObject Spawn(Vector3 _worldPosition, Quaternion _rotation)
 	{
 		// LINQ to find free objects in the list
 		GameObject _go =  (from item in recyledObjects
@@ -205,15 +206,16 @@ public class ObjectRecycler : RecyclerContract
 			_go  = Object.Instantiate(theObject) as GameObject;
 			recyledObjects.Add(_go);
 			totalRecyledObjects++;
-			_go.name +=  ("_" + totalRecyledObjects);
+			_go.name =  (gameObjectName + "_" + totalRecyledObjects);
 			_go.transform.parent = parentGameObject.transform; 
 		}
 		
 		_go.transform.position = _worldPosition;
-		_go.transform.rotation = Quaternion.identity;
+		_go.transform.rotation = _rotation;
 		_go.SetActive(true);
 		lastActiveObject = _go;
 		recountTheCounter();
+		return _go;
 	}
 
 	/*

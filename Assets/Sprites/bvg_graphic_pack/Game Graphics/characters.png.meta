@@ -315,24 +315,24 @@ TextureImporter:
         height: 5
       alignment: 0
       pivot: {x: .5, y: .5}
-    - name: characters_30
+    - name: projectile_01
       rect:
         serializedVersion: 2
         x: 75
         y: 336
         width: 5
         height: 11
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: characters_31
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: projectile_02
       rect:
         serializedVersion: 2
         x: 83
         y: 337
         width: 6
         height: 11
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 7
+      pivot: {x: .5, y: 0}
     - name: characters_32
       rect:
         serializedVersion: 2
