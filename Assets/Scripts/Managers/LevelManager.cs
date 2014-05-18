@@ -47,7 +47,7 @@ public class LevelManager
 		{
 			foreach(GameObject go in TweenerList)
 			{
-				Debug.Log(go.activeSelf);
+				Debug.Log(go.transform.parent.gameObject.activeSelf);
 				if(go.activeSelf)
 				{
 					go.GetComponent<PositionTweener>().PlayAnimation();
