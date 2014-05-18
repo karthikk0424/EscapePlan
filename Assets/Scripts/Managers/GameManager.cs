@@ -4,18 +4,22 @@ using System.Collections;
 public class GameManager : MonoBehaviour 
 {
 	public PlayerMotion MyPlayer;
-	public int LevelNumber;
-
+	public int LevelNumber = 0;
+	public GameObject TransitionScene;
+	public GameObject UIEscapPlan;
 	public KeyCode[] AssignedKeys;
 
 	private int totalChipsThisScene = 0;
 	private GameObject currentSceneInstance;
+	private GameObject PlayerSpawnPoint;
 
 	private void Awake()
 	{
 		instance = this;
 		this.transform.name = "_GameManager";
-
+		/*
+		 * Fetch user data and start from that level, else load the default level 0;
+		 */
 		LoadLevel(LevelNumber);
 
 		if((AssignedKeys[0] != null) || (AssignedKeys[0] == KeyCode.None))
@@ -127,18 +131,13 @@ public class GameManager : MonoBehaviour
 			MyPlayer.FireAProjectile();
 		}
 	}
-	private void LoadLevel(int levelNumber)
-	{
-		currentSceneInstance = (GameObject)Instantiate(Resources.Load("Scenes/Scene_" + levelNumber.ToString()));
-	}
 
+	#region External calls
 	internal void GotAChip()
 	{
 		DataManager.Instance.ChipLootSac = StaticVariablesContainer.CHIP_VALUE;
-		//totalChipsThisScene++;
-		//Debug.Log("Chips this scene = " + totalChipsThisScene);
 	}
-
+	
 	internal void GotHackKit()
 	{
 		DataManager.Instance.HackKit = true;
@@ -148,11 +147,66 @@ public class GameManager : MonoBehaviour
 	{
 		if(DataManager.Instance.HackKit)
 		{
-			Debug.Log("Level Complete");
+			LevelTransition(true);
 		}
 	}
 	internal void EnterLevel()
 	{
-
+		Destroy(currentSceneInstance);
+		LoadLevel(LevelNumber + 1);
 	}
+	#endregion
+
+	#region Scene transion
+	private void LoadLevel(int levelNumber)
+	{
+		currentSceneInstance = (GameObject)Instantiate(Resources.Load("Scenes/Scene_" + levelNumber.ToString()));
+		PlayerSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+		LevelTransition(false);
+	}
+
+	private void LevelTransition(bool hideLevel)
+	{
+		Vector2 playerPosition = FetchSpawnPoint(PlayerSpawnPoint);
+		if(hideLevel)
+		{
+			currentSceneInstance.SetActive(!hideLevel);
+			UIEscapPlan.SetActive(!hideLevel);
+			TransitionScene.SetActive(hideLevel);
+			playerPosition = StaticVariablesContainer.TRANSITION_SPAWNPOINT;
+			Debug.Log(playerPosition);
+
+		}
+		else
+		{
+			TransitionScene.SetActive(hideLevel);
+			UIEscapPlan.SetActive(!hideLevel);
+			currentSceneInstance.SetActive(!hideLevel);
+		}
+		MyPlayer.TelePortPlayer(playerPosition);
+	}
+
+	private void ToggleScene(bool hide)
+	{
+		currentSceneInstance.SetActive(hide);
+	}
+
+	private void ToggleUI(bool hide)
+	{
+		UIEscapPlan.SetActive(hide);
+	}
+
+	private void ToggleTransitionScene(bool hide)
+	{
+		TransitionScene.SetActive(hide);
+	}
+	#endregion
+
+	#region Get Information from Scene
+
+	internal Vector2 FetchSpawnPoint(GameObject spawnPoint)
+	{
+		 return spawnPoint.transform.localPosition;
+	}
+	#endregion
 }
