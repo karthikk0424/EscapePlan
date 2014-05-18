@@ -187,6 +187,6 @@ public sealed class PlayerMotion : MonoBehaviour
 
 	internal void FireAProjectile()
 	{
-		WeaponCache.FireAProjectile(this.transform.position, Quaternion.Euler(0,0,-70));
+		WeaponCache.FireAProjectile(this.transform.position, Quaternion.Euler(0,0,-90));
 	}
 }

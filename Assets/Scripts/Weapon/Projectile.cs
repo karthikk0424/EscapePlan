@@ -14,9 +14,9 @@ public sealed class Projectile : WeaponBase
 	internal void propertiesForThisProjectile()
 	{
 		isTRAVELLING = true;
-		Debug.Log(this.transform.forward);
-		rigidVelocity = (this.transform.forward * 200);
-		StartCoroutine(this.moveProjectile());
+		rigidVelocity = (Vector2.right * 20 * (Time.deltaTime * 45));
+		this.transform.rigidbody2D.velocity = rigidVelocity;
+		//StartCoroutine(this.moveProjectile());
 	}
 
 	private IEnumerator moveProjectile()
