@@ -8,23 +8,29 @@ public class WeaponHub : WeaponBase
 	private ObjectRecycler weaponCache;
 	private GameObject currentObject;
 
+	private uint playerFired = 0;
+
 	private void Start()
 	{
-//		base.PoolThisObject(Projectile, 5, this.gameObject);
 		weaponCache = new ObjectRecycler(Projectile, 5, this.gameObject);
 	}
 
-	internal void FireAProjectile(Vector3 worldPosition, Quaternion rot)
+	internal void FireForPlayer(Vector3 worldPosition, Quaternion rot)
 	{
-	//	base.FireAProjectile(worldPosition, rot);
-
-		currentObject = weaponCache.Spawn(worldPosition, rot);
-		currentObject.GetComponent<Projectile>().propertiesForThisProjectile(this.gameObject);
+		if(playerFired < 3)
+		{
+			currentObject = weaponCache.Spawn(worldPosition, rot);
+			currentObject.GetComponent<Projectile>().propertiesForThisProjectile(this.gameObject);
+			playerFired++;
+		}
 	}
 
-	internal void DespawnMe(GameObject _go)
+	internal void DespawnForPlayer(GameObject _go)
 	{
 		weaponCache.Despawn(_go);
+		playerFired--;
 	}
-	
+
+
+
 }

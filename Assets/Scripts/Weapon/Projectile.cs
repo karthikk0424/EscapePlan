@@ -4,32 +4,15 @@ using System.Collections;
 [RequireComponent (typeof (Rigidbody2D), typeof (BoxCollider2D))]
 public sealed class Projectile : WeaponBase
 {
-	/*  Required Properties
-		1. Enemy/Player Projectile
-	 */
-	private bool isTRAVELLING = false;
+
 	private Vector2 rigidVelocity = Vector2.zero;
-	private float deltaTime = 0f;
 	private GameObject myRecyler;
 
 	internal void propertiesForThisProjectile(GameObject parent)
 	{
-		isTRAVELLING = true;
 		rigidVelocity = (Vector2.right * 20 * (Time.deltaTime * 45));
 		this.transform.rigidbody2D.velocity = rigidVelocity;
 		myRecyler = parent;
-		//StartCoroutine(this.moveProjectile());
-	}
-
-	private IEnumerator moveProjectile()
-	{
-		while(isTRAVELLING)
-		{
-			rigidVelocity = (this.transform.forward * 200);// * Time.deltaTime * 45);
-			this.rigidbody2D.velocity = (rigidVelocity);
-		//	Debug.Log(rigidVelocity);
-			yield return null;
-		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D hit)
@@ -41,7 +24,7 @@ public sealed class Projectile : WeaponBase
 	{
 		if(hit.collider.tag == "Ground")
 		{
-			myRecyler.GetComponent<WeaponHub>().DespawnMe(this.gameObject);
+			myRecyler.GetComponent<WeaponHub>().DespawnForPlayer(this.gameObject);
 		}
 	}
 }
