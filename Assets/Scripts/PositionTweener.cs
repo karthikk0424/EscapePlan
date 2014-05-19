@@ -27,6 +27,11 @@ public class PositionTweener : MonoBehaviour
 		this.StartCoroutine(StartAnimation());
 	}
 
+	public void StopAnimation()
+	{
+		StopCoroutine("StartAnimation");
+	}
+
 	private IEnumerator StartAnimation()
 	{
 		float lastTime = Time.timeSinceLevelLoad;
@@ -37,8 +42,15 @@ public class PositionTweener : MonoBehaviour
 			transform.localPosition = Vector2.Lerp(TweenFrom, TweenTo, EaseTheTimer(timer));
 			timer += ((Time.timeSinceLevelLoad - lastTime) * TimeToMove);
 			lastTime = Time.timeSinceLevelLoad;
+			
+			if(timer < 1 && timer >= .99f )
+			{
+			}
+
 			yield return null;
 		}
+		NPCManager.Instance.OnCompleteAction(gameObject);
+
 	}
 
 	//http://theinstructionlimit.com/wp-content/uploads/2009/07/Easing.cs

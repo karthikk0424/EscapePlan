@@ -270,5 +270,23 @@ TextureImporter:
         height: 31
       alignment: 0
       pivot: {x: .5, y: .5}
+    - name: Climbable
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 416
+        width: 62
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: ElevatorPlatform
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 344
+        width: 22
+        height: 2
+      alignment: 0
+      pivot: {x: .5, y: .5}
   spritePackingTag: 
   userData: 

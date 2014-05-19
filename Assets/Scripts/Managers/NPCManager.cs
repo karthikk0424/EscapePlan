@@ -7,6 +7,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum LevelEnum
+{
+	Level0,
+	Level1,
+	Level2
+}
+
 public class NPCManager : MonoBehaviour
 {
 	// Responsibilities
@@ -32,7 +39,11 @@ public class NPCManager : MonoBehaviour
 	}
 	#endregion
 
+
 	public GameObject[] EnemyUnits;
+
+	private Evlevator currentElevator;
+	private TriggerActionType lastKnowAction;
 
 	internal void EnterTrigger(GameObject sourceObject, TriggerActionType triggerType)
 	{
@@ -42,14 +53,51 @@ public class NPCManager : MonoBehaviour
 				PlayAnimation(sourceObject);
 				break;
 			case TriggerActionType.SwitchCamera:
-			Debug.Log(sourceObject);
 				CameraManager.Instance.ChangeCameraToLevel(sourceObject.name);
 				break;
+			case TriggerActionType.MoveElevator:
+				currentElevator = sourceObject.GetComponent<Evlevator>();
+				break;
+
 		}
+		lastKnowAction = triggerType;
 	}
+
+	internal void OnCompleteAction(GameObject sourceObject)
+	{
+
+		switch(lastKnowAction)
+		{
+			case TriggerActionType.MoveElevator:
+				currentElevator.ElevatorSwitch(true);
+				break;
+		}
+		Debug.Log(lastKnowAction);
+	}
+
 	internal void PlayAnimation(GameObject item)
 	{
 		item.GetComponent<PositionTweener>().PlayAnimation();
 	}
+
+	internal void StopAnimation(GameObject item)
+	{
+
+	}
+
+	#region Elevetor Mechnism
+
+	public void MoveElevator()
+	{
+		currentElevator.StartElevator();
+	}
+
+
+	public void StopElevatorMovement()
+	{
+		StopAnimation(currentElevator.gameObject);
+	}
+
+	#endregion
 }
 	

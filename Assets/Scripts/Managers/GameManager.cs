@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
 	private GameObject currentSceneInstance;
 	private GameObject PlayerSpawnPoint;
 
+	//PAUSE the game - Observer Pattern. 
+	public delegate void PauseTheGame(bool toPAUSE);
+	public static event PauseTheGame OnPauseTheGame;
+
 	private void Awake()
 	{
 		instance = this;
@@ -24,7 +28,7 @@ public class GameManager : MonoBehaviour
 
 		if((AssignedKeys[0] != null) || (AssignedKeys[0] == KeyCode.None))
 		{
-			AssignedKeys = new KeyCode[4];
+			AssignedKeys = new KeyCode[6];
 			// Left Movement
 			AssignedKeys[0] = KeyCode.LeftArrow;
 			
@@ -36,6 +40,12 @@ public class GameManager : MonoBehaviour
 			
 			// Fire a Bullet
 			AssignedKeys[3] = KeyCode.Space;
+
+			// Move Elevator UP
+			AssignedKeys[4] = KeyCode.W;
+
+			// Move Elevator Down
+			AssignedKeys[5] = KeyCode.S;
 		}
 	}
 
@@ -51,13 +61,13 @@ public class GameManager : MonoBehaviour
 	private static GameManager instance;
 	public static GameManager Instance
 	{
-		get{
+		get
+		{
 			if(instance == null)
 			{	
 				instance = UnityEngine.Object.FindObjectOfType(typeof(GameManager)) as GameManager;
 				if (instance == null)
-				{
-					
+				{		
 					GameObject go = GameObject.Find("_GameManager") as GameObject;
 					if(go != null)
 					{	instance = go.AddComponent<GameManager>();}
@@ -130,6 +140,12 @@ public class GameManager : MonoBehaviour
 		{
 			MyPlayer.FireAProjectile();
 		}
+
+		// Move Elevator
+		if(Input.GetKeyDown(AssignedKeys[4])) //DEBUG
+		{
+			NPCManager.Instance.MoveElevator();
+		}
 	}
 
 	#region External calls
@@ -158,6 +174,10 @@ public class GameManager : MonoBehaviour
 
 	internal void PlayFireAnimation(Vector3 _worldCoordinates)
 	{
+		if(FireAnimation.activeSelf)
+		{
+			return;
+		}
 		FireAnimation.transform.position = _worldCoordinates;
 		FireAnimation.SetActive(true);
 		this.StartCoroutine(playFire());

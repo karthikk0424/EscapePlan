@@ -11,7 +11,6 @@ public class EnemyUnit : MonoBehaviour
 	private bool isACTIVE;
 	private void Start()
 	{
-		GameManager.Instance.PlayFireAnimation(Vector3.zero);
 		TriggerThisEnemy();
 	}
 	// Timer

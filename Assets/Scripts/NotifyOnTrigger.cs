@@ -10,7 +10,8 @@ public enum TriggerActionType
 {
 	None,
 	TweenPosition,
-	SwitchCamera
+	SwitchCamera,
+	MoveElevator
 }
 
 public class NotifyOnTrigger : MonoBehaviour 
