@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 	public PlayerMotion MyPlayer;
 	public int LevelNumber = 0;
 	public GameObject TransitionScene;
-	public GameObject UIEscapPlan;
+	public GameObject UIEscapPlan, FireAnimation;
 	public KeyCode[] AssignedKeys;
 
 	private int totalChipsThisScene = 0;
@@ -154,6 +154,19 @@ public class GameManager : MonoBehaviour
 	{
 		Destroy(currentSceneInstance);
 		LoadLevel(LevelNumber + 1);
+	}
+
+	internal void PlayFireAnimation(Vector3 _worldCoordinates)
+	{
+		FireAnimation.transform.position = _worldCoordinates;
+		FireAnimation.SetActive(true);
+		this.StartCoroutine(playFire());
+	}
+	
+	private IEnumerator playFire()
+	{
+		yield return new WaitForSeconds(1f);
+		FireAnimation.SetActive(false);
 	}
 	#endregion
 
