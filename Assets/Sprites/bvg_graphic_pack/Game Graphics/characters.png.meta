@@ -531,7 +531,7 @@ TextureImporter:
         height: 20
       alignment: 0
       pivot: {x: .5, y: .5}
-    - name: characters_54
+    - name: Death_02
       rect:
         serializedVersion: 2
         x: 553
@@ -540,7 +540,7 @@ TextureImporter:
         height: 23
       alignment: 0
       pivot: {x: .5, y: .5}
-    - name: characters_55
+    - name: Death_01
       rect:
         serializedVersion: 2
         x: 580

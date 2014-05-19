@@ -89,6 +89,11 @@ public sealed class PlayerMotion : MonoBehaviour
 		currentMotionState = state;
 		PlayerAnimator.SetInteger("MotionState", state);
 	}
+
+	internal void PlayDeathAnimation()
+	{
+
+	}
 	#endregion
 	
 	#region Methods associated with Collider2D
@@ -117,11 +122,11 @@ public sealed class PlayerMotion : MonoBehaviour
 				break;
 
 			case "EnemyProjectile":
-			 	Debug.Log("<color=red>Death</color> for player");
+				GameManager.Instance.DeathForPlayer();
 				break;
 
 			case "Enemy":
-				Debug.Log("<color=red>Death</color> by Colliding with enemy");
+				GameManager.Instance.DeathForPlayer();
 				break;
 		}
 	}

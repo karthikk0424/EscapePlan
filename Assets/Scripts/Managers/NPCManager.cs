@@ -59,7 +59,7 @@ public class NPCManager : MonoBehaviour
 				currentElevator = sourceObject.GetComponent<Elevator>();
 				break;
 			case TriggerActionType.DeathTrap:
-				GameManager.Instance.DeathByTrap();
+				GameManager.Instance.DeathForPlayer();
 				break;
 		}
 

@@ -201,15 +201,17 @@ public class GameManager : MonoBehaviour
 		FireAnimation.SetActive(false);
 	}
 
-	internal void DeathByTrap()
+	internal void DeathForPlayer()
 	{
-		int lifeCount = DataManager.Instance.LifeCount;
-		lifeCount = lifeCount - 1;
-		DataManager.Instance.LifeCount = lifeCount;
+	//	int lifeCount = DataManager.Instance.LifeCount;
+	//	lifeCount = lifeCount - 1;
+	//	DataManager.Instance.LifeCount = lifeCount;
+		DataManager.Instance.LifeCount--;
 		EscapePlanGUI.UpdatePlayerLife();
 		if(DataManager.Instance.LifeCount == 0)
 		{
 			//Game Over
+			MyPlayer.PlayDeathAnimation();
 		}
 		else
 		{
@@ -232,7 +234,6 @@ public class GameManager : MonoBehaviour
 			EscapePlanGUI.UpdatePlayerLife();
 		}
 	}
-
 	#endregion
 
 	#region Scene transion
