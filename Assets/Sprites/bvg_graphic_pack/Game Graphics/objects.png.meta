@@ -44,6 +44,60 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: green_diamond
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 59
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: red_diamond
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 46
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: blue_diamond
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 31
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: health
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 85
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: super_health
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 84
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: fireball_downwards
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 32
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: .5, y: .5}
   spritePackingTag: 
   userData: 

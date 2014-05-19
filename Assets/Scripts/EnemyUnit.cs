@@ -9,6 +9,7 @@ public class EnemyUnit : MonoBehaviour
 
 	private Quaternion directionOfFire;
 	private bool isACTIVE;
+
 	private void Start()
 	{
 		TriggerThisEnemy();
@@ -54,7 +55,6 @@ public class EnemyUnit : MonoBehaviour
 		}
 		var localTarget = transform.InverseTransformPoint(player.position);
 		var targetAngle = Mathf.Atan2(localTarget.x, localTarget.y) * Mathf.Rad2Deg;
-
 
 		do
 		{

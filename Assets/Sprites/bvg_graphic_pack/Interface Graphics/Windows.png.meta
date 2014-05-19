@@ -23,14 +23,14 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -44,6 +44,123 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Windows_0
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 6891
+        width: 2907
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Windows_1
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 5031
+        width: 3017
+        height: 1742
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Windows_2
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 3406
+        width: 1954
+        height: 1266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Windows_3
+      rect:
+        serializedVersion: 2
+        x: 2704
+        y: 4602
+        width: 1204
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Windows_4
+      rect:
+        serializedVersion: 2
+        x: 2876
+        y: 4469
+        width: 555
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Windows_5
+      rect:
+        serializedVersion: 2
+        x: 3845
+        y: 4047
+        width: 47
+        height: 508
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Windows_6
+      rect:
+        serializedVersion: 2
+        x: 2876
+        y: 4367
+        width: 563
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: ArmourBar
+      rect:
+        serializedVersion: 2
+        x: 2728
+        y: 4008
+        width: 750
+        height: 161
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Windows_8
+      rect:
+        serializedVersion: 2
+        x: 2720
+        y: 3648
+        width: 508
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Windows_9
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 2219
+        width: 1899
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Windows_10
+      rect:
+        serializedVersion: 2
+        x: 2532
+        y: 2336
+        width: 1383
+        height: 781
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Windows_11
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 469
+        width: 2782
+        height: 1609
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: healthbar
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 4172
+        width: 743
+        height: 154
+      alignment: 0
+      pivot: {x: .5, y: .5}
   spritePackingTag: 
   userData: 
