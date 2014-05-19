@@ -12,7 +12,6 @@ public class PositionTweener : MonoBehaviour
 	public Vector2 TweenFrom;
 	public Vector2 TweenTo;
 	public float TimeToMove = 4;
-	//public float Speed = 0.25f;
 	public bool ResetOnLoad = false;
 
 	public enum EasingType

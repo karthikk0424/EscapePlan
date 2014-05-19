@@ -53,7 +53,6 @@ public class EnemyUnit : MonoBehaviour
 		{
 			yield break;
 		}
-
 		var localTarget = transform.InverseTransformPoint(player.position);
 		var targetAngle = Mathf.Atan2(localTarget.x, localTarget.y) * Mathf.Rad2Deg;
 
