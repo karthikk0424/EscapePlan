@@ -3,16 +3,30 @@ using System.Collections;
 
 public class EnemyUnit : MonoBehaviour 
 {
-	public WeaponHub WeaponCache;
+	public string NameOfWeaponHub = "WeaponHub";
 	public bool isTIMED = false, fireRIGHTSIDE = false, fireATTHEPLAYER = false;
 	public float Timer = 3.0f, ForceOnProjectile = 20f;
 
+
+	private WeaponHub WeaponCache;
 	private Quaternion directionOfFire;
 	private bool isACTIVE;
 
+	private void OnEnable()
+	{
+		if(WeaponCache == null)
+		{
+			WeaponCache = GameObject.Find(NameOfWeaponHub).GetComponent<WeaponHub>();
+		}
+	}
+
 	private void Start()
 	{
-		TriggerThisEnemy();
+		if(WeaponCache == null)
+		{
+			return;
+		}
+	//	TriggerThisEnemy();
 	}
 	// Timer
 
