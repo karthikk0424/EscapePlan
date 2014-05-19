@@ -112,7 +112,6 @@ public class GameManager : MonoBehaviour
 		{
 			MyPlayer.StopLeftMovement();
 		}
-
 		
 		// Right Movement
 		if(Input.GetKeyDown(AssignedKeys[1]))
@@ -139,7 +138,10 @@ public class GameManager : MonoBehaviour
 		// Fire a projectile
 		if(Input.GetKeyDown(AssignedKeys[3]))
 		{
-			MyPlayer.FireAProjectile();
+			if(DataManager.Instance.WeaponReadyStatus)
+			{
+				MyPlayer.FireAProjectile();
+			}
 		}
 
 		// Move Elevator
@@ -159,20 +161,14 @@ public class GameManager : MonoBehaviour
 		UpdateLifeBonusTracker();
 	}
 
-	private void UpdateLifeBonusTracker()
-	{
-		int BonusCounter = DataManager.Instance.BonusTrackerChipCount;
-		BonusCounter = BonusCounter + 1;
-		if(BonusCounter == StaticVariablesContainer.CHIP_VALUE)
-		{
-			AddLife();
-			BonusCounter = 0;
-		}
-		DataManager.Instance.BonusTrackerChipCount = BonusCounter;
-	}
 	internal void GotHackKit()
 	{
 		DataManager.Instance.HackKit = true;
+	}
+
+	internal void GotAmmo()
+	{
+		DataManager.Instance.WeaponReadyStatus = true;
 	}
 
 	internal void OpenDoor()
@@ -280,6 +276,18 @@ public class GameManager : MonoBehaviour
 	private void ToggleTransitionScene(bool hide)
 	{
 		TransitionScene.SetActive(hide);
+	}
+
+	private void UpdateLifeBonusTracker()
+	{
+		int BonusCounter = DataManager.Instance.BonusTrackerChipCount;
+		BonusCounter = BonusCounter + 1;
+		if(BonusCounter == StaticVariablesContainer.CHIP_VALUE)
+		{
+			AddLife();
+			BonusCounter = 0;
+		}
+		DataManager.Instance.BonusTrackerChipCount = BonusCounter;
 	}
 	#endregion
 

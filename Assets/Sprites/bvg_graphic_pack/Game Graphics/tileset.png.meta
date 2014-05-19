@@ -630,5 +630,41 @@ TextureImporter:
         height: 10
       alignment: 0
       pivot: {x: .5, y: .5}
+    - name: Laser
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 272
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Laser
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 273
+        width: 2
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_67
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 465
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tileset_68
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 295
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
   spritePackingTag: 
   userData: 

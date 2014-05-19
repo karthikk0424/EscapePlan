@@ -42,7 +42,7 @@ public class NPCManager : MonoBehaviour
 
 	public GameObject[] EnemyUnits;
 
-	private Evlevator currentElevator;
+	private Elevator currentElevator;
 	private TriggerActionType lastKnowAction;
 
 	internal void EnterTrigger(GameObject sourceObject, TriggerActionType triggerType)
@@ -53,10 +53,10 @@ public class NPCManager : MonoBehaviour
 				PlayAnimation(sourceObject);
 				break;
 			case TriggerActionType.SwitchCamera:
-				CameraManager.Instance.ChangeCameraToLevel(sourceObject.name, false);
+				//CameraManager.Instance.ChangeCameraToLevel(sourceObject.name, false);
 				break;
 			case TriggerActionType.MoveElevator:
-				currentElevator = sourceObject.GetComponent<Evlevator>();
+				currentElevator = sourceObject.GetComponent<Elevator>();
 				break;
 			case TriggerActionType.DeathTrap:
 				GameManager.Instance.DeathByTrap();
@@ -66,12 +66,34 @@ public class NPCManager : MonoBehaviour
 		lastKnowAction = triggerType;
 	}
 
+	internal void ExitTrigger(GameObject sourceObject, TriggerActionType type)
+	{
+
+		switch(type)
+		{
+			case TriggerActionType.DeactivateElevator:
+				currentElevator = null;
+				break;
+			case TriggerActionType.SwitchCamera:
+				if(currentElevator != null)
+				{
+				Debug.Log(currentElevator.level);
+					CameraManager.Instance.ChangeCameraToLevel(currentElevator.level.ToString(), false);
+				}
+				else
+				{
+					CameraManager.Instance.ChangeCameraToLevel(sourceObject.name, false);
+				}
+				break;
+		}
+	}
+
 	internal void OnCompleteAction(GameObject sourceObject, TriggerActionType type)
 	{
 		switch(type)
 		{
 		case TriggerActionType.MoveElevator:
-			currentElevator = sourceObject.GetComponent<Evlevator>();
+			currentElevator = sourceObject.GetComponent<Elevator>();
 			currentElevator.ElevatorSwitch(true);
 			break;
 		}
@@ -95,18 +117,18 @@ public class NPCManager : MonoBehaviour
 	#endregion
 
 	#region Elevetor Mechnism
-
-	public void MoveElevator()
+	internal void MoveElevator()
 	{
-		currentElevator.StartElevator();
+		if(currentElevator != null)
+		{
+			currentElevator.StartElevator();
+		}
 	}
 
-
-	public void StopElevatorMovement()
+	internal void StopElevatorMovement()
 	{
 		StopAnimation(currentElevator.gameObject);
 	}
-
 	#endregion
 }
 	

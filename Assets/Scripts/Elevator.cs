@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Evlevator : MonoBehaviour {
+public class Elevator : MonoBehaviour {
 
 	public LevelEnum level = LevelEnum.Level0;
 
@@ -30,6 +30,10 @@ public class Evlevator : MonoBehaviour {
 		if(level == LevelEnum.Level0)
 		{
 			level = LevelEnum.Level1;
+		}
+		else
+		{
+			level = LevelEnum.Level0;
 		}
 		GameManager.Instance.CurrentPlayerLevel = level;
 	}

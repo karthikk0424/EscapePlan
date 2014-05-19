@@ -21,9 +21,12 @@ public sealed class DataManager
 	#endregion
 
 	private int chips;
-	private bool isHackitpicked;
 	private int numberOfLife = StaticVariablesContainer.MAX_LIVES;
 	private int bonusCounter = 0;
+	
+	private bool isHackitpicked;
+	private bool isAmmoAvailable = false;
+
 	#region Chip Setter/Getters
 	public int ChipLootSac
 	{
@@ -48,6 +51,20 @@ public sealed class DataManager
 		get
 		{
 			return isHackitpicked;
+		}
+	}
+	#endregion
+
+	#region Weapon ammo
+	public bool WeaponReadyStatus
+	{
+		set
+		{
+			isAmmoAvailable = value;
+		}
+		get
+		{
+			return isAmmoAvailable;
 		}
 	}
 	#endregion

@@ -12,16 +12,23 @@ public enum TriggerActionType
 	TweenPosition,
 	SwitchCamera,
 	MoveElevator,
-	DeathTrap
+	DeathTrap,
+	DeactivateElevator
 }
 
 public class NotifyOnTrigger : MonoBehaviour 
 {
 	public GameObject TargetObject;
-	public TriggerActionType TriggerType;
+	public TriggerActionType OnEnterAction;
+	public TriggerActionType OnExitAction;
 
 	private void OnTriggerEnter2D(Collider2D hit)
 	{
-		NPCManager.Instance.EnterTrigger(TargetObject, TriggerType);
+		NPCManager.Instance.EnterTrigger(TargetObject, OnEnterAction);
+	}
+
+	private void OnTriggerExit2D(Collider2D hit)
+	{
+		NPCManager.Instance.ExitTrigger(TargetObject, OnExitAction);
 	}
 }

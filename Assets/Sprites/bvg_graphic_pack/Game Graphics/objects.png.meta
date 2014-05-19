@@ -99,5 +99,32 @@ TextureImporter:
         height: 22
       alignment: 0
       pivot: {x: .5, y: .5}
+    - name: objects_6
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 109
+        width: 8
+        height: 22
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Spike
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 113
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: MineSpike
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 173
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
   spritePackingTag: 
   userData: 

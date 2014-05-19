@@ -135,10 +135,7 @@ public sealed class PlayerMotion : MonoBehaviour
 		switch(hit.collider2D.tag)
 		{
 			case "Chips":
-				if(GameManager.Instance != null)
-				{
-					GameManager.Instance.GotAChip();
-				}
+				GameManager.Instance.GotAChip();
 				hit.gameObject.SetActive(false);
 				break;
 
@@ -154,7 +151,11 @@ public sealed class PlayerMotion : MonoBehaviour
 			case "EntryDoor":
 				GameManager.Instance.EnterLevel();
 				break;
-			
+
+			case "Ammo":
+				GameManager.Instance.GotAmmo();
+				hit.gameObject.SetActive(false);
+				break;
 		}
 	}
 	#endregion
