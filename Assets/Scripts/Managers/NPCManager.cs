@@ -34,12 +34,16 @@ public class NPCManager : MonoBehaviour
 
 	public GameObject[] EnemyUnits;
 
-	internal void EnterTrigger(GameObject triggeredObject, TriggerActionType triggerType)
+	internal void EnterTrigger(GameObject sourceObject, TriggerActionType triggerType)
 	{
 		switch(triggerType)
 		{
 			case TriggerActionType.TweenPosition:
-				PlayAnimation(triggeredObject);
+				PlayAnimation(sourceObject);
+				break;
+			case TriggerActionType.SwitchCamera:
+			Debug.Log(sourceObject);
+				CameraManager.Instance.ChangeCameraToLevel(sourceObject.name);
 				break;
 		}
 	}

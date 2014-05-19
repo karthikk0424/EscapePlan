@@ -9,7 +9,8 @@ using System.Collections;
 public enum TriggerActionType
 {
 	None,
-	TweenPosition
+	TweenPosition,
+	SwitchCamera
 }
 
 public class NotifyOnTrigger : MonoBehaviour 
