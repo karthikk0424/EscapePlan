@@ -5,11 +5,15 @@ public class EnemyUnit : MonoBehaviour
 {
 	public WeaponHub WeaponCache;
 	public bool isTIMED = false;
-	public float Timer = 1.0f;
+	public float Timer = 3.0f;
 	public float ForceOnProjectile = 20;
+	public bool fireRIGHTSIDE = false;
+
+	private Quaternion directionOfFire;
 
 	private void Start()
 	{
+		directionOfFire = Quaternion.Euler(0,0,((fireRIGHTSIDE) ? (-90) : (90)));
 		TriggerThisEnemy();
 	}
 	// Timer
@@ -40,7 +44,7 @@ public class EnemyUnit : MonoBehaviour
 		do
 		{
 			yield return new WaitForSeconds(Timer);
-			WeaponCache.FireForEnemy(this.transform.position, Quaternion.Euler(0,0,90), ForceOnProjectile);
+			WeaponCache.FireForEnemy(this.transform.position, directionOfFire, ForceOnProjectile);
 		}while(true);
 	}
 

@@ -22,6 +22,7 @@ public sealed class PlayerMotion : MonoBehaviour
 	public WeaponHub WeaponCache;
 	public float ForceOnProjectile = 20.0f;
 	private Rigidbody2D PlayerRigidbody;
+	private BoxCollider2D myCollider;
 
 	private bool isMOVING = false, isJUMPING = false;
 	private int currentMotionState = 0;
@@ -49,6 +50,10 @@ public sealed class PlayerMotion : MonoBehaviour
 		if(PlayerRigidbody == null)
 		{
 			PlayerRigidbody = this.GetComponent<Rigidbody2D>();
+		}
+		if(myCollider == null)
+		{
+			myCollider = this.GetComponent<BoxCollider2D>();
 		}
 	}
 
@@ -112,7 +117,7 @@ public sealed class PlayerMotion : MonoBehaviour
 				break;
 
 			case "EnemyProjectile":
-			 	Debug.Log("Death");
+			 	Debug.Log("<color=red>Death</color> for player");
 				break;
 
 			case "Enemy":
@@ -170,6 +175,7 @@ public sealed class PlayerMotion : MonoBehaviour
 		}
 		setAnimation(2);
 		isMOVING = true;
+		myCollider.center = new Vector2(-0.37f, 0f);
 	}
 
 	/// <summary>
@@ -215,6 +221,7 @@ public sealed class PlayerMotion : MonoBehaviour
 		}
 		setAnimation(-2);
 		isMOVING = true;
+		myCollider.center = new Vector2(0.24f, 0f);
 	}
 
 	/// <summary>
