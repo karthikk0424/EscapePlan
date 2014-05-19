@@ -4,13 +4,52 @@ using System.Collections;
 public class EnemyUnit : MonoBehaviour 
 {
 	public string NameOfWeaponHub = "WeaponHub";
-	public bool isTIMED = false, fireRIGHTSIDE = false, fireATTHEPLAYER = false;
+	public bool isTIMED = false, startONAWAKE = true;
 	public float Timer = 3.0f, ForceOnProjectile = 20f;
 
+	public enum DirectionToFire
+	{
+		LeftSide, 
+		RightSide, 
+		Upwards, 
+		Downwards,
+		TowardsThePlayer
+	}
+	public DirectionToFire FireDirection;
 
 	private WeaponHub WeaponCache;
 	private Quaternion directionOfFire;
 	private bool isACTIVE;
+
+	private void Awake()
+	{
+		switch(FireDirection)
+		{
+			case DirectionToFire.LeftSide:
+				directionOfFire = Quaternion.Euler(0,0,90);
+				break;
+
+			case DirectionToFire.RightSide:
+				directionOfFire = Quaternion.Euler(0,0,-90);
+				break;
+
+			case DirectionToFire.Upwards:
+				directionOfFire = Quaternion.Euler(0,0,0);
+				break;
+
+			case DirectionToFire.Downwards:
+				directionOfFire = Quaternion.Euler(180,0,0);
+				break;
+
+			case DirectionToFire.TowardsThePlayer:
+				directionOfFire = Quaternion.Euler(0,0,90);	
+				break;
+
+			default:
+				directionOfFire = Quaternion.Euler(0,0,0);	
+				break;
+		}
+	}
 
 	private void OnEnable()
 	{
@@ -26,7 +65,10 @@ public class EnemyUnit : MonoBehaviour
 		{
 			return;
 		}
-	//	TriggerThisEnemy();
+		if(startONAWAKE)
+		{
+			TriggerThisEnemy();
+		}
 	}
 	// Timer
 
@@ -39,8 +81,7 @@ public class EnemyUnit : MonoBehaviour
 	internal void TriggerThisEnemy()
 	{
 		isACTIVE = true;
-		directionOfFire = Quaternion.Euler(0,0,((fireRIGHTSIDE) ? (-90) : (90)));
-		if(fireATTHEPLAYER)
+		if(FireDirection == DirectionToFire.TowardsThePlayer)
 		{
 			StartCoroutine(this.fireTimedAtTheEnemy());
 		}

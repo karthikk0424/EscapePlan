@@ -337,9 +337,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 17
-        width: 16
-        height: 15
+        y: 19
+        width: 14
+        height: 13
       alignment: 0
       pivot: {x: .5, y: .5}
     - name: cream_tile_01
@@ -598,17 +598,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 16
+        y: 18
         width: 16
-        height: 16
+        height: 12
       alignment: 0
       pivot: {x: .5, y: .5}
     - name: enemy_bug_brown_02
       rect:
         serializedVersion: 2
-        x: 114
+        x: 115
         y: 17
-        width: 13
+        width: 12
         height: 15
       alignment: 0
       pivot: {x: .5, y: .5}
