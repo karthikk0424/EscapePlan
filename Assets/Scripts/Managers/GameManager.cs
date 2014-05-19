@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 	public KeyCode[] AssignedKeys;
 	public LevelEnum CurrentPlayerLevel = LevelEnum.Level1;
 	public GameGUI EscapePlanGUI;
-
 	private int totalChipsThisScene = 0;
 	private GameObject currentSceneInstance;
 	private GameObject PlayerSpawnPoint;
@@ -153,9 +152,24 @@ public class GameManager : MonoBehaviour
 	#region External calls
 	internal void GotAChip()
 	{
-		DataManager.Instance.ChipLootSac = StaticVariablesContainer.CHIP_VALUE;
+		int chipCount = DataManager.Instance.ChipLootSac;
+		chipCount = chipCount + StaticVariablesContainer.CHIP_VALUE;
+		DataManager.Instance.ChipLootSac = chipCount; 
+		EscapePlanGUI.UpdateChipCount();
+		UpdateLifeBonusTracker();
 	}
-	
+
+	private void UpdateLifeBonusTracker()
+	{
+		int BonusCounter = DataManager.Instance.BonusTrackerChipCount;
+		BonusCounter = BonusCounter + 1;
+		if(BonusCounter == StaticVariablesContainer.CHIP_VALUE)
+		{
+			AddLife();
+			BonusCounter = 0;
+		}
+		DataManager.Instance.BonusTrackerChipCount = BonusCounter;
+	}
 	internal void GotHackKit()
 	{
 		DataManager.Instance.HackKit = true;
@@ -191,19 +205,12 @@ public class GameManager : MonoBehaviour
 		FireAnimation.SetActive(false);
 	}
 
-	private IEnumerator ResetPlayerToSpawnPoint()
-	{
-		yield return new WaitForSeconds(StaticVariablesContainer.RESPAWN_DELAY);
-		MyPlayer.TelePortPlayer(FetchSpawnPoint(PlayerSpawnPoint));
-		CameraManager.Instance.ChangeCameraToLevel(StaticVariablesContainer.Level0, true);
-	}
-
 	internal void DeathByTrap()
 	{
 		int lifeCount = DataManager.Instance.LifeCount;
 		lifeCount = lifeCount - 1;
-		EscapePlanGUI.SetPlayerLife(lifeCount);
 		DataManager.Instance.LifeCount = lifeCount;
+		EscapePlanGUI.UpdatePlayerLife();
 		if(DataManager.Instance.LifeCount == 0)
 		{
 			//Game Over
@@ -214,15 +221,22 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-
+	private IEnumerator ResetPlayerToSpawnPoint()
+	{
+		yield return new WaitForSeconds(StaticVariablesContainer.RESPAWN_DELAY);
+		MyPlayer.TelePortPlayer(FetchSpawnPoint(PlayerSpawnPoint));
+		CameraManager.Instance.ChangeCameraToLevel(StaticVariablesContainer.Level0, true);
+	}
 
 	internal void AddLife()
 	{
 		if(DataManager.Instance.LifeCount < 3)
 		{
 			DataManager.Instance.LifeCount = DataManager.Instance.LifeCount + 1;
+			EscapePlanGUI.UpdatePlayerLife();
 		}
 	}
+
 	#endregion
 
 	#region Scene transion

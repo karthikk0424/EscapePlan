@@ -5,8 +5,21 @@ public class GameGUI : MonoBehaviour
 {
 
 	public GameObject LifeContainer;
+	public GameObject ChipUI;
 
-	internal void SetPlayerLife(int lifeCount)
+	#region Game Data Manager Calls
+	internal void UpdatePlayerLife()
+	{
+		SetPlayerLife(DataManager.Instance.LifeCount);
+	}
+
+	internal void UpdateChipCount()
+	{
+		SetUIChip(DataManager.Instance.ChipLootSac);
+	}
+	#endregion
+
+	private void SetPlayerLife(int lifeCount)
 	{
 		foreach(Transform t in LifeContainer.transform)
 		{
@@ -17,4 +30,10 @@ public class GameGUI : MonoBehaviour
 			LifeContainer.transform.GetChild(i - 1).gameObject.SetActive(true);
 		}
 	}
+	
+	private void SetUIChip(int chipCount)
+	{
+		ChipUI.GetComponent<TextMesh>().text = chipCount.ToString("000");
+	}
+
 }

@@ -22,14 +22,14 @@ public sealed class DataManager
 
 	private int chips;
 	private bool isHackitpicked;
-	private int numberOfLife = 3;
-
+	private int numberOfLife = StaticVariablesContainer.MAX_LIVES;
+	private int bonusCounter = 0;
 	#region Chip Setter/Getters
 	public int ChipLootSac
 	{
 		set
 		{
-			chips = chips + value;
+			chips = value;
 		}
 		get
 		{
@@ -65,6 +65,20 @@ public sealed class DataManager
 			return numberOfLife;
 		}
 	}
+	#endregion
 
+	#region Player Life
+	public int BonusTrackerChipCount
+	{
+		set
+		{
+			bonusCounter = value;
+		}
+		
+		get
+		{
+			return bonusCounter;
+		}
+	}
 	#endregion
 }
