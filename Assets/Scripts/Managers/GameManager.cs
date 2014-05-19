@@ -252,8 +252,8 @@ public class GameManager : MonoBehaviour
 			currentSceneInstance.SetActive(!hideLevel);
 			UIEscapPlan.SetActive(!hideLevel);
 			TransitionScene.SetActive(hideLevel);
+			CameraManager.Instance.ChangeCameraToLevel(StaticVariablesContainer.Level0,true);
 			playerPosition = StaticVariablesContainer.TRANSITION_SPAWNPOINT;
-
 		}
 		else
 		{
@@ -283,7 +283,7 @@ public class GameManager : MonoBehaviour
 	{
 		int BonusCounter = DataManager.Instance.BonusTrackerChipCount;
 		BonusCounter = BonusCounter + 1;
-		if(BonusCounter == StaticVariablesContainer.CHIP_VALUE)
+		if(BonusCounter == StaticVariablesContainer.BONUS_LIFE_TARGET)
 		{
 			AddLife();
 			BonusCounter = 0;
