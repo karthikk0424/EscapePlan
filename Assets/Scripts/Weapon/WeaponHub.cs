@@ -15,12 +15,12 @@ public sealed class WeaponHub : WeaponBase
 		weaponCache = new ObjectRecycler(Projectile, 5, this.gameObject);
 	}
 
-	internal void FireForPlayer(Vector3 worldPosition, Quaternion rot)
+	internal void FireForPlayer(Vector3 worldPosition, Quaternion rot, float _force)
 	{
 		if(playerFired < 3)
 		{
 			currentObject = weaponCache.Spawn(worldPosition, rot);
-			currentObject.GetComponent<Projectile>().propertiesForThisProjectile(this.gameObject, true);
+			currentObject.GetComponent<Projectile>().propertiesForThisProjectile(this.gameObject, true, _force);
 			playerFired++;
 		}
 	}
@@ -29,5 +29,11 @@ public sealed class WeaponHub : WeaponBase
 	{
 		weaponCache.Despawn(_go);
 		playerFired--;
+	}
+
+	internal void FireForEnemy(Vector3 worldPosition, Quaternion rot, float _force)
+	{
+		currentObject = weaponCache.Spawn(worldPosition, rot);
+		currentObject.GetComponent<Projectile>().propertiesForThisProjectile(this.gameObject, false, _force);
 	}
 }

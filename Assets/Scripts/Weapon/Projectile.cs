@@ -9,10 +9,12 @@ public sealed class Projectile : WeaponBase
 	private GameObject myRecyler;
 	private bool forPLAYER = false;
 
-	internal void propertiesForThisProjectile(GameObject parent, bool _forPLAYER)
+	internal void propertiesForThisProjectile(GameObject parent, bool _forPLAYER, float _forceOnProjectile)
 	{
 		myRecyler = parent;
 		forPLAYER = _forPLAYER;
+		forceOnTheProjectile = ((_forceOnProjectile > 0) ? (_forceOnProjectile) : (20));
+		this.transform.tag = ((_forPLAYER) ? ("PlayerProjectile") : ("EnemyProjectile"));
 		projectileDirection = (this.transform.localRotation * new Vector2(0,1));
 		AddVelocityToRigidBody();
 	}
@@ -35,34 +37,32 @@ public sealed class Projectile : WeaponBase
 
 	private void OnCollisionEnter2D(Collision2D hit)
 	{
+		if(hit == null)
+		{
+			return;
+		}
 		switch(hit.collider.tag)
 		{
 			case "Ground":
 				myRecyler.GetComponent<WeaponHub>().DespawnForPlayer(this.gameObject);
 				break;
-	
-			case "Player": // Player can detect this and call in a method in this script to despawn it. 
-				if(!forPLAYER)
-				{
-					
-				}
+
+			case "EnemyProjectile":
 				break;
 
-			case "NPC": // NPC can detect this and call in a method in this script to despawn it. 
-				if(forPLAYER)
-				{
-
-				}
-				break;
-
-			case "Projectile": // Could be subbed with layer mapping. 
+			case "PlayerProjectile":
 				break;
 		}
 	}
 
+	internal void despawnThisProjectile()
+	{
+		myRecyler.GetComponent<WeaponHub>().DespawnForPlayer(this.gameObject);
+	}
 
 	private void defaultProperties ()
 	{
 		// Assign Rigidbody properties, Collider2D properties. 
+		this.transform.tag = "Untagged";
 	}
 }

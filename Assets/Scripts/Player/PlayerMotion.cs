@@ -20,6 +20,7 @@ public sealed class PlayerMotion : MonoBehaviour
 	#region Variables
 	public Animator PlayerAnimator;
 	public WeaponHub WeaponCache;
+	public float ForceOnProjectile = 20.0f;
 	private Rigidbody2D PlayerRigidbody;
 
 	private bool isMOVING = false, isJUMPING = false;
@@ -96,17 +97,27 @@ public sealed class PlayerMotion : MonoBehaviour
 	/// </description>
 	private void OnCollisionEnter2D(Collision2D hit) 
 	{
-		if(hit.collider.tag == "Ground")
+		switch (hit.collider.tag)
 		{
-			isJUMPING = false;
-			if(currentMotionState == 3)
-			{
-				setAnimation((isMOVING) ? (2) : (1));
-			}
-			else if(currentMotionState == -3)
-			{
-				setAnimation((isMOVING) ? (-2) : (-1));
-			}
+			case "Ground":
+				isJUMPING = false;
+				if(currentMotionState == 3)
+				{
+					setAnimation((isMOVING) ? (2) : (1));
+				}
+				else if(currentMotionState == -3)
+				{
+					setAnimation((isMOVING) ? (-2) : (-1));
+				}
+				break;
+
+			case "EnemyProjectile":
+			 	Debug.Log("Death");
+				break;
+
+			case "Enemy":
+				Debug.Log("<color=red>Death</color> by Colliding with enemy");
+				break;
 		}
 	}
 
@@ -313,15 +324,15 @@ public sealed class PlayerMotion : MonoBehaviour
 	{
 		if(currentMotionState < 0)
 		{
-			WeaponCache.FireForPlayer(this.transform.position, Quaternion.Euler(0,0,90));
+			WeaponCache.FireForPlayer(this.transform.position, Quaternion.Euler(0,0,90), ForceOnProjectile);
 		}
 		else if(currentMotionState > 0)
 		{
-			WeaponCache.FireForPlayer(this.transform.position, Quaternion.Euler(0,0,-90));
+			WeaponCache.FireForPlayer(this.transform.position, Quaternion.Euler(0,0,-90), ForceOnProjectile);
 		}
 		else 
 		{
-			WeaponCache.FireForPlayer(this.transform.position, Quaternion.identity);
+			WeaponCache.FireForPlayer(this.transform.position, Quaternion.identity, ForceOnProjectile);
 		}
 	}
 	#endregion

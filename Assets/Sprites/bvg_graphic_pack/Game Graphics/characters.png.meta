@@ -630,7 +630,7 @@ TextureImporter:
         height: 23
       alignment: 0
       pivot: {x: .5, y: .5}
-    - name: characters_65
+    - name: enemy_fire
       rect:
         serializedVersion: 2
         x: 217
