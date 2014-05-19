@@ -210,11 +210,11 @@ public class GameManager : MonoBehaviour
 		EscapePlanGUI.UpdatePlayerLife();
 		if(DataManager.Instance.LifeCount == 0)
 		{
-			//Game Over
-			MyPlayer.PlayDeathAnimation();
+			Application.LoadLevel(0);
 		}
 		else
 		{
+			MyPlayer.PlayDeathAnimation();
 			StartCoroutine(ResetPlayerToSpawnPoint());
 		}
 	}
