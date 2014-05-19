@@ -117,6 +117,7 @@ public class EnemyUnit : MonoBehaviour
 			localTarget = transform.InverseTransformPoint(player.position);
 			targetAngle = Mathf.Atan2(localTarget.x, localTarget.y) * Mathf.Rad2Deg;
 			directionOfFire = Quaternion.Euler(0,0,-targetAngle);
+		//	this.transform.localRotation = directionOfFire;
 			WeaponCache.FireForEnemy(this.transform.position, directionOfFire, ForceOnProjectile);
 		}while(isACTIVE);
 	}

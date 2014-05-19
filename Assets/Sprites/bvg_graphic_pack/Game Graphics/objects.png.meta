@@ -144,5 +144,14 @@ TextureImporter:
         height: 15
       alignment: 0
       pivot: {x: .5, y: .5}
+    - name: turret_gray
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 232
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
   spritePackingTag: 
   userData: 
