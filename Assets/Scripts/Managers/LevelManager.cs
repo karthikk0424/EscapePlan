@@ -40,5 +40,4 @@ public class LevelManager
 		TweenerList.Clear();
 	}
 
-	//This method receives state updates from Scenemanager
 }

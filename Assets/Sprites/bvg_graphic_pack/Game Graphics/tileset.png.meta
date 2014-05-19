@@ -49,9 +49,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 114
+        y: 115
         width: 28
-        height: 13
+        height: 12
       alignment: 0
       pivot: {x: .5, y: .5}
     - name: tileset_1
@@ -222,7 +222,7 @@ TextureImporter:
         x: 0
         y: 114
         width: 28
-        height: 15
+        height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
     - name: YelloTile
