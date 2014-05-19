@@ -28,25 +28,30 @@ public class CameraManager : MonoBehaviour
 	//Move to game Manager
 	private LevelEnum currentLevel = LevelEnum.Level1;
 
-	public void ChangeCameraToLevel(string levelName)
+	public void ChangeCameraToLevel(string levelName, bool reset)
 	{
-		Vector3 cameraPosition = Vector3.zero;
-		LevelEnum level =  (LevelEnum) System.Enum.Parse(typeof(LevelEnum), levelName);
-		switch(level)
+		Vector3 cameraPosition = StaticVariablesContainer.DEFAULT_CAMERA_POSITION;
+		if(!reset)
 		{
-			case LevelEnum.Level0:
-				cameraPosition = new Vector3 ( 0, -20, -10 );
-				break;
+			LevelEnum currentPlayerLevel =  GameManager.Instance.CurrentPlayerLevel;
+			LevelEnum levelTrigger = (LevelEnum) System.Enum.Parse (typeof(LevelEnum), levelName);
 
-			case LevelEnum.Level2:
-				cameraPosition = new Vector3 ( 0, 20, -10 );
-				break;
+			if(currentPlayerLevel != LevelEnum.Level0 && levelTrigger == LevelEnum.Level0)
+			{
+				cameraPosition = new Vector3 ( 0, -20, -10 );
+			}
 		}
-		if( level == currentLevel )
-		{
-			cameraPosition.y = 0;
-		}
-		currentLevel = level;
+
+//		switch(level)
+//		{
+//			case LevelEnum.Level0:
+//				cameraPosition = new Vector3 ( 0, -20, -10 );
+//				break;
+//
+//			case LevelEnum.Level2:
+//				cameraPosition = new Vector3 ( 0, 20, -10 );
+//				break;
+//		}
 		transform.position = cameraPosition;
 	}
 

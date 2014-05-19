@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 	public GameObject TransitionScene;
 	public GameObject UIEscapPlan, FireAnimation;
 	public KeyCode[] AssignedKeys;
+	public LevelEnum CurrentPlayerLevel = LevelEnum.Level1;
+	public GameGUI EscapePlanGUI;
 
 	private int totalChipsThisScene = 0;
 	private GameObject currentSceneInstance;
@@ -187,6 +189,39 @@ public class GameManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds(1f);
 		FireAnimation.SetActive(false);
+	}
+
+	private IEnumerator ResetPlayerToSpawnPoint()
+	{
+		yield return new WaitForSeconds(StaticVariablesContainer.RESPAWN_DELAY);
+		MyPlayer.TelePortPlayer(FetchSpawnPoint(PlayerSpawnPoint));
+		CameraManager.Instance.ChangeCameraToLevel(StaticVariablesContainer.Level0, true);
+	}
+
+	internal void DeathByTrap()
+	{
+		int lifeCount = DataManager.Instance.LifeCount;
+		lifeCount = lifeCount - 1;
+		EscapePlanGUI.SetPlayerLife(lifeCount);
+		DataManager.Instance.LifeCount = lifeCount;
+		if(DataManager.Instance.LifeCount == 0)
+		{
+			//Game Over
+		}
+		else
+		{
+			StartCoroutine(ResetPlayerToSpawnPoint());
+		}
+	}
+
+
+
+	internal void AddLife()
+	{
+		if(DataManager.Instance.LifeCount < 3)
+		{
+			DataManager.Instance.LifeCount = DataManager.Instance.LifeCount + 1;
+		}
 	}
 	#endregion
 

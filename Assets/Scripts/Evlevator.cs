@@ -3,32 +3,35 @@ using System.Collections;
 
 public class Evlevator : MonoBehaviour {
 
-	public enum ElevatorLevelEnum
-	{
-		Level0,
-		Level1,
-	}
-
-	public ElevatorLevelEnum level = ElevatorLevelEnum.Level0;
+	public LevelEnum level = LevelEnum.Level0;
 
 	internal void StartElevator()
 	{
-		if(level == ElevatorLevelEnum.Level0)
+		if(level == LevelEnum.Level0)
 		{
-			ElevatorSwitch(false);
 			NPCManager.Instance.PlayAnimation(gameObject);
 		}
-
 		else
 		{
-
+			NPCManager.Instance.PlayAnimationReverse(gameObject);
 		}
-
+		ElevatorSwitch(false);
+		UpdateElevatorLevel();
 	}
+
 	
 	public void ElevatorSwitch(bool turnOn)
 	{
-		GetComponentInChildren<EdgeCollider2D>().gameObject.SetActive(turnOn);
+		transform.FindChild("Collider").gameObject.SetActive(turnOn);
+	}
+
+	private void UpdateElevatorLevel()
+	{
+		if(level == LevelEnum.Level0)
+		{
+			level = LevelEnum.Level1;
+		}
+		GameManager.Instance.CurrentPlayerLevel = level;
 	}
 
 }

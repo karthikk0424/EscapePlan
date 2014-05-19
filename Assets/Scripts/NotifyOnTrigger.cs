@@ -11,7 +11,8 @@ public enum TriggerActionType
 	None,
 	TweenPosition,
 	SwitchCamera,
-	MoveElevator
+	MoveElevator,
+	DeathTrap
 }
 
 public class NotifyOnTrigger : MonoBehaviour 

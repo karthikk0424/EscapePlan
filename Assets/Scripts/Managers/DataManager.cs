@@ -22,6 +22,7 @@ public sealed class DataManager
 
 	private int chips;
 	private bool isHackitpicked;
+	private int numberOfLife = 3;
 
 	#region Chip Setter/Getters
 	public int ChipLootSac
@@ -49,5 +50,21 @@ public sealed class DataManager
 			return isHackitpicked;
 		}
 	}
+	#endregion
+
+	#region Player Life
+	public int LifeCount
+	{
+		set
+		{
+			numberOfLife = value;
+		}
+
+		get
+		{
+			return numberOfLife;
+		}
+	}
+
 	#endregion
 }

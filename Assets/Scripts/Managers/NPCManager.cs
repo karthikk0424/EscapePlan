@@ -53,37 +53,46 @@ public class NPCManager : MonoBehaviour
 				PlayAnimation(sourceObject);
 				break;
 			case TriggerActionType.SwitchCamera:
-				CameraManager.Instance.ChangeCameraToLevel(sourceObject.name);
+				CameraManager.Instance.ChangeCameraToLevel(sourceObject.name, false);
 				break;
 			case TriggerActionType.MoveElevator:
 				currentElevator = sourceObject.GetComponent<Evlevator>();
 				break;
-
+			case TriggerActionType.DeathTrap:
+				GameManager.Instance.DeathByTrap();
+				break;
 		}
+
 		lastKnowAction = triggerType;
 	}
 
-	internal void OnCompleteAction(GameObject sourceObject)
+	internal void OnCompleteAction(GameObject sourceObject, TriggerActionType type)
 	{
-
-		switch(lastKnowAction)
+		switch(type)
 		{
-			case TriggerActionType.MoveElevator:
-				currentElevator.ElevatorSwitch(true);
-				break;
+		case TriggerActionType.MoveElevator:
+			currentElevator = sourceObject.GetComponent<Evlevator>();
+			currentElevator.ElevatorSwitch(true);
+			break;
 		}
-		Debug.Log(lastKnowAction);
 	}
 
+	#region animation calls
 	internal void PlayAnimation(GameObject item)
 	{
 		item.GetComponent<PositionTweener>().PlayAnimation();
 	}
 
+	internal void PlayAnimationReverse(GameObject item)
+	{
+		item.GetComponent<PositionTweener>().PlayAnimationReverse();
+	}
+
 	internal void StopAnimation(GameObject item)
 	{
-
+		
 	}
+	#endregion
 
 	#region Elevetor Mechnism
 
