@@ -92,7 +92,8 @@ public sealed class PlayerMotion : MonoBehaviour
 
 	internal void PlayDeathAnimation()
 	{
-
+		setAnimation(0);
+		PlayerAnimator.SetBool("isALIVE", false);
 	}
 	#endregion
 	
