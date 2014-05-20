@@ -92,10 +92,10 @@ public class NPCManager : MonoBehaviour
 	{
 		switch(type)
 		{
-		case TriggerActionType.MoveElevator:
-			currentElevator = sourceObject.GetComponent<Elevator>();
-			currentElevator.ElevatorSwitch(true);
-			break;
+			case TriggerActionType.MoveElevator:
+				currentElevator = sourceObject.GetComponent<Elevator>();
+				currentElevator.ElevatorSwitch(true);
+				break;
 		}
 	}
 
