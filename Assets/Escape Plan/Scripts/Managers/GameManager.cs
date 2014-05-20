@@ -182,6 +182,10 @@ public class GameManager : MonoBehaviour
 				{
 					MyPlayer.FireAProjectile();
 				}
+				else
+				{
+					EscapePlanGUI.UpdateInfoText("Find ammo");
+				}
 			}
 
 			if(onRotation != null)
@@ -253,7 +257,7 @@ public class GameManager : MonoBehaviour
 		}
 		else 
 		{
-			EscapePlanGUI.UpdateInfoText("Need a hack kit");
+			EscapePlanGUI.UpdateInfoText("Find a hack kit");
 		}
 	}
 	internal void EnterLevel()
