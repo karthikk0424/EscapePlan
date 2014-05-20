@@ -33,25 +33,19 @@ public class CameraManager : MonoBehaviour
 		Vector3 cameraPosition = StaticVariablesContainer.DEFAULT_CAMERA_POSITION;
 		if(!reset)
 		{
-			//LevelEnum currentPlayerLevel =  GameManager.Instance.CurrentPlayerLevel;
 			LevelEnum levelTrigger = (LevelEnum) System.Enum.Parse (typeof(LevelEnum), levelName);
 
-			if(levelTrigger == LevelEnum.Level0)
+			switch(levelTrigger)
 			{
-				cameraPosition = new Vector3 ( 0, -20, -10 );
+				case LevelEnum.Level0:
+					cameraPosition = new Vector3 ( 0, -20, -10 );
+					break;
+	
+				case LevelEnum.Level2:
+					cameraPosition = new Vector3 ( 0, -40, -10 );
+					break;
 			}
 		}
-
-//		switch(level)
-//		{
-//			case LevelEnum.Level0:
-//				cameraPosition = new Vector3 ( 0, -20, -10 );
-//				break;
-//
-//			case LevelEnum.Level2:
-//				cameraPosition = new Vector3 ( 0, 20, -10 );
-//				break;
-//		}
 		transform.position = cameraPosition;
 	}
 

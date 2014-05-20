@@ -1,13 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum ElevatorState
+{
+	ElevatorUp,
+	ElevatorDown
+}
+
 public class Elevator : MonoBehaviour {
 
-	public LevelEnum level = LevelEnum.Level0;
+	public ElevatorState currentState = ElevatorState.ElevatorDown;
 
 	internal void StartElevator()
 	{
-		if(level == LevelEnum.Level0)
+		//THis level has nothing to do with the scene level;
+		if(currentState == ElevatorState.ElevatorDown)
 		{
 			NPCManager.Instance.PlayAnimation(gameObject);
 		}
@@ -27,15 +34,6 @@ public class Elevator : MonoBehaviour {
 
 	private void UpdateElevatorLevel()
 	{
-		if(level == LevelEnum.Level0)
-		{
-			level = LevelEnum.Level1;
-		}
-		else
-		{
-			level = LevelEnum.Level0;
-		}
-		GameManager.Instance.CurrentPlayerLevel = level;
 	}
 
 }

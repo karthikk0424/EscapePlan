@@ -52,17 +52,15 @@ public class NPCManager : MonoBehaviour
 			case TriggerActionType.TweenPosition:
 				PlayAnimation(sourceObject);
 				break;
-			case TriggerActionType.SwitchCamera:
-				//CameraManager.Instance.ChangeCameraToLevel(sourceObject.name, false);
-				break;
+
 			case TriggerActionType.MoveElevator:
 				currentElevator = sourceObject.GetComponent<Elevator>();
 				break;
+
 			case TriggerActionType.DeathTrap:
 				GameManager.Instance.DeathForPlayer();
 				break;
 		}
-
 		lastKnowAction = triggerType;
 	}
 
@@ -74,16 +72,31 @@ public class NPCManager : MonoBehaviour
 			case TriggerActionType.DeactivateElevator:
 				currentElevator = null;
 				break;
+
 			case TriggerActionType.SwitchCamera:
-				if(currentElevator != null)
+						
+				string currentLevel = GameManager.Instance.CurrentPlayerLevel;
+				if( (sourceObject.name == StaticVariablesContainer.Level0) && (currentLevel == StaticVariablesContainer.Level1))
 				{
-				Debug.Log(currentElevator.level);
-					CameraManager.Instance.ChangeCameraToLevel(currentElevator.level.ToString(), false);
+					currentLevel = StaticVariablesContainer.Level0;//Level 0 
 				}
-				else
+				else if((sourceObject.name == StaticVariablesContainer.Level0) && (currentLevel == StaticVariablesContainer.Level0))
 				{
-					CameraManager.Instance.ChangeCameraToLevel(sourceObject.name, false);
+					currentLevel = StaticVariablesContainer.Level1;
 				}
+				
+				else if((sourceObject.name == StaticVariablesContainer.Level2) && (currentLevel == StaticVariablesContainer.Level0))
+				{
+					currentLevel = StaticVariablesContainer.Level2;// Level 2 
+				}
+					
+				else if((sourceObject.name == StaticVariablesContainer.Level2) && (currentLevel == StaticVariablesContainer.Level2))
+				{
+					currentLevel = StaticVariablesContainer.Level0;
+				}
+				Debug.Log(GameManager.Instance.CurrentPlayerLevel);
+				GameManager.Instance.CurrentPlayerLevel = currentLevel;
+				CameraManager.Instance.ChangeCameraToLevel(currentLevel, false);
 				break;
 		}
 	}

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 	public GameObject TransitionScene,UIEscapPlan;
 	public GameObject[]  FireAnimation;
 	public KeyCode[] AssignedKeys;
-	public LevelEnum CurrentPlayerLevel = LevelEnum.Level1;
+	public string CurrentPlayerLevel;
 	public GameGUI EscapePlanGUI;
 
 	private int totalChipsThisScene = 0;
@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 	{
 		instance = this;
 		this.transform.name = "_GameManager";
+		CurrentPlayerLevel = StaticVariablesContainer.Level1;
 		/*
 		 * Fetch user data and start from that level, else load the default level 0;
 		 */
@@ -166,9 +167,9 @@ public class GameManager : MonoBehaviour
 			// Fire a projectile
 			if(Input.GetKeyDown(AssignedKeys[3]))
 			{
-				MyPlayer.FireAProjectile();
 				if(DataManager.Instance.WeaponReadyStatus)
 				{
+					MyPlayer.FireAProjectile();
 				}
 			}
 		}
