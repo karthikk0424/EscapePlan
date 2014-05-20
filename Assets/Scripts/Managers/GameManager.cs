@@ -177,6 +177,16 @@ public class GameManager : MonoBehaviour
 		{
 			NPCManager.Instance.MoveElevator();
 		}
+
+		if(Input.GetKeyDown(KeyCode.Escape))
+		{
+			detectINPUT = (!detectINPUT);
+			if(OnPauseTheGame != null)
+			{
+				OnPauseTheGame(!detectINPUT);
+				// UI changes should have at EscapeUI. 
+			}
+		}
 	}
 
 	#region External calls
