@@ -5,8 +5,8 @@ public class GameManager : MonoBehaviour
 {
 	public PlayerMotion MyPlayer;
 	public int LevelNumber = 0;
-	public GameObject TransitionScene;
-	public GameObject UIEscapPlan, FireAnimation;
+	public GameObject TransitionScene,UIEscapPlan;
+	public GameObject[]  FireAnimation;
 	public KeyCode[] AssignedKeys;
 	public LevelEnum CurrentPlayerLevel = LevelEnum.Level1;
 	public GameGUI EscapePlanGUI;
@@ -57,7 +57,12 @@ public class GameManager : MonoBehaviour
 			MyPlayer = GameObject.Find("MainPlayer").GetComponent<PlayerMotion>();
 		}
 	}
-	
+
+	private void Start()
+	{
+		StartCoroutine(MyPlayer.SetPlayerProperties(true));
+	}
+
 	#region Singleton
 	private static GameManager instance;
 	public static GameManager Instance
@@ -90,6 +95,21 @@ public class GameManager : MonoBehaviour
 		get
 		{
 			return totalChipsThisScene;
+		}
+	}
+
+	internal Vector3 PlayerPosition
+	{
+		get
+		{
+			if(MyPlayer != null)
+			{
+				return MyPlayer.transform.position;
+			}
+			else 
+			{
+				return Vector3.zero;
+			}
 		}
 	}
 	#endregion
@@ -186,19 +206,25 @@ public class GameManager : MonoBehaviour
 
 	internal void PlayFireAnimation(Vector3 _worldCoordinates)
 	{
-		if(FireAnimation.activeSelf)
+		int i = 0;
+		while(i < FireAnimation.Length)
 		{
-			return;
+			if(FireAnimation[i].activeSelf == false)
+			{
+				FireAnimation[i].transform.position = _worldCoordinates;
+				FireAnimation[i].SetActive(true);
+				this.StartCoroutine(playFire(i));
+		//		i = FireAnimation.Length;
+				break;
+			}
+			else { i++;}
 		}
-		FireAnimation.transform.position = _worldCoordinates;
-		FireAnimation.SetActive(true);
-		this.StartCoroutine(playFire());
 	}
 	
-	private IEnumerator playFire()
+	private IEnumerator playFire(int index)
 	{
 		yield return new WaitForSeconds(1f);
-		FireAnimation.SetActive(false);
+		FireAnimation[index].SetActive(false);
 	}
 
 	internal void DeathForPlayer()
@@ -206,6 +232,7 @@ public class GameManager : MonoBehaviour
 	//	int lifeCount = DataManager.Instance.LifeCount;
 	//	lifeCount = lifeCount - 1;
 	//	DataManager.Instance.LifeCount = lifeCount;
+		PlayFireAnimation(PlayerPosition);
 		DataManager.Instance.LifeCount--;
 		EscapePlanGUI.UpdatePlayerLife();
 		if(DataManager.Instance.LifeCount == 0)
@@ -214,7 +241,8 @@ public class GameManager : MonoBehaviour
 		}
 		else
 		{
-			MyPlayer.PlayDeathAnimation();
+		//	MyPlayer.PlayDeathAnimation();
+			StartCoroutine(MyPlayer.SetPlayerProperties(false));
 			StartCoroutine(ResetPlayerToSpawnPoint());
 		}
 	}

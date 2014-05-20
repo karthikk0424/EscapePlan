@@ -66,6 +66,17 @@ public sealed class PlayerMotion : MonoBehaviour
 			yield return null;
 		}
 	}
+
+	internal IEnumerator SetPlayerProperties(bool toACTIVATE)
+	{
+		setAnimation(0);
+		this.rigidbody2D.isKinematic = (!toACTIVATE);
+		this.GetComponent<BoxCollider2D>().enabled = toACTIVATE;
+		PlayerAnimator.SetBool("isALIVE", toACTIVATE);
+		yield return new WaitForSeconds(0.2f);
+		this.GetComponentInChildren<SpriteRenderer>().enabled = toACTIVATE;
+	
+	}
 	#endregion
 
 	#region Animation Regions
@@ -88,12 +99,6 @@ public sealed class PlayerMotion : MonoBehaviour
 	{
 		currentMotionState = state;
 		PlayerAnimator.SetInteger("MotionState", state);
-	}
-
-	internal void PlayDeathAnimation()
-	{
-		setAnimation(0);
-		PlayerAnimator.SetBool("isALIVE", false);
 	}
 	#endregion
 	
@@ -325,6 +330,7 @@ public sealed class PlayerMotion : MonoBehaviour
 	internal void TelePortPlayer(Vector3 position)
 	{
 		transform.localPosition = position;
+		StartCoroutine(SetPlayerProperties(true));
 	}
 
 	/// <summary>
