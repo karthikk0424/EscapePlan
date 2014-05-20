@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
 	public KeyCode[] AssignedKeys;
 	public LevelEnum CurrentPlayerLevel = LevelEnum.Level1;
 	public GameGUI EscapePlanGUI;
+
 	private int totalChipsThisScene = 0;
 	private GameObject currentSceneInstance;
 	private GameObject PlayerSpawnPoint;
+	private bool detectINPUT = false;
 
 	//PAUSE the game - Observer Pattern. 
 	public delegate void PauseTheGame(bool toPAUSE);
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour
 
 	private void Start()
 	{
+		detectINPUT = true;
 		StartCoroutine(MyPlayer.SetPlayerProperties(true));
 	}
 
@@ -108,8 +111,11 @@ public class GameManager : MonoBehaviour
 			}
 			else 
 			{
-				return Vector3.zero;
+				MyPlayer = GameObject.Find("MainPlayer").GetComponent<PlayerMotion>();
+				return MyPlayer.transform.position;
 			}
+			if(MyPlayer == null)
+			{	return Vector3.zero;}
 		}
 	}
 	#endregion
@@ -117,53 +123,55 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	private void Update () 
 	{
-		// Left Movement
-		if(Input.GetKeyDown(AssignedKeys[0]))
+		if(detectINPUT)
 		{
-			MyPlayer.InitiateLeftTurn();
-		}
-
-		if(Input.GetKey(AssignedKeys[0]))
-		{
-			MyPlayer.MoveTowardsLeft();
-		}
-
-		if(Input.GetKeyUp(AssignedKeys[0]))
-		{
-			MyPlayer.StopLeftMovement();
-		}
-		
-		// Right Movement
-		if(Input.GetKeyDown(AssignedKeys[1]))
-		{
-			MyPlayer.InitiateRightTurn();
-		}
-
-		if(Input.GetKey(AssignedKeys[1]))
-		{
-			MyPlayer.MoveTowardsRight();
-		}
-		
-		if(Input.GetKeyUp(AssignedKeys[1]))
-		{
-			MyPlayer.StopRightMovement();
-		}
-		
-		// Jump Movement
-		if(Input.GetKeyDown(AssignedKeys[2]))
-		{
-			MyPlayer.MakeThePlayerToJump();
-		}
-
-		// Fire a projectile
-		if(Input.GetKeyDown(AssignedKeys[3]))
-		{
-			if(DataManager.Instance.WeaponReadyStatus)
+			// Left Movement
+			if(Input.GetKeyDown(AssignedKeys[0]))
 			{
-				MyPlayer.FireAProjectile();
+				MyPlayer.InitiateLeftTurn();
+			}
+
+			if(Input.GetKey(AssignedKeys[0]))
+			{
+				MyPlayer.MoveTowardsLeft();
+			}
+
+			if(Input.GetKeyUp(AssignedKeys[0]))
+			{
+				MyPlayer.StopLeftMovement();
+			}
+			
+			// Right Movement
+			if(Input.GetKeyDown(AssignedKeys[1]))
+			{
+				MyPlayer.InitiateRightTurn();
+			}
+
+			if(Input.GetKey(AssignedKeys[1]))
+			{
+				MyPlayer.MoveTowardsRight();
+			}
+			
+			if(Input.GetKeyUp(AssignedKeys[1]))
+			{
+				MyPlayer.StopRightMovement();
+			}
+			
+			// Jump Movement
+			if(Input.GetKeyDown(AssignedKeys[2]))
+			{
+				MyPlayer.MakeThePlayerToJump();
+			}
+
+			// Fire a projectile
+			if(Input.GetKeyDown(AssignedKeys[3]))
+			{
+				if(DataManager.Instance.WeaponReadyStatus)
+				{
+					MyPlayer.FireAProjectile();
+				}
 			}
 		}
-
 		// Move Elevator
 		if(Input.GetKeyDown(AssignedKeys[4])) //DEBUG
 		{
@@ -232,6 +240,7 @@ public class GameManager : MonoBehaviour
 	//	int lifeCount = DataManager.Instance.LifeCount;
 	//	lifeCount = lifeCount - 1;
 	//	DataManager.Instance.LifeCount = lifeCount;
+		detectINPUT = false;
 		PlayFireAnimation(PlayerPosition);
 		DataManager.Instance.LifeCount--;
 		EscapePlanGUI.UpdatePlayerLife();
@@ -249,6 +258,7 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator ResetPlayerToSpawnPoint()
 	{
+		detectINPUT = true;
 		yield return new WaitForSeconds(StaticVariablesContainer.RESPAWN_DELAY);
 		MyPlayer.TelePortPlayer(FetchSpawnPoint(PlayerSpawnPoint));
 		CameraManager.Instance.ChangeCameraToLevel(StaticVariablesContainer.Level0, true);

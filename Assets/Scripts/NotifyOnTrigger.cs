@@ -22,8 +22,8 @@ public class NotifyOnTrigger : MonoBehaviour
 	public TriggerActionType OnEnterAction;
 	public TriggerActionType OnExitAction;
 
-	private void OnTriggerEnter2D(Collider2D hit)
-	{
+	private void OnTriggerEnter2D(Collider2D hit) // ISSUE : If the NPCManager is with the Scene prefab then the instance is null. Once 
+	{															// make a correction - should have a if loop to check null - in this loop. 
 		NPCManager.Instance.EnterTrigger(TargetObject, OnEnterAction);
 	}
 
