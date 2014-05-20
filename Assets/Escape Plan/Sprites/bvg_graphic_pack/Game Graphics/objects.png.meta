@@ -1,0 +1,157 @@
+fileFormatVersion: 2
+guid: 40fe81abfcdce451ab73c83b7fc29ca9
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 50
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Standalone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: green_diamond
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 59
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: red_diamond
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 46
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: blue_diamond
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 31
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: health
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 85
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: super_health
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 84
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: fireball_downwards
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 32
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: objects_6
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 112
+        width: 8
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Spike
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 113
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: MineSpike
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 173
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Turret
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 112
+        width: 34
+        height: 62
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: ammo_pickup
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 60
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: turret_gray
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 232
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+  spritePackingTag: 
+  userData: 
