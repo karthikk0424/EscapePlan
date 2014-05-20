@@ -344,14 +344,20 @@ public sealed class PlayerMotion : MonoBehaviour
 	{
 		if(currentMotionState < 0)
 		{
+			Debug.Log(currentMotionState);
+
 			WeaponCache.FireForPlayer(this.transform.position, Quaternion.Euler(0,0,90), ForceOnProjectile);
 		}
 		else if(currentMotionState > 0)
 		{
+			Debug.Log(currentMotionState);
+
 			WeaponCache.FireForPlayer(this.transform.position, Quaternion.Euler(0,0,-90), ForceOnProjectile);
 		}
 		else 
 		{
+			Debug.Log(currentMotionState);
+
 			WeaponCache.FireForPlayer(this.transform.position, Quaternion.identity, ForceOnProjectile);
 		}
 	}

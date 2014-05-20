@@ -17,6 +17,7 @@ public sealed class WeaponHub : WeaponBase
 
 	internal void FireForPlayer(Vector3 worldPosition, Quaternion rot, float _force)
 	{
+		Debug.Log(playerFired);
 		if(playerFired < 3)
 		{
 			currentObject = weaponCache.Spawn(worldPosition, rot);
@@ -27,6 +28,7 @@ public sealed class WeaponHub : WeaponBase
 
 	internal void DespawnForPlayer(GameObject _go)
 	{
+		Debug.Log(playerFired);
 		weaponCache.Despawn(_go);
 		playerFired--;
 	}

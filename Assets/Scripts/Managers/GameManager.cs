@@ -166,9 +166,9 @@ public class GameManager : MonoBehaviour
 			// Fire a projectile
 			if(Input.GetKeyDown(AssignedKeys[3]))
 			{
+				MyPlayer.FireAProjectile();
 				if(DataManager.Instance.WeaponReadyStatus)
 				{
-					MyPlayer.FireAProjectile();
 				}
 			}
 		}
