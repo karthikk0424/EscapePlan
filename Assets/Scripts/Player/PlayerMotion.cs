@@ -128,6 +128,7 @@ public sealed class PlayerMotion : MonoBehaviour
 				break;
 
 			case "EnemyProjectile":
+				hit.transform.GetComponent<Projectile>().despawnThisProjectile();
 				GameManager.Instance.DeathForPlayer();
 				break;
 
