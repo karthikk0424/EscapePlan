@@ -4,7 +4,7 @@ using System.Collections;
 public sealed class WeaponHub : WeaponBase
 {
 	public GameObject Projectile;
-
+	public int TotalProjectilesRequired = 10;
 	private ObjectRecycler weaponCache;
 	private GameObject currentObject;
 
@@ -12,7 +12,7 @@ public sealed class WeaponHub : WeaponBase
 
 	private void Start()
 	{
-		weaponCache = new ObjectRecycler(Projectile, 5, this.gameObject);
+		weaponCache = new ObjectRecycler(Projectile, Mathf.Abs(TotalProjectilesRequired), this.gameObject);
 	}
 
 	internal void FireForPlayer(Vector3 worldPosition, Quaternion rot, float _force)
