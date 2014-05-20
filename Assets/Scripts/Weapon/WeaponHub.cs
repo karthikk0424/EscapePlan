@@ -28,6 +28,7 @@ public sealed class WeaponHub : WeaponBase
 
 	internal void DespawnForPlayer(GameObject _go)
 	{
+		Debug.Log(playerFired);
 		weaponCache.Despawn(_go);
 		playerFired--;
 	}
