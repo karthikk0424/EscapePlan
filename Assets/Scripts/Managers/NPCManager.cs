@@ -41,7 +41,7 @@ public class NPCManager : MonoBehaviour
 
 
 	public GameObject[] EnemyUnits;
-
+	public string CurrentPlayerLevel = StaticVariablesContainer.Level1;
 	private Elevator currentElevator;
 	private TriggerActionType lastKnowAction;
 
@@ -75,7 +75,7 @@ public class NPCManager : MonoBehaviour
 
 			case TriggerActionType.SwitchCamera:
 						
-				string currentLevel = GameManager.Instance.CurrentPlayerLevel;
+				string currentLevel = CurrentPlayerLevel;
 				if( (sourceObject.name == StaticVariablesContainer.Level0) && (currentLevel == StaticVariablesContainer.Level1))
 				{
 					currentLevel = StaticVariablesContainer.Level0;//Level 0 
@@ -94,8 +94,7 @@ public class NPCManager : MonoBehaviour
 				{
 					currentLevel = StaticVariablesContainer.Level0;
 				}
-				Debug.Log(GameManager.Instance.CurrentPlayerLevel);
-				GameManager.Instance.CurrentPlayerLevel = currentLevel;
+				CurrentPlayerLevel = currentLevel;
 				CameraManager.Instance.ChangeCameraToLevel(currentLevel, false);
 				break;
 		}
@@ -143,5 +142,10 @@ public class NPCManager : MonoBehaviour
 		StopAnimation(currentElevator.gameObject);
 	}
 	#endregion
+	internal void ResetPlayerLevel()
+	{
+		CurrentPlayerLevel = StaticVariablesContainer.Level1;
+	}
+
 }
 	

@@ -13,7 +13,6 @@ public class Elevator : MonoBehaviour {
 
 	internal void StartElevator()
 	{
-		//THis level has nothing to do with the scene level;
 		if(currentState == ElevatorState.ElevatorDown)
 		{
 			NPCManager.Instance.PlayAnimation(gameObject);
@@ -23,17 +22,12 @@ public class Elevator : MonoBehaviour {
 			NPCManager.Instance.PlayAnimationReverse(gameObject);
 		}
 		ElevatorSwitch(false);
-		UpdateElevatorLevel();
 	}
 
 	
 	public void ElevatorSwitch(bool turnOn)
 	{
 		transform.FindChild("Collider").gameObject.SetActive(turnOn);
-	}
-
-	private void UpdateElevatorLevel()
-	{
 	}
 
 }

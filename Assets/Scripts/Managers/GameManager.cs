@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 	public GameObject TransitionScene,UIEscapPlan;
 	public GameObject[]  FireAnimation;
 	public KeyCode[] AssignedKeys;
-	public string CurrentPlayerLevel;
 	public GameGUI EscapePlanGUI;
 
 	private int totalChipsThisScene = 0;
@@ -24,7 +23,6 @@ public class GameManager : MonoBehaviour
 	{
 		instance = this;
 		this.transform.name = "_GameManager";
-		CurrentPlayerLevel = StaticVariablesContainer.Level1;
 		/*
 		 * Fetch user data and start from that level, else load the default level 0;
 		 */
@@ -273,6 +271,7 @@ public class GameManager : MonoBehaviour
 		yield return new WaitForSeconds(StaticVariablesContainer.RESPAWN_DELAY);
 		MyPlayer.TelePortPlayer(FetchSpawnPoint(PlayerSpawnPoint));
 		CameraManager.Instance.ChangeCameraToLevel(StaticVariablesContainer.Level0, true);
+		NPCManager.Instance.ResetPlayerLevel();
 	}
 
 	internal void AddLife()
