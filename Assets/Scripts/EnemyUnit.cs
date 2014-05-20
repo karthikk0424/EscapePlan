@@ -102,7 +102,6 @@ public class EnemyUnit : MonoBehaviour
 
 	private IEnumerator fireTimedAtTheEnemy()
 	{
-		//http://answers.unity3d.com/questions/15822/how-to-get-the-positive-or-negative-angle-between.html
 		Transform player = GameObject.FindWithTag("Player").GetComponent<Transform>();
 		if(player == null)
 		{

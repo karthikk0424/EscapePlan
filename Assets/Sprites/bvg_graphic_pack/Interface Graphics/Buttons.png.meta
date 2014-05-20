@@ -48,12 +48,12 @@ TextureImporter:
     - name: Buttons_0
       rect:
         serializedVersion: 2
-        x: 552
-        y: 7480
-        width: 571
-        height: 266
+        x: 589
+        y: 7515
+        width: 494
+        height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_1
       rect:
         serializedVersion: 2
@@ -62,7 +62,7 @@ TextureImporter:
         width: 571
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_2
       rect:
         serializedVersion: 2
@@ -71,7 +71,7 @@ TextureImporter:
         width: 563
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_3
       rect:
         serializedVersion: 2
@@ -80,7 +80,7 @@ TextureImporter:
         width: 572
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_4
       rect:
         serializedVersion: 2
@@ -89,16 +89,16 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_5
       rect:
         serializedVersion: 2
-        x: 1311
-        y: 7160
+        x: 1315
+        y: 7156
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_6
       rect:
         serializedVersion: 2
@@ -107,7 +107,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_7
       rect:
         serializedVersion: 2
@@ -116,7 +116,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_8
       rect:
         serializedVersion: 2
@@ -125,7 +125,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_9
       rect:
         serializedVersion: 2
@@ -134,7 +134,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_10
       rect:
         serializedVersion: 2
@@ -143,7 +143,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_11
       rect:
         serializedVersion: 2
@@ -152,7 +152,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_12
       rect:
         serializedVersion: 2
@@ -161,7 +161,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_13
       rect:
         serializedVersion: 2
@@ -170,7 +170,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_14
       rect:
         serializedVersion: 2
@@ -179,7 +179,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_15
       rect:
         serializedVersion: 2
@@ -188,7 +188,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_16
       rect:
         serializedVersion: 2
@@ -197,7 +197,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_17
       rect:
         serializedVersion: 2
@@ -206,7 +206,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_18
       rect:
         serializedVersion: 2
@@ -215,7 +215,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_19
       rect:
         serializedVersion: 2
@@ -224,7 +224,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_20
       rect:
         serializedVersion: 2
@@ -233,7 +233,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_21
       rect:
         serializedVersion: 2
@@ -242,7 +242,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_22
       rect:
         serializedVersion: 2
@@ -251,7 +251,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_23
       rect:
         serializedVersion: 2
@@ -260,7 +260,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_24
       rect:
         serializedVersion: 2
@@ -269,7 +269,7 @@ TextureImporter:
         width: 258
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_25
       rect:
         serializedVersion: 2
@@ -278,7 +278,7 @@ TextureImporter:
         width: 267
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_26
       rect:
         serializedVersion: 2
@@ -287,7 +287,7 @@ TextureImporter:
         width: 266
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_27
       rect:
         serializedVersion: 2
@@ -296,7 +296,7 @@ TextureImporter:
         width: 266
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_28
       rect:
         serializedVersion: 2
@@ -305,7 +305,7 @@ TextureImporter:
         width: 258
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_29
       rect:
         serializedVersion: 2
@@ -314,7 +314,7 @@ TextureImporter:
         width: 267
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_30
       rect:
         serializedVersion: 2
@@ -323,7 +323,7 @@ TextureImporter:
         width: 266
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_31
       rect:
         serializedVersion: 2
@@ -332,7 +332,7 @@ TextureImporter:
         width: 266
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_32
       rect:
         serializedVersion: 2
@@ -341,7 +341,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_33
       rect:
         serializedVersion: 2
@@ -350,7 +350,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_34
       rect:
         serializedVersion: 2
@@ -359,7 +359,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_35
       rect:
         serializedVersion: 2
@@ -368,7 +368,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_36
       rect:
         serializedVersion: 2
@@ -377,7 +377,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_37
       rect:
         serializedVersion: 2
@@ -386,7 +386,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_38
       rect:
         serializedVersion: 2
@@ -395,7 +395,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_39
       rect:
         serializedVersion: 2
@@ -404,7 +404,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_40
       rect:
         serializedVersion: 2
@@ -413,7 +413,7 @@ TextureImporter:
         width: 258
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_41
       rect:
         serializedVersion: 2
@@ -422,16 +422,16 @@ TextureImporter:
         width: 267
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
-    - name: Buttons_42
+      pivot: {x: .5, y: .5}
+    - name: next_button
       rect:
         serializedVersion: 2
-        x: 1108
-        y: 5457
-        width: 266
-        height: 258
+        x: 1127
+        y: 5469
+        width: 234
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_43
       rect:
         serializedVersion: 2
@@ -440,7 +440,7 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_44
       rect:
         serializedVersion: 2
@@ -449,7 +449,7 @@ TextureImporter:
         width: 258
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_45
       rect:
         serializedVersion: 2
@@ -458,7 +458,7 @@ TextureImporter:
         width: 267
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_46
       rect:
         serializedVersion: 2
@@ -467,7 +467,7 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_47
       rect:
         serializedVersion: 2
@@ -476,7 +476,7 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_48
       rect:
         serializedVersion: 2
@@ -485,7 +485,7 @@ TextureImporter:
         width: 258
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_49
       rect:
         serializedVersion: 2
@@ -494,7 +494,7 @@ TextureImporter:
         width: 267
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_50
       rect:
         serializedVersion: 2
@@ -503,7 +503,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_51
       rect:
         serializedVersion: 2
@@ -512,7 +512,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_52
       rect:
         serializedVersion: 2
@@ -521,7 +521,7 @@ TextureImporter:
         width: 258
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_53
       rect:
         serializedVersion: 2
@@ -530,7 +530,7 @@ TextureImporter:
         width: 267
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_54
       rect:
         serializedVersion: 2
@@ -539,7 +539,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_55
       rect:
         serializedVersion: 2
@@ -548,7 +548,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_56
       rect:
         serializedVersion: 2
@@ -557,7 +557,7 @@ TextureImporter:
         width: 258
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_57
       rect:
         serializedVersion: 2
@@ -566,7 +566,7 @@ TextureImporter:
         width: 267
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_58
       rect:
         serializedVersion: 2
@@ -575,7 +575,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_59
       rect:
         serializedVersion: 2
@@ -584,7 +584,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_60
       rect:
         serializedVersion: 2
@@ -593,7 +593,7 @@ TextureImporter:
         width: 258
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_61
       rect:
         serializedVersion: 2
@@ -602,7 +602,7 @@ TextureImporter:
         width: 267
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_62
       rect:
         serializedVersion: 2
@@ -611,7 +611,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_63
       rect:
         serializedVersion: 2
@@ -620,7 +620,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_64
       rect:
         serializedVersion: 2
@@ -629,7 +629,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_65
       rect:
         serializedVersion: 2
@@ -638,7 +638,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_66
       rect:
         serializedVersion: 2
@@ -665,7 +665,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_69
       rect:
         serializedVersion: 2
@@ -674,7 +674,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_70
       rect:
         serializedVersion: 2
@@ -683,7 +683,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_71
       rect:
         serializedVersion: 2
@@ -692,7 +692,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_72
       rect:
         serializedVersion: 2
@@ -701,7 +701,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_73
       rect:
         serializedVersion: 2
@@ -710,7 +710,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_74
       rect:
         serializedVersion: 2
@@ -719,7 +719,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_75
       rect:
         serializedVersion: 2
@@ -728,7 +728,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_76
       rect:
         serializedVersion: 2
@@ -737,7 +737,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_77
       rect:
         serializedVersion: 2
@@ -746,7 +746,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_78
       rect:
         serializedVersion: 2
@@ -755,7 +755,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_79
       rect:
         serializedVersion: 2
@@ -764,7 +764,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_80
       rect:
         serializedVersion: 2
@@ -773,7 +773,7 @@ TextureImporter:
         width: 258
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_81
       rect:
         serializedVersion: 2
@@ -782,7 +782,7 @@ TextureImporter:
         width: 267
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_82
       rect:
         serializedVersion: 2
@@ -791,7 +791,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_83
       rect:
         serializedVersion: 2
@@ -800,7 +800,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_84
       rect:
         serializedVersion: 2
@@ -809,7 +809,7 @@ TextureImporter:
         width: 258
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_85
       rect:
         serializedVersion: 2
@@ -818,7 +818,7 @@ TextureImporter:
         width: 267
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_86
       rect:
         serializedVersion: 2
@@ -827,7 +827,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_87
       rect:
         serializedVersion: 2
@@ -836,7 +836,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_88
       rect:
         serializedVersion: 2
@@ -845,7 +845,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_89
       rect:
         serializedVersion: 2
@@ -854,7 +854,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_90
       rect:
         serializedVersion: 2
@@ -863,7 +863,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_91
       rect:
         serializedVersion: 2
@@ -872,7 +872,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_92
       rect:
         serializedVersion: 2
@@ -881,7 +881,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_93
       rect:
         serializedVersion: 2
@@ -890,7 +890,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_94
       rect:
         serializedVersion: 2
@@ -899,7 +899,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_95
       rect:
         serializedVersion: 2
@@ -908,7 +908,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_96
       rect:
         serializedVersion: 2
@@ -917,7 +917,7 @@ TextureImporter:
         width: 258
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_97
       rect:
         serializedVersion: 2
@@ -926,7 +926,7 @@ TextureImporter:
         width: 267
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_98
       rect:
         serializedVersion: 2
@@ -935,7 +935,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_99
       rect:
         serializedVersion: 2
@@ -944,7 +944,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_100
       rect:
         serializedVersion: 2
@@ -953,7 +953,7 @@ TextureImporter:
         width: 258
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_101
       rect:
         serializedVersion: 2
@@ -962,7 +962,7 @@ TextureImporter:
         width: 267
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_102
       rect:
         serializedVersion: 2
@@ -971,7 +971,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_103
       rect:
         serializedVersion: 2
@@ -980,7 +980,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_104
       rect:
         serializedVersion: 2
@@ -989,7 +989,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_105
       rect:
         serializedVersion: 2
@@ -998,7 +998,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_106
       rect:
         serializedVersion: 2
@@ -1007,7 +1007,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_107
       rect:
         serializedVersion: 2
@@ -1016,7 +1016,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_108
       rect:
         serializedVersion: 2
@@ -1025,7 +1025,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_109
       rect:
         serializedVersion: 2
@@ -1034,7 +1034,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_110
       rect:
         serializedVersion: 2
@@ -1043,7 +1043,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_111
       rect:
         serializedVersion: 2
@@ -1052,7 +1052,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_112
       rect:
         serializedVersion: 2
@@ -1061,7 +1061,7 @@ TextureImporter:
         width: 258
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_113
       rect:
         serializedVersion: 2
@@ -1070,7 +1070,7 @@ TextureImporter:
         width: 267
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_114
       rect:
         serializedVersion: 2
@@ -1079,7 +1079,7 @@ TextureImporter:
         width: 266
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_115
       rect:
         serializedVersion: 2
@@ -1088,7 +1088,7 @@ TextureImporter:
         width: 266
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_116
       rect:
         serializedVersion: 2
@@ -1097,7 +1097,7 @@ TextureImporter:
         width: 258
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_117
       rect:
         serializedVersion: 2
@@ -1106,7 +1106,7 @@ TextureImporter:
         width: 267
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_118
       rect:
         serializedVersion: 2
@@ -1115,7 +1115,7 @@ TextureImporter:
         width: 266
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_119
       rect:
         serializedVersion: 2
@@ -1124,7 +1124,7 @@ TextureImporter:
         width: 266
         height: 257
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_120
       rect:
         serializedVersion: 2
@@ -1133,7 +1133,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_121
       rect:
         serializedVersion: 2
@@ -1142,7 +1142,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_122
       rect:
         serializedVersion: 2
@@ -1151,7 +1151,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_123
       rect:
         serializedVersion: 2
@@ -1160,7 +1160,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_124
       rect:
         serializedVersion: 2
@@ -1169,7 +1169,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_125
       rect:
         serializedVersion: 2
@@ -1178,7 +1178,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_126
       rect:
         serializedVersion: 2
@@ -1187,7 +1187,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_127
       rect:
         serializedVersion: 2
@@ -1196,7 +1196,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_128
       rect:
         serializedVersion: 2
@@ -1205,7 +1205,7 @@ TextureImporter:
         width: 258
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_129
       rect:
         serializedVersion: 2
@@ -1214,7 +1214,7 @@ TextureImporter:
         width: 267
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_130
       rect:
         serializedVersion: 2
@@ -1223,7 +1223,7 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_131
       rect:
         serializedVersion: 2
@@ -1232,7 +1232,7 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_132
       rect:
         serializedVersion: 2
@@ -1241,7 +1241,7 @@ TextureImporter:
         width: 258
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_133
       rect:
         serializedVersion: 2
@@ -1250,7 +1250,7 @@ TextureImporter:
         width: 267
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_134
       rect:
         serializedVersion: 2
@@ -1259,7 +1259,7 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_135
       rect:
         serializedVersion: 2
@@ -1268,7 +1268,7 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_136
       rect:
         serializedVersion: 2
@@ -1277,7 +1277,7 @@ TextureImporter:
         width: 258
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_137
       rect:
         serializedVersion: 2
@@ -1286,7 +1286,7 @@ TextureImporter:
         width: 267
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_138
       rect:
         serializedVersion: 2
@@ -1295,7 +1295,7 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_139
       rect:
         serializedVersion: 2
@@ -1304,7 +1304,7 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_140
       rect:
         serializedVersion: 2
@@ -1313,7 +1313,7 @@ TextureImporter:
         width: 258
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_141
       rect:
         serializedVersion: 2
@@ -1322,7 +1322,7 @@ TextureImporter:
         width: 267
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_142
       rect:
         serializedVersion: 2
@@ -1331,7 +1331,7 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_143
       rect:
         serializedVersion: 2
@@ -1340,7 +1340,7 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_144
       rect:
         serializedVersion: 2
@@ -1349,7 +1349,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_145
       rect:
         serializedVersion: 2
@@ -1358,7 +1358,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_146
       rect:
         serializedVersion: 2
@@ -1367,7 +1367,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_147
       rect:
         serializedVersion: 2
@@ -1376,7 +1376,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_148
       rect:
         serializedVersion: 2
@@ -1385,7 +1385,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_149
       rect:
         serializedVersion: 2
@@ -1394,7 +1394,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_150
       rect:
         serializedVersion: 2
@@ -1403,7 +1403,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_151
       rect:
         serializedVersion: 2
@@ -1412,7 +1412,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_152
       rect:
         serializedVersion: 2
@@ -1421,7 +1421,7 @@ TextureImporter:
         width: 258
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_153
       rect:
         serializedVersion: 2
@@ -1430,7 +1430,7 @@ TextureImporter:
         width: 267
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_154
       rect:
         serializedVersion: 2
@@ -1439,7 +1439,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_155
       rect:
         serializedVersion: 2
@@ -1448,7 +1448,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_156
       rect:
         serializedVersion: 2
@@ -1457,7 +1457,7 @@ TextureImporter:
         width: 258
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_157
       rect:
         serializedVersion: 2
@@ -1466,7 +1466,7 @@ TextureImporter:
         width: 267
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_158
       rect:
         serializedVersion: 2
@@ -1475,7 +1475,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_159
       rect:
         serializedVersion: 2
@@ -1484,7 +1484,7 @@ TextureImporter:
         width: 266
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_160
       rect:
         serializedVersion: 2
@@ -1493,7 +1493,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_161
       rect:
         serializedVersion: 2
@@ -1502,7 +1502,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_162
       rect:
         serializedVersion: 2
@@ -1511,7 +1511,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_163
       rect:
         serializedVersion: 2
@@ -1520,7 +1520,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_164
       rect:
         serializedVersion: 2
@@ -1529,7 +1529,7 @@ TextureImporter:
         width: 258
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_165
       rect:
         serializedVersion: 2
@@ -1538,7 +1538,7 @@ TextureImporter:
         width: 267
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_166
       rect:
         serializedVersion: 2
@@ -1547,7 +1547,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_167
       rect:
         serializedVersion: 2
@@ -1556,7 +1556,7 @@ TextureImporter:
         width: 266
         height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_168
       rect:
         serializedVersion: 2
@@ -1565,7 +1565,7 @@ TextureImporter:
         width: 258
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_169
       rect:
         serializedVersion: 2
@@ -1574,7 +1574,7 @@ TextureImporter:
         width: 267
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_170
       rect:
         serializedVersion: 2
@@ -1583,7 +1583,7 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_171
       rect:
         serializedVersion: 2
@@ -1592,7 +1592,7 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: Buttons_172
       rect:
         serializedVersion: 2
@@ -1601,6 +1601,15 @@ TextureImporter:
         width: 266
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
+    - name: MenuBoard
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 7221
+        width: 150
+        height: 145
+      alignment: 0
+      pivot: {x: .5, y: .5}
   spritePackingTag: 
   userData: 

@@ -44,7 +44,14 @@ public sealed class Projectile : WeaponBase
 		switch(hit.collider.tag)
 		{
 			case "Ground":
-				myRecyler.GetComponent<WeaponHub>().DespawnForPlayer(this.gameObject);
+				if(forPLAYER)
+				{
+					myRecyler.GetComponent<WeaponHub>().DespawnForPlayer(this.gameObject);
+				}
+				else
+				{
+					myRecyler.GetComponent<WeaponHub>().DespawnForEnemy(this.gameObject);
+				}
 				break;
 
 			case "EnemyProjectile":
