@@ -31,12 +31,19 @@ public sealed class PlayerMotion : MonoBehaviour
 	#endregion
 	
 	#region MonoBehaviour Methods - Start & End
+
+	/// <summary>
+	/// Called when player is awaken. 
+	/// </summary>
 	private void Awake()
 	{
 		this.transform.name = "MainPlayer";
-		this.transform.tag = StaticVariablesContainer.MainPlayer;
+		this.transform.tag = ConstantVariablesContainer.MainPlayer;
 	}
 
+	/// <summary>
+	/// When this game object is enabled. Cacheing is done in this method.
+	/// </summary>
 	private void OnEnable()
 	{
 		if(WeaponCache == null)
@@ -58,11 +65,20 @@ public sealed class PlayerMotion : MonoBehaviour
 		GameManager.OnReset += HandleOnReset;
 	}
 
+	/// <summary>
+	/// An event to handle player properties.
+	/// </summary>
 	private void HandleOnReset ()
 	{
 		StartCoroutine( this.SetPlayerProperties (true));
 	}
 
+	/// <summary>
+	/// Called after OnEnable method
+	/// </summary>
+	/// <description>
+	/// periodically assigns the player velocity till the end of play.
+	/// </description>
 	private IEnumerator Start()
 	{
 		while(true)
@@ -73,11 +89,19 @@ public sealed class PlayerMotion : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Called when this game object is disabled. Un subscribes to an event.
+	/// </summary>
 	private void OnDisable()
 	{
 		GameManager.OnReset -= HandleOnReset;
 	}
 
+	/// <summary>
+	/// Sets the player properties when required.
+	/// </summary>
+	/// <returns>wait time for the sprite to appear.</returns>
+	/// <param name="toACTIVATE">If set to <c>true</c> player is ready to be deployed.</param>
 	internal IEnumerator SetPlayerProperties(bool toACTIVATE)
 	{
 		setAnimation(0);
@@ -87,6 +111,20 @@ public sealed class PlayerMotion : MonoBehaviour
 		PlayerAnimator.SetBool("isALIVE", toACTIVATE);
 		yield return new WaitForSeconds(0.2f);
 		this.GetComponentInChildren<SpriteRenderer>().enabled = toACTIVATE;
+	}
+
+	/// <summary>
+	/// Called when this game object is destroyed. 
+	/// </summary>
+	/// <description>
+	/// Derefences all the reference type variables for the garbage collector. 
+	/// </description>
+	private void OnDestroy()
+	{
+		WeaponCache = null;
+		PlayerRigidbody = null;
+		PlayerAnimator = null;
+		myCollider = null;
 	}
 	#endregion
 
@@ -126,7 +164,7 @@ public sealed class PlayerMotion : MonoBehaviour
 	{
 		switch (hit.collider.tag)
 		{
-			case StaticVariablesContainer.Ground:
+			case ConstantVariablesContainer.Ground:
 				isJUMPING = false;
 				if(currentMotionState == 3)
 				{
@@ -138,12 +176,12 @@ public sealed class PlayerMotion : MonoBehaviour
 				}
 				break;
 
-			case StaticVariablesContainer.EnemyProjectile:
+			case ConstantVariablesContainer.EnemyProjectile:
 				hit.transform.GetComponent<Projectile>().despawnThisProjectile();
 				GameManager.Instance.DeathForPlayer();
 				break;
 
-			case StaticVariablesContainer.Enemy:
+			case ConstantVariablesContainer.Enemy:
 				GameManager.Instance.DeathForPlayer();
 				break;
 		}
@@ -157,29 +195,29 @@ public sealed class PlayerMotion : MonoBehaviour
 	{
 		switch(hit.collider2D.tag)
 		{
-			case StaticVariablesContainer.Chips:
+			case ConstantVariablesContainer.Chips:
 				GameManager.Instance.GotAChip();
 				hit.gameObject.SetActive(false);
 				break;
 
-			case StaticVariablesContainer.HackKit:
+			case ConstantVariablesContainer.HackKit:
 				hit.gameObject.SetActive(false);
 				GameManager.Instance.GotHackKit();
 				break;
 
-			case StaticVariablesContainer.Door:
+			case ConstantVariablesContainer.Door:
 				GameManager.Instance.OpenDoor();
 				break;
 
-			case StaticVariablesContainer.EntryDoor:
+			case ConstantVariablesContainer.EntryDoor:
 				GameManager.Instance.EnterLevel();
 				break;
 
-			case StaticVariablesContainer.TRAP_LEVEL:
+			case ConstantVariablesContainer.TRAP_LEVEL:
 				GameManager.Instance.TrapDoor();
 				break;
 
-			case StaticVariablesContainer.Ammo:
+			case ConstantVariablesContainer.Ammo:
 				GameManager.Instance.GotAmmo();
 				hit.gameObject.SetActive(false);
 				break;

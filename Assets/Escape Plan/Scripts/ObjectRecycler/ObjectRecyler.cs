@@ -1,8 +1,18 @@
-﻿using UnityEngine;
+﻿
+/// <summary>
+/// An object recycler to pool object that could be reused several times. 
+/// </summary>
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+#region Interface
+
+/// <summary>
+/// The contract for the class to implement the necessary methods and variables. 
+/// </summary>
 interface RecyclerContract
 {
 	int TotalRecycled
@@ -25,37 +35,67 @@ interface RecyclerContract
 	void DespawnAll();
 }
 
+#endregion
+
 public class ObjectRecycler : RecyclerContract
 {	
+	#region Variables
+
 	private GameObject theObject, parentGameObject, lastActiveObject;
 	private List<GameObject> recyledObjects = new List<GameObject>();
 	private int totalRecyledObjects = 0, totalActiveObjects = 0, totalInactiveObjects = 0;
 	private string gameObjectName = System.String.Empty;
+
+	#endregion
+
 	#region Getters & Setters
+
+	/// <summary>
+	/// Gets the number of recylced objects.
+	/// </summary>
+	/// <value>The total recycled gameobject.</value>
 	public int TotalRecycled
 	{
 		get {	return totalRecyledObjects;}
 	}
-	
+
+	/// <summary>
+	/// Gets the total active game objects. 
+	/// </summary>
+	/// <value>The total active game objects.</value>
 	public int TotalActive
 	{
 		get {	return totalActiveObjects;}
 	}
-	
+
+	/// <summary>
+	/// Gets the total inactive game objects.
+	/// </summary>
+	/// <value>The total inactive game objects.</value>
 	public int TotalInactive
 	{
 		get {	return totalInactiveObjects;}
 	}
-	
+
+	/// <summary>
+	/// Gets the last active game object.
+	/// </summary>
+	/// <value>The last active game object.</value>
 	public GameObject LastActiveGameObject
 	{
 		get { return lastActiveObject;}
 	}
+
 	#endregion
 	
 	#region Constructors	
 
-	// 1. Create objects under that parent. Thats it. 
+	/// <summary>
+	/// Initializes a new instance of the <see cref="ObjectRecycler"/> class.
+	/// </summary>
+	/// <param name="go">Game object to be recyled.</param>
+	/// <param name="count">Number of objects to be recylced</param>
+	/// <param name="parent">The parent for all the recycled objects.</param>
 	internal ObjectRecycler(GameObject go, int count, GameObject parent)
 	{
 		if((count < 2) || (go == null))
@@ -76,124 +116,18 @@ public class ObjectRecycler : RecyclerContract
 		}
 		totalInactiveObjects = count;
 		totalActiveObjects = 0;
-		//RecountTheCounter();
 	}
 
-	/*
-	internal ObjectRecycler(GameObject go, uint count)
-	{
-		if((count < 2) || (go == null))
-		{	return;}
-		
-		parentGameObject = new GameObject((go.transform.name + "_Parent").ToString());
-		theObject = go;
-		
-		for(int i = 0; i < count; i++)
-		{
-			GameObject temp  = Object.Instantiate(theObject, Vector3.zero, Quaternion.identity) as GameObject;
-			recyledObjects.Add(temp);
-			totalRecyledObjects++;
-			temp.name = (temp.name + "_" + totalRecyledObjects);
-			temp.transform.parent = parentGameObject.transform;
-			temp.SetActive(false);
-		}
-		RecountTheCounter();
-	}
-
-
-	internal ObjectRecycler(GameObject go, uint count, string parentName)
-	{
-		if((count < 2) || (go == null))
-		{	return;}
-		
-		parentGameObject = new GameObject(parentName);
-		theObject = go;
-		
-		for(int i = 0; i < count; i++)
-		{
-			GameObject temp  = Object.Instantiate(theObject, Vector3.zero, Quaternion.identity) as GameObject;
-			recyledObjects.Add(temp);
-			totalRecyledObjects++;
-			temp.name = (temp.name + "_" + totalRecyledObjects);
-			temp.transform.parent = parentGameObject.transform;
-			temp.SetActive(false);
-		}
-		RecountTheCounter();
-	}
-	
-	internal ObjectRecycler(GameObject go, uint count, GameObject parent)
-	{
-		if((count < 2) || (go == null))
-		{	return;}
-		
-		parentGameObject = parent;
-		
-		theObject = go;
-		
-		for(int i = 0; i < count; i++)
-		{
-			GameObject temp  = Object.Instantiate(theObject, Vector3.zero, Quaternion.identity) as GameObject;
-			recyledObjects.Add(temp);
-			totalRecyledObjects++;
-			temp.name = (temp.name + "_" + totalRecyledObjects);
-			temp.transform.parent = parentGameObject.transform;
-			temp.SetActive(false);
-		}
-		RecountTheCounter();
-	}
-	
-	internal ObjectRecycler(GameObject _go, uint count, GameObject parent, string parentName)
-	{
-		if((count < 2) || (_go == null))
-		{	return;}
-		
-		parentGameObject = parent;
-		parentGameObject.name = parentName;
-		theObject = _go;
-		
-		for(int i = 0; i < count; i++)
-		{
-			GameObject temp  = Object.Instantiate(theObject, Vector3.zero, Quaternion.identity) as GameObject;
-			recyledObjects.Add(temp);
-			totalRecyledObjects++;
-			temp.name = (temp.name + "_" + totalRecyledObjects);
-			temp.transform.parent = parentGameObject.transform;
-			temp.SetActive(false);
-			
-		}
-		RecountTheCounter();
-	}
-	*/
 	#endregion
 	
 	
 	#region Spawn & Despawn Methods
 
-	/*
-	public void Spawn()
-	{
-		// LINQ to find free objects in the list
-		GameObject _go =  (from item in recyledObjects
-		                   where item.activeSelf == false
-		                   select item.gameObject).FirstOrDefault();
-		
-		if(_go == null)
-		{
-			_go  = Object.Instantiate(theObject, Vector3.zero, Quaternion.identity) as GameObject;
-			recyledObjects.Add(_go);
-			totalRecyledObjects++;
-			_go.name = (_go.name + "_" + totalRecyledObjects);
-			_go.transform.parent = parentGameObject.transform; 
-		}
-		
-		_go.transform.position = Vector3.zero;
-		_go.transform.rotation = Quaternion.identity;
-		_go.SetActive(true);
-		lastActiveObject = _go;
-		RecountTheCounter();
-	}
-	*/
-
+	/// <summary>
+	/// Spawns the game object at the specified _worldPosition and _rotation.
+	/// </summary>
+	/// <param name="_worldPosition">The vector3 world co-ordinates.</param>
+	/// <param name="_rotation">The angle of rotation to be spawned at.</param>
 	public GameObject Spawn(Vector3 _worldPosition, Quaternion _rotation)
 	{
 		// LINQ to find free objects in the list
@@ -212,52 +146,31 @@ public class ObjectRecycler : RecyclerContract
 		
 		_go.transform.position = _worldPosition;
 		_go.transform.rotation = _rotation;
-		_go.SetActive(true);
+		_go.SetActive (true);
 		lastActiveObject = _go;
-		recountTheCounter();
+		recountTheCounter ();
 		return _go;
 	}
 
-	/*
-	public void Spawn(Vector3 _worldPosition, Quaternion _rot)
-	{
-		// LINQ to find free objects in the list
-		GameObject _go =  (from item in recyledObjects
-		                   where item.activeSelf == false
-		                   select item.gameObject).FirstOrDefault();
-		
-		if(_go == null)
-		{
-			_go  = Object.Instantiate(theObject) as GameObject;
-			recyledObjects.Add(_go);
-			totalRecyledObjects++;
-			_go.name = (_go.name + "_" + totalRecyledObjects);
-			_go.transform.parent = parentGameObject.transform; 
-		}
-		
-		_go.transform.position = _worldPosition;
-		_go.transform.rotation = _rot;
-		_go.SetActive(true);
-		lastActiveObject = _go;
-		RecountTheCounter();
-	}
-	*/
-
-
-
+	/// <summary>
+	/// Despawn the specified game object
+	/// </summary>
+	/// <param name="_go">Game Object.</param>
 	public void Despawn(GameObject _go)
 	{
 		if(_go != null && _go.activeSelf == true)
 		{
 			_go.transform.position = Vector3.zero;
 			_go.transform.rotation = Quaternion.identity;
-			_go.SetActive(false);
+			_go.SetActive (false);
 			totalActiveObjects--;
 			totalInactiveObjects++;
 		}
-	//	RecountTheCounter();
 	}
-	
+
+	/// <summary>
+	/// Despawns all the active game objects. 
+	/// </summary>
 	public void DespawnAll()
 	{
 		foreach(GameObject item in recyledObjects)
@@ -272,7 +185,14 @@ public class ObjectRecycler : RecyclerContract
 			totalInactiveObjects = totalRecyledObjects;
 		}
 	}
-	
+
+	#endregion
+
+	#region Calculation
+
+	/// <summary>
+	/// Counts the active and inactive game objects thro' LINQ.
+	/// </summary>
 	private void recountTheCounter()
 	{
 		totalActiveObjects = (from item in recyledObjects
@@ -283,5 +203,6 @@ public class ObjectRecycler : RecyclerContract
 		                        where item.activeSelf == false
 		                        select item).Count();	 
 	}
+
 	#endregion
 }

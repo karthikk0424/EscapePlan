@@ -1,29 +1,52 @@
-﻿using UnityEngine;
+﻿
+/// <summary>
+/// This script is responsible for the elevators in the scene. 
+/// </summary>
+ 
+using UnityEngine;
 using System.Collections;
 
 [RequireComponent (typeof(Collider2D))]
 public class Elevator : MonoBehaviour 
 {
+	#region Variables
+
 	// Local Co-ordinates
 	public Vector3 EndPosition;
 	public bool moveATSTART = false;
-	private Vector3 StartPosition, resetStartPosition;
+	private Vector3 startPosition, resetStartPosition;
 	private bool isMOVING; 
 
+	#endregion
+
+	#region Mono Behaviour - start & end methods
+
+	/// <summary>
+	/// Called when the elevator is instantiated. 
+	/// </summary>
+	/// <description>
+	/// Initialized the variables
+	/// </description>
 	private void Awake()
 	{
-		StartPosition = resetStartPosition = this.transform.localPosition;
+		startPosition = resetStartPosition = this.transform.localPosition;
 		isMOVING = false;
 	}
 
+	/// <summary>
+	/// Called when this gameobject is being enabled.
+	/// </summary>
+	/// <description>
+	/// It subscribes to a delegate to handle the elevator to reset. 
+	/// If the elevator is required to move at start then the co-routine is initiated. 
+	/// </description>
 	private void OnEnable()
 	{
-		GameManager.OnReset += HandleOnReset;
+		GameManager.OnReset += handleOnReset;
 		if(moveATSTART)
 		{
-	
 			GameManager.Instance.ToggleUserControls(false);
-			StartCoroutine(PositionTweener.MoveObjectInLocal(StartPosition, EndPosition, this.gameObject, 2f, () => 
+			StartCoroutine(PositionTweener.MoveObjectInLocal(startPosition, EndPosition, this.gameObject, 2f, () => 
 			                                                 {
 																	GameManager.Instance.ToggleUserControls(true);
 																	isMOVING = false;
@@ -31,25 +54,45 @@ public class Elevator : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Called when this gameobject is being disabled.
+	/// </summary>
+	/// <description>
+	/// It subscribes to a delegate to handle the elevator to reset. 
+	/// </description>
 	private void OnDisable()
 	{
-		GameManager.OnReset -= HandleOnReset;
+		GameManager.OnReset -= handleOnReset;
 		if(moveATSTART)
 		{
 			this.transform.localPosition = resetStartPosition;
 		}
 	}
 
-	private void HandleOnReset ()
+	/// <summary>
+	/// Event to handle when to reset the elevator
+	/// </summary>
+	private void handleOnReset ()
 	{
-		if(resetStartPosition != StartPosition)
+		if(resetStartPosition != startPosition)
 		{
-			EndPosition = StartPosition;
-			StartPosition = resetStartPosition;
+			EndPosition = startPosition;
+			startPosition = resetStartPosition;
 		}
-		this.transform.localPosition = StartPosition;
+		this.transform.localPosition = startPosition;
 	}
 
+	#endregion
+
+	#region Collision Events
+
+	/// <summary>
+	/// Called whenever the player is one the collision attached with the elevator.
+	/// </summary>
+	/// <param name="hit">the infor about the collision.</param>
+	/// <description>
+	/// It looks for key event 'E' to activate the elevator. 
+	/// </description>
 	private void OnCollisionStay2D(Collision2D hit)
 	{
 		if((isMOVING) || (moveATSTART))
@@ -58,21 +101,23 @@ public class Elevator : MonoBehaviour
 		}
 		if(Input.GetKeyDown(KeyCode.E))
 		{
-			if(hit.collider.tag == StaticVariablesContainer.MainPlayer)
+			if(hit.collider.tag == ConstantVariablesContainer.MainPlayer)
 			{
 				isMOVING = true;
 				GameManager.Instance.ToggleUserControls(false);
-				bool _isUP = ((StartPosition.y > EndPosition.y) ? (false) : (true));
-				StartCoroutine(PositionTweener.MoveObjectInLocal(StartPosition, EndPosition, this.gameObject, 2f, () => 
+				bool _isUP = ((startPosition.y > EndPosition.y) ? (false) : (true));
+				StartCoroutine(PositionTweener.MoveObjectInLocal(startPosition, EndPosition, this.gameObject, 2f, () => 
 				                                                 {
 																	GameManager.Instance.ToggleUserControls(true);
 																	GameManager.Instance.MoveCameraUp(_isUP);
 																	isMOVING = false;
 																}));
-				StartPosition += EndPosition;
-				EndPosition = StartPosition - EndPosition;
-				StartPosition -= EndPosition;
+				startPosition += EndPosition;
+				EndPosition = startPosition - EndPosition;
+				startPosition -= EndPosition;
 			}
 		}
 	}
+
+	#endregion
 }
