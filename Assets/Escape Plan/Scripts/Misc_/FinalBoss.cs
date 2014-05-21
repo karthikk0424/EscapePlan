@@ -8,15 +8,12 @@ public class FinalBoss : MonoBehaviour
 		Guard
 	}
 	public BossUnit ThisBoss;
-
-	private static int bossHitCount = 10;
+	
 	public float ForceOnProjectile = 20;
 	public WeaponHub WeaponCache; 
 
 	// For Guard
 	private bool canFIRE;
-
-
 	public float position = 0f;
 	public float radius = 10f;
 	private Vector3 startPosition;

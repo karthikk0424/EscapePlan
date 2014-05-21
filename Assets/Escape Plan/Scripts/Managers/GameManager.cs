@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour
 	public GameObject TransitionScene;
 	public KeyCode[] AssignedKeys;
 	public GameGUI EscapePlanGUI;
-
-	private int totalChipsThisScene = 0;
+	
 	private GameObject currentSceneInstance;
 	private CameraController myCamera;
 	private Vector3 playerSpawnPoint = new Vector3(0,0,0);
