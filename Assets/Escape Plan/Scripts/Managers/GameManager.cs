@@ -345,6 +345,7 @@ public class GameManager : MonoBehaviour
 			currentSceneInstance.SetActive(!_hideLEVEL);
 		}
 		MyPlayer.TelePortPlayer(playerSpawnPoint);
+		CameraController.Instance.SetCameraToThisPosition(StaticVariablesContainer.DEFAULT_CAMERA_POSITION);
 	}
 
 	private void UpdateLifeBonusTracker()
