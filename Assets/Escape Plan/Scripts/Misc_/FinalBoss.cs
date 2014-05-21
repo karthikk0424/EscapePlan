@@ -63,6 +63,7 @@ public class FinalBoss : MonoBehaviour
 			switch (ThisBoss)
 			{
 				case BossUnit.Guard:
+					hit.gameObject.GetComponent<Projectile>().despawnThisProjectile();
 					StartCoroutine( reSpawnGuard());
 					break;
 			}
@@ -72,12 +73,12 @@ public class FinalBoss : MonoBehaviour
 	private IEnumerator reSpawnGuard()
 	{
 		canFIRE = false;
-		this.collider.enabled = false;
+		this.GetComponent<BoxCollider2D>().enabled = false;
 		this.renderer.enabled = false;
 		yield return new WaitForSeconds(2f);
 		// enable fire again. 
 		this.renderer.enabled = true;
-		this.collider.enabled = true;
+		this.GetComponent<BoxCollider2D>().enabled = true;
 		canFIRE = true;
 
 	}
@@ -99,7 +100,7 @@ public class FinalBoss : MonoBehaviour
 			if(DataManager.Instance.HackKit)
 			{
 				canFIRE = false;
-				this.collider.enabled = false;
+				this.GetComponent<BoxCollider2D>().enabled = false;
 				this.renderer.enabled = false;
 				StartCoroutine( this.loadFinalScene());
 				yield break;
