@@ -34,7 +34,7 @@ public sealed class PlayerMotion : MonoBehaviour
 	private void Awake()
 	{
 		this.transform.name = "MainPlayer";
-		this.transform.tag = "Player";
+		this.transform.tag = StaticVariablesContainer.MainPlayer;
 	}
 
 	private void OnEnable()
@@ -126,7 +126,7 @@ public sealed class PlayerMotion : MonoBehaviour
 	{
 		switch (hit.collider.tag)
 		{
-			case "Ground":
+			case StaticVariablesContainer.Ground:
 				isJUMPING = false;
 				if(currentMotionState == 3)
 				{
@@ -138,12 +138,12 @@ public sealed class PlayerMotion : MonoBehaviour
 				}
 				break;
 
-			case "EnemyProjectile":
+			case StaticVariablesContainer.EnemyProjectile:
 				hit.transform.GetComponent<Projectile>().despawnThisProjectile();
 				GameManager.Instance.DeathForPlayer();
 				break;
 
-			case "Enemy":
+			case StaticVariablesContainer.Enemy:
 				GameManager.Instance.DeathForPlayer();
 				break;
 		}
@@ -157,25 +157,25 @@ public sealed class PlayerMotion : MonoBehaviour
 	{
 		switch(hit.collider2D.tag)
 		{
-			case "Chips":
+			case StaticVariablesContainer.Chips:
 				GameManager.Instance.GotAChip();
 				hit.gameObject.SetActive(false);
 				break;
 
-			case "HackKit":
+			case StaticVariablesContainer.HackKit:
 				hit.gameObject.SetActive(false);
 				GameManager.Instance.GotHackKit();
 				break;
 
-			case "Door":
+			case StaticVariablesContainer.Door:
 				GameManager.Instance.OpenDoor();
 				break;
 
-			case "EntryDoor":
+			case StaticVariablesContainer.EntryDoor:
 				GameManager.Instance.EnterLevel();
 				break;
 
-			case "Ammo":
+			case StaticVariablesContainer.Ammo:
 				GameManager.Instance.GotAmmo();
 				hit.gameObject.SetActive(false);
 				break;

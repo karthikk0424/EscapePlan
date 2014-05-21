@@ -14,7 +14,7 @@ public sealed class Projectile : WeaponBase
 		myRecyler = parent;
 		forPLAYER = _forPLAYER;
 		forceOnTheProjectile = ((_forceOnProjectile > 0) ? (_forceOnProjectile) : (20));
-		this.transform.tag = ((_forPLAYER) ? ("PlayerProjectile") : ("EnemyProjectile"));
+		this.transform.tag = ((_forPLAYER) ? (StaticVariablesContainer.PlayerProjectile) : (StaticVariablesContainer.EnemyProjectile));
 		projectileDirection = (this.transform.localRotation * new Vector2(0,1));
 		AddVelocityToRigidBody();
 	}
@@ -44,14 +44,14 @@ public sealed class Projectile : WeaponBase
 
 		switch(hit.collider.tag)
 		{
-			case "Ground":
+			case StaticVariablesContainer.Ground:
 				despawnThisProjectile();
 				break;
 
-			case "EnemyProjectile":
+			case StaticVariablesContainer.EnemyProjectile:
 				break;
 
-			case "PlayerProjectile":
+			case StaticVariablesContainer.PlayerProjectile:
 				break;
 		}
 	}

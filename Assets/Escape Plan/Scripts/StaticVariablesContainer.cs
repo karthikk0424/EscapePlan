@@ -22,13 +22,11 @@ public sealed class StaticVariablesContainer
 	public const string Chips = "Chips";
 	public const string HackKit = "HackKit";
 	public const string Door = "Door";
+	public const string EntryDoor = "EntryDoor";
 	public const string EnemyProjectile = "EnemyProjectile";
 	public const string PlayerProjectile = "PlayerProjectile";
 	public const string Enemy = "Enemy";
 	public const string Ammo = "Ammo";
-
-	// Re Spawn Point
-	// Entry Door
 	#endregion
 
 }

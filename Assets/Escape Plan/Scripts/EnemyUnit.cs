@@ -102,7 +102,7 @@ public class EnemyUnit : MonoBehaviour
 
 	private IEnumerator fireTimedAtTheEnemy()
 	{
-		Transform player = GameObject.FindWithTag("Player").GetComponent<Transform>();
+		Transform player = GameObject.FindWithTag(StaticVariablesContainer.MainPlayer).GetComponent<Transform>();
 		if(player == null)
 		{
 			yield break;
@@ -123,9 +123,9 @@ public class EnemyUnit : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D hit)
 	{
-		if(hit.collider.tag == "PlayerProjectile")
+		if(hit.collider.tag == StaticVariablesContainer.PlayerProjectile)
 		{
-			GameManager.Instance.PlayFireAnimation(this.transform.position);
+			NPCManager.Instance.PlayFireAnimation (this.transform.position);
 			hit.gameObject.GetComponent<Projectile>().despawnThisProjectile();
 			this.gameObject.SetActive(false);
 		}

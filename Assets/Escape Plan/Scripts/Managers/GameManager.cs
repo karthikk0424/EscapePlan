@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
 	{
 		if(detectINPUT)
 		{
-			// Left Movement
+			#region Left Movement
 			if(Input.GetKeyDown(AssignedKeys[0]))
 			{
 				MyPlayer.InitiateLeftTurn();
@@ -148,7 +148,9 @@ public class GameManager : MonoBehaviour
 			{
 				MyPlayer.StopLeftMovement();
 			}
-			
+			#endregion
+
+			#region Right Movement
 			// Right Movement
 			if(Input.GetKeyDown(AssignedKeys[1]))
 			{
@@ -164,7 +166,8 @@ public class GameManager : MonoBehaviour
 			{
 				MyPlayer.StopRightMovement();
 			}
-			
+			#endregion
+
 			// Jump Movement
 			if(Input.GetKeyDown(AssignedKeys[2]))
 			{
@@ -288,7 +291,8 @@ public class GameManager : MonoBehaviour
 	internal void DeathForPlayer()
 	{
 		detectINPUT = false;
-		PlayFireAnimation(PlayerPosition);
+		NPCManager.Instance.PlayFireAnimation (PlayerPosition);
+	//	PlayFireAnimation(PlayerPosition);
 		DataManager.Instance.LifeCount--;
 		EscapePlanGUI.UpdatePlayerLife();
 		if(DataManager.Instance.LifeCount == 0)
@@ -353,29 +357,6 @@ public class GameManager : MonoBehaviour
 		}
 		DataManager.Instance.BonusTrackerChipCount = BonusCounter;
 	}
-
-	internal void PlayFireAnimation(Vector3 _worldCoordinates)
-	{
-		int i = 0;
-		while(i < FireAnimation.Length)
-		{
-			if(FireAnimation[i].activeSelf == false)
-			{
-				FireAnimation[i].transform.position = _worldCoordinates;
-				FireAnimation[i].SetActive(true);
-				this.StartCoroutine(playFire(i));
-				break;
-			}
-			else { i++;}
-		}
-	}
-	
-	private IEnumerator playFire(int index)
-	{
-		yield return new WaitForSeconds(1f);
-		FireAnimation[index].SetActive(false);
-	}
-
 
 	/*
 	private void ToggleScene(bool hide)

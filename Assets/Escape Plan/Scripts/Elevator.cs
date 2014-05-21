@@ -58,7 +58,7 @@ public class Elevator : MonoBehaviour
 		}
 		if(Input.GetKeyDown(KeyCode.E))
 		{
-			if(hit.collider.tag == "Player")
+			if(hit.collider.tag == StaticVariablesContainer.MainPlayer)
 			{
 				isMOVING = true;
 				GameManager.Instance.ToggleUserControls(false);

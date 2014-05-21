@@ -36,6 +36,7 @@ public class NPCManager : MonoBehaviour
 	#endregion
 	
 	public GameObject[] EnemyUnits;
+	public GameObject[] FireAnimation;
 	public string CurrentPlayerLevel = StaticVariablesContainer.Level1;
 	private TriggerActionType lastKnowAction;
 
@@ -58,5 +59,30 @@ public class NPCManager : MonoBehaviour
 				break;
 		}
 	}
+
+	#region Fire Animation
+	internal void PlayFireAnimation(Vector3 _worldCoordinates)
+	{
+		int i = 0;
+		while(i < FireAnimation.Length)
+		{
+			if(FireAnimation[i].activeSelf == false)
+			{
+				FireAnimation[i].transform.position = _worldCoordinates;
+				FireAnimation[i].SetActive(true);
+				this.StartCoroutine(playFire(i));
+				break;
+			}
+			else { i++;}
+		}
+	}
+	
+	private IEnumerator playFire(int index)
+	{
+		yield return new WaitForSeconds(1f);
+		FireAnimation[index].SetActive(false);
+	}
+	#endregion
+
 }
 	

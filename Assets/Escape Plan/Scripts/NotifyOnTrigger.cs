@@ -27,7 +27,7 @@ public class NotifyOnTrigger : MonoBehaviour
 	{				
 		// make a correction - should have a if loop to check null - in this loop. 
 
-		if(hit.CompareTag("Player"))
+		if(hit.CompareTag(StaticVariablesContainer.MainPlayer))
 		{
 			NPCManager.Instance.EnterTrigger(TargetObject, OnEnterAction);
 		}
@@ -35,7 +35,7 @@ public class NotifyOnTrigger : MonoBehaviour
 
 	private void OnTriggerExit2D(Collider2D hit)
 	{
-		if(hit.CompareTag("Player"))
+		if(hit.CompareTag(StaticVariablesContainer.MainPlayer))
 		{
 			NPCManager.Instance.ExitTrigger(TargetObject, OnExitAction);
 		}
