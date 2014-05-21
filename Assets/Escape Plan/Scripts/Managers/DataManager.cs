@@ -21,7 +21,7 @@ public sealed class DataManager
 	private int chips;
 	private int numberOfLife = StaticVariablesContainer.MAX_LIVES;
 	private int bonusCounter = 0;
-	
+	private int currentLevel;
 	private bool isHackitpicked;
 	private bool isAmmoAvailable = false;
 
@@ -95,5 +95,21 @@ public sealed class DataManager
 			return bonusCounter;
 		}
 	}
+	#endregion
+
+	#region Current Level Number
+	public int CurrentLevelNumber
+	{
+		set
+		{
+			currentLevel = value;
+		}
+		get
+		{
+			return currentLevel;
+		}
+
+	}
+
 	#endregion
 }

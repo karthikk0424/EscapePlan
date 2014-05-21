@@ -189,7 +189,7 @@ public class GameManager : MonoBehaviour
 
 			if(onRotation != null)
 			{
-				rotationCoin *= Quaternion.Euler (0, 0, (Time.deltaTime * 100));
+				rotationCoin *= Quaternion.Euler (0, (Time.deltaTime * 100), 0);
 				onRotation(rotationCoin);	
 			}
 		}
@@ -325,6 +325,7 @@ public class GameManager : MonoBehaviour
 		currentSceneInstance = (GameObject)Instantiate(Resources.Load("Scenes/Scene_" + levelNumber.ToString()));
 		playerSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").GetComponent<Transform>().position;
 		DataManager.Instance.HackKit = false;
+		DataManager.Instance.CurrentLevelNumber = levelNumber;
 		LevelTransition(false);
 	}
 

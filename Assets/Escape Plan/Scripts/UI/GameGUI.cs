@@ -12,6 +12,11 @@ public class GameGUI : MonoBehaviour
 		PauseMenu.gameObject.SetActive(false);
 	}
 
+	private void OnEnable()
+	{
+		UpdateInfoText("Level "+ DataManager.Instance.CurrentLevelNumber.ToString());
+	}
+
 	#region Game Data Manager Calls
 	internal void UpdatePlayerLife()
 	{
