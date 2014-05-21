@@ -5,8 +5,6 @@ public class GameManager : MonoBehaviour
 {
 	public PlayerMotion MyPlayer;
 
-	[Range (1,7)]
-	public int LevelNumber = 0;
 	public GameObject TransitionScene;
 	public KeyCode[] AssignedKeys;
 	public GameGUI EscapePlanGUI;
@@ -42,7 +40,7 @@ public class GameManager : MonoBehaviour
 		this.transform.name = "_GameManager";
 
 		// Fetch user data and start from that level, else load the default level 0;
-		LoadLevel(LevelNumber);
+		LoadLevel(DataManager.Instance.CurrentLevelNumber, true);
 
 		if(AssignedKeys.Length < 1)
 		{
@@ -265,10 +263,25 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	internal void TrapDoor()
+	{
+		if(DataManager.Instance.HackKit)
+		{
+			Destroy (currentSceneInstance);
+			LoadLevel(StaticVariablesContainer.TRAP_DOOR_LEVEL,false);
+			MyPlayer.TelePortPlayer(new Vector3(0,16,0));
+			myCamera.SetCameraToThisPosition (StaticVariablesContainer.DEFAULT_CAMERA_POSITION);
+		}
+		else 
+		{
+			EscapePlanGUI.UpdateInfoText("Find a hack kit");
+		}
+	}
+
 	internal void EnterLevel()
 	{
 		Destroy (currentSceneInstance);
-		LoadLevel (LevelNumber + 1);
+		LoadLevel (DataManager.Instance.CurrentLevelNumber + 1, true);
 	}
 
 	private IEnumerator ResetPlayerToSpawnPoint()
@@ -330,13 +343,16 @@ public class GameManager : MonoBehaviour
 		myCamera.MoveCamera(_toUP);
 	}
 
-	private void LoadLevel(int levelNumber)
+	private void LoadLevel(int levelNumber, bool isTransitionRequired)
 	{
 		currentSceneInstance = (GameObject)Instantiate(Resources.Load("Scenes/Scene_" + levelNumber.ToString()));
 		playerSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").GetComponent<Transform>().position;
 		DataManager.Instance.HackKit = false;
 		DataManager.Instance.CurrentLevelNumber = levelNumber;
-		LevelTransition(false);
+		if(isTransitionRequired)
+		{
+			LevelTransition(false);
+		}
 	}
 
 	private void LevelTransition(bool _hideLEVEL)

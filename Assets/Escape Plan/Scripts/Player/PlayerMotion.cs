@@ -175,6 +175,10 @@ public sealed class PlayerMotion : MonoBehaviour
 				GameManager.Instance.EnterLevel();
 				break;
 
+			case StaticVariablesContainer.TRAP_LEVEL:
+				GameManager.Instance.TrapDoor();
+				break;
+
 			case StaticVariablesContainer.Ammo:
 				GameManager.Instance.GotAmmo();
 				hit.gameObject.SetActive(false);
