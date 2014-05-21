@@ -40,7 +40,8 @@ public class CameraController : MonoBehaviour
 
 	private void HandleOnReset ()
 	{
-		this.transform.localPosition = startPosition;
+		Debug.Log("called");
+		this.transform.localPosition = StaticVariablesContainer.DEFAULT_CAMERA_POSITION;
 	}
 
 	private void OnDisable()
@@ -49,7 +50,6 @@ public class CameraController : MonoBehaviour
 	}
 
 	private Vector3 defaultMoviableUnits = new Vector3(0, 20, 0);
-	private Vector3 startPosition = new Vector3(0, 0, -10);
 
 	internal void MoveCamera(bool _moveUP)
 	{
