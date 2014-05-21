@@ -5,8 +5,7 @@ public class FinalBoss : MonoBehaviour
 {
 	public enum BossUnit
 	{
-		Guard, 
-		MainBoss
+		Guard
 	}
 	public BossUnit ThisBoss;
 
@@ -66,16 +65,6 @@ public class FinalBoss : MonoBehaviour
 		{
 			switch (ThisBoss)
 			{
-				case BossUnit.MainBoss:
-					if(bossHitCount > 0)
-					{
-						bossHitCount--;
-					}
-					else
-					{
-						StartCoroutine(this.loadFinalScene());
-					}
-					break;
 				case BossUnit.Guard:
 					StartCoroutine( reSpawnGuard());
 					break;
@@ -107,14 +96,15 @@ public class FinalBoss : MonoBehaviour
 		Quaternion directionOfFire = Quaternion.identity;
 		while(this.gameObject.activeSelf)
 		{
-			float timer = Random.Range(1f, 4f);
+			float timer = Random.Range(1f, 3f);
 			yield return new WaitForSeconds(timer);
 			timer = Random.Range(1f,3f);
-			if(bossHitCount < 1)
+			if(DataManager.Instance.HackKit)
 			{
 				canFIRE = false;
 				this.collider.enabled = false;
 				this.renderer.enabled = false;
+				StartCoroutine( this.loadFinalScene());
 				yield break;
 			}
 			if(canFIRE)
