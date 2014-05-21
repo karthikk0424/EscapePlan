@@ -94,15 +94,15 @@ public class FinalBoss : MonoBehaviour
 		Quaternion directionOfFire = Quaternion.identity;
 		while(this.gameObject.activeSelf)
 		{
-			float timer = Random.Range(1f, 3f);
+			float timer = Random.Range(1f, 2f);
 			yield return new WaitForSeconds(timer);
-			timer = Random.Range(1f,3f);
+			timer = Random.Range(1f,5f);
 			if(DataManager.Instance.HackKit)
 			{
 				canFIRE = false;
 				this.GetComponent<BoxCollider2D>().enabled = false;
 				this.renderer.enabled = false;
-				StartCoroutine( this.loadFinalScene());
+				NPCManager.Instance.PlayFireAnimation(this.transform.position);
 				yield break;
 			}
 			if(canFIRE)
@@ -114,12 +114,5 @@ public class FinalBoss : MonoBehaviour
 				WeaponCache.FireForEnemy(this.transform.position, directionOfFire, ForceOnProjectile);
 			}
 		}
-	}
-
-	private IEnumerator loadFinalScene()
-	{
-
-		// load the final doubel decision scene. 
-		yield return null;
 	}
 }

@@ -39,9 +39,10 @@ public class GameManager : MonoBehaviour
 		instance = this;
 		this.transform.name = "_GameManager";
 
-		// Fetch user data and start from that level, else load the default level 0;
+		// Fetch user data and start from that level, else load the default level 1;
+		DataManager.Instance.CurrentLevelNumber = 1;
+		DataManager.Instance.LifeCount = 3;
 		LoadLevel(DataManager.Instance.CurrentLevelNumber, true);
-
 		if(AssignedKeys.Length < 1)
 		{
 			AssignedKeys = new KeyCode[4];
@@ -195,10 +196,25 @@ public class GameManager : MonoBehaviour
 				onRotation(rotationCoin);	
 			}
 		}
+		else
+		{
+			// REMEMBER : A viking never cheats
+			if((Input.GetKeyUp(KeyCode.E)) && (Input.GetKeyUp(KeyCode.A))) 
+			{
+				addLife();
+			}
+		}
 
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
 			ToggleGameState(detectINPUT);
+		}
+
+		if((Input.GetKeyDown(KeyCode.D) && (DataManager.Instance.CurrentLevelNumber == 9)))
+		{
+			DataManager.Instance.CurrentLevelNumber = 7;
+			DataManager.Instance.HackKit = true;
+			OpenDoor();
 		}
 	}
 	#endregion
@@ -211,7 +227,7 @@ public class GameManager : MonoBehaviour
 		DataManager.Instance.ChipLootSac = chipCount; 
 		EscapePlanGUI.UpdateChipCount();
 		UpdateLifeBonusTracker();
-	}
+	} 
 
 	internal void GotHackKit()
 	{
@@ -314,17 +330,15 @@ public class GameManager : MonoBehaviour
 	{
 		detectINPUT = false;
 		NPCManager.Instance.PlayFireAnimation (PlayerPosition);
-	//	PlayFireAnimation(PlayerPosition);
 		DataManager.Instance.LifeCount--;
 		EscapePlanGUI.UpdatePlayerLife();
-		if(DataManager.Instance.LifeCount == 0)
+		if(DataManager.Instance.LifeCount < 1)
 		{
 			Application.LoadLevel(0);
 			DataManager.Instance.HackKit = false;
 		}
 		else
 		{
-		//	MyPlayer.PlayDeathAnimation();
 			StartCoroutine( MyPlayer.SetPlayerProperties (false));
 			StartCoroutine( ResetPlayerToSpawnPoint ());
 		}
@@ -339,12 +353,15 @@ public class GameManager : MonoBehaviour
 
 	internal void MoveCameraUp(bool _toUP)
 	{
-		//CameraController.Instance.MoveCamera(_toUP);
 		myCamera.MoveCamera(_toUP);
 	}
 
 	private void LoadLevel(int levelNumber, bool isTransitionRequired)
 	{
+		if(levelNumber > 10)
+		{ 
+			Application.LoadLevel(0);
+		}
 		currentSceneInstance = (GameObject)Instantiate(Resources.Load("Scenes/Scene_" + levelNumber.ToString()));
 		playerSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").GetComponent<Transform>().position;
 		DataManager.Instance.HackKit = false;

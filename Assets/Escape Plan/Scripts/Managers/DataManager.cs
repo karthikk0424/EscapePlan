@@ -110,6 +110,5 @@ public sealed class DataManager
 		}
 
 	}
-
 	#endregion
 }

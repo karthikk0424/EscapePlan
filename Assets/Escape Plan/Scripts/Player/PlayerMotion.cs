@@ -6,7 +6,7 @@
 /// which have to be called from another class which would detect the input based upon the platforms.
 /// It also has modules for Animating the sprites. Inherits MonoBehaviour to utilize Unity's resources. 
 /// </summary>
-/// /// <description>
+/// <description>
 /// Rigidbody2D parameters : Mass = 50; Linear Drag = 0; Angular Drag = 0; Gravity Scale = 50; Fixed Angle = true;
 /// isKinematic = false; Interpolate = non; Sleeping Mode = Start Asleep; Collision Detection = Discrete
 /// </description>

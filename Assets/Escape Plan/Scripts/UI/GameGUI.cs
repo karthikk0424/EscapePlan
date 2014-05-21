@@ -14,7 +14,32 @@ public class GameGUI : MonoBehaviour
 
 	private void OnEnable()
 	{
-		UpdateInfoText("Level "+ DataManager.Instance.CurrentLevelNumber.ToString());
+		int curLevel = DataManager.Instance.CurrentLevelNumber;
+
+		switch(curLevel)
+		{
+			case 7:
+				UpdateInfoText("Boss!!!");
+				break;
+
+			case 8:
+				UpdateInfoText("Be Positive");
+				break;
+
+			case 9:
+				UpdateInfoText("");
+				break;
+
+			case 10:
+				UpdateInfoText("Death is INEVITABLE!");
+				break;
+
+			default:
+				UpdateInfoText("Level "+ curLevel.ToString());
+				break;
+		}
+
+
 	}
 
 	#region Game Data Manager Calls

@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/// <summary>
+/// Constant variables container.
+/// </summary>
+/// <description>
+/// It is really helpful when you have to change a particular variable on a global scale. 
+/// </description>
+using UnityEngine;
 using System.Collections;
 
 public sealed class StaticVariablesContainer 
@@ -6,7 +12,7 @@ public sealed class StaticVariablesContainer
 	public const int CHIP_VALUE = 1;
 	public const int BONUS_LIFE_TARGET = 25;
 	public const int MAX_LIVES = 3;
-	public const int TRAP_DOOR_LEVEL = 9; 
+	public const int TRAP_DOOR_LEVEL = 10; 
 	public static Vector3 TRANSITION_SPAWNPOINT = new Vector3 (-6.2F, -13.5F);
 	public static Vector3 DEFAULT_CAMERA_POSITION = new Vector3 (0, 0 , -10);
 	public const string Level0 = "Level0";
@@ -17,7 +23,7 @@ public sealed class StaticVariablesContainer
 	public const float RESPAWN_DELAY = 3.0f; 
 	public const string WeaponHub = "WeaponHub";
 
-	#region Tags
+	#region Tags Used in the Game
 	public const string MainPlayer = "Player";
 	public const string MainCamera = "MainCamera";
 	public const string Manager = "Manager";
