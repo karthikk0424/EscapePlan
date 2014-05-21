@@ -81,6 +81,7 @@ public sealed class PlayerMotion : MonoBehaviour
 	internal IEnumerator SetPlayerProperties(bool toACTIVATE)
 	{
 		setAnimation(0);
+		playerVelocity = Vector2.zero;
 		this.rigidbody2D.isKinematic = (!toACTIVATE);
 		this.GetComponent<BoxCollider2D>().enabled = toACTIVATE;
 		PlayerAnimator.SetBool("isALIVE", toACTIVATE);
