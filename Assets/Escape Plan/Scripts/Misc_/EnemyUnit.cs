@@ -3,7 +3,6 @@ using System.Collections;
 
 public class EnemyUnit : MonoBehaviour 
 {
-	public string NameOfWeaponHub = "WeaponHub";
 	public bool isTIMED = false, startONAWAKE = true;
 	public float Timer = 3.0f, ForceOnProjectile = 20f;
 
@@ -55,7 +54,7 @@ public class EnemyUnit : MonoBehaviour
 	{
 		if(WeaponCache == null)
 		{
-			WeaponCache = GameObject.Find(NameOfWeaponHub).GetComponent<WeaponHub>();
+			WeaponCache = GameObject.Find(StaticVariablesContainer.WeaponHub).GetComponent<WeaponHub>();
 		}
 	}
 
@@ -116,7 +115,6 @@ public class EnemyUnit : MonoBehaviour
 			localTarget = transform.InverseTransformPoint(player.position);
 			targetAngle = Mathf.Atan2(localTarget.x, localTarget.y) * Mathf.Rad2Deg;
 			directionOfFire = Quaternion.Euler(0,0,-targetAngle);
-		//	this.transform.localRotation = directionOfFire;
 			WeaponCache.FireForEnemy(this.transform.position, directionOfFire, ForceOnProjectile);
 		}while(isACTIVE);
 	}

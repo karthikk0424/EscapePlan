@@ -4,16 +4,17 @@ using System.Collections;
 public class GameManager : MonoBehaviour 
 {
 	public PlayerMotion MyPlayer;
+
 	[Range (1,10)]
 	public int LevelNumber = 0;
-	public GameObject TransitionScene,UIEscapPlan;
+	public GameObject TransitionScene;
 	public KeyCode[] AssignedKeys;
 	public GameGUI EscapePlanGUI;
 
 	private int totalChipsThisScene = 0;
 	private GameObject currentSceneInstance;
 	private CameraController myCamera;
-	private Vector3 playerSpawnPoint;
+	private Vector3 playerSpawnPoint = new Vector3(0,0,0);
 	private bool detectINPUT = false;
 
 	//PAUSE the game - Observer Pattern. 
@@ -283,12 +284,17 @@ public class GameManager : MonoBehaviour
 		detectINPUT = true;
 	}
 	
-	internal void AddLife()
+	internal bool addLife()
 	{
 		if(DataManager.Instance.LifeCount < 3)
 		{
 			DataManager.Instance.LifeCount++;
 			EscapePlanGUI.UpdatePlayerLife();
+			return true;
+		}
+		else 
+		{
+			return false;
 		}
 	}
 
@@ -321,7 +327,8 @@ public class GameManager : MonoBehaviour
 
 	internal void MoveCameraUp(bool _toUP)
 	{
-		CameraController.Instance.MoveCamera(_toUP);
+		//CameraController.Instance.MoveCamera(_toUP);
+		myCamera.MoveCamera(_toUP);
 	}
 
 	private void LoadLevel(int levelNumber)
@@ -356,30 +363,14 @@ public class GameManager : MonoBehaviour
 	{
 		int BonusCounter = DataManager.Instance.BonusTrackerChipCount;
 		BonusCounter++;
-		if(BonusCounter == StaticVariablesContainer.BONUS_LIFE_TARGET)
+		if(BonusCounter >= StaticVariablesContainer.BONUS_LIFE_TARGET)
 		{
-			AddLife();
-			BonusCounter = 0;
+			if(addLife())
+			{
+				BonusCounter = 0;
+			}
 		}
 		DataManager.Instance.BonusTrackerChipCount = BonusCounter;
 	}
-
-	/*
-	private void ToggleScene(bool hide)
-	{
-		currentSceneInstance.SetActive(hide);
-	}
-
-	private void ToggleUI(bool hide)
-	{
-		UIEscapPlan.SetActive(hide);
-	}
-
-	private void ToggleTransitionScene(bool hide)
-	{
-		TransitionScene.SetActive(hide);
-	}
-	*/
-
 	#endregion
 }
