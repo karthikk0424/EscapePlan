@@ -218,10 +218,9 @@ public class GameManager : MonoBehaviour
 	{
 		DataManager.Instance.WeaponReadyStatus = true;
 	}
-
 	#endregion
 
-	#region State Changes
+	#region Minor State Changes
 	internal void ToggleGameState(bool toPAUSE)
 	{
 		detectINPUT = toPAUSE;
@@ -261,8 +260,29 @@ public class GameManager : MonoBehaviour
 
 	internal void EnterLevel()
 	{
-		Destroy(currentSceneInstance);
-		LoadLevel(LevelNumber + 1);
+		Destroy (currentSceneInstance);
+		LoadLevel (LevelNumber + 1);
+	}
+
+	private IEnumerator ResetPlayerToSpawnPoint()
+	{
+		detectINPUT = false;
+		yield return new WaitForSeconds(StaticVariablesContainer.RESPAWN_DELAY);
+		if(OnReset != null)
+		{
+			OnReset();
+		}
+		MyPlayer.TelePortPlayer(playerSpawnPoint);
+		detectINPUT = true;
+	}
+	
+	internal void AddLife()
+	{
+		if(DataManager.Instance.LifeCount < 3)
+		{
+			DataManager.Instance.LifeCount++;
+			EscapePlanGUI.UpdatePlayerLife();
+		}
 	}
 
 	internal void DeathForPlayer()
@@ -283,28 +303,6 @@ public class GameManager : MonoBehaviour
 			StartCoroutine( ResetPlayerToSpawnPoint ());
 		}
 	}
-
-	private IEnumerator ResetPlayerToSpawnPoint()
-	{
-		detectINPUT = false;
-		yield return new WaitForSeconds(StaticVariablesContainer.RESPAWN_DELAY);
-		if(OnReset != null)
-		{
-			OnReset();
-		}
-		MyPlayer.TelePortPlayer(playerSpawnPoint);
-		detectINPUT = true;
-	}
-
-	internal void AddLife()
-	{
-		if(DataManager.Instance.LifeCount < 3)
-		{
-			DataManager.Instance.LifeCount++;
-			EscapePlanGUI.UpdatePlayerLife();
-		}
-	}
-
 	internal void ToggleUserControls(bool toENABLE)
 	{
 		detectINPUT = toENABLE;

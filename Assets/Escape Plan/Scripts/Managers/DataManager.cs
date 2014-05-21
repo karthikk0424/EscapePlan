@@ -39,7 +39,7 @@ public sealed class DataManager
 	}
 	#endregion
 
-	#region Chip HackKit
+	#region HackKit
 	public bool HackKit
 	{
 		set
@@ -82,7 +82,7 @@ public sealed class DataManager
 	}
 	#endregion
 
-	#region Player Life
+	#region Bonus Tracker
 	public int BonusTrackerChipCount
 	{
 		set
