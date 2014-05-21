@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
 	private int totalChipsThisScene = 0;
 	private GameObject currentSceneInstance;
+	private CameraController myCamera;
 	private Vector3 playerSpawnPoint;
 	private bool detectINPUT = false;
 
@@ -66,6 +67,10 @@ public class GameManager : MonoBehaviour
 		if(MyPlayer == null)
 		{
 			MyPlayer = GameObject.Find("MainPlayer").GetComponent<PlayerMotion>();
+		}
+		if(myCamera == null)
+		{
+			myCamera = Camera.main.GetComponent<CameraController>();
 		}
 	}
 
@@ -334,18 +339,18 @@ public class GameManager : MonoBehaviour
 		if(_hideLEVEL)
 		{
 			currentSceneInstance.SetActive(!_hideLEVEL);
-			UIEscapPlan.SetActive(!_hideLEVEL);
+			EscapePlanGUI.gameObject.SetActive(!_hideLEVEL);
 			TransitionScene.SetActive(_hideLEVEL);
 			playerSpawnPoint = StaticVariablesContainer.TRANSITION_SPAWNPOINT;
 		}
 		else
 		{
 			TransitionScene.SetActive(_hideLEVEL);
-			UIEscapPlan.SetActive(!_hideLEVEL);
+			EscapePlanGUI.gameObject.SetActive(!_hideLEVEL);
 			currentSceneInstance.SetActive(!_hideLEVEL);
 		}
 		MyPlayer.TelePortPlayer(playerSpawnPoint);
-		CameraController.Instance.SetCameraToThisPosition(StaticVariablesContainer.DEFAULT_CAMERA_POSITION);
+	//	myCamera.SetCameraToThisPosition (StaticVariablesContainer.DEFAULT_CAMERA_POSITION);
 	}
 
 	private void UpdateLifeBonusTracker()
