@@ -137,19 +137,16 @@ public class GameManager : MonoBehaviour
 			if(Input.GetKeyDown(AssignedKeys[0]))
 			{
 				MyPlayer.InitiateLeftTurn();
-				Debug.Log("Left started");
 			}
 
 			if(Input.GetKey(AssignedKeys[0]))
 			{
 				MyPlayer.MoveTowardsLeft();
-				Debug.Log("Left Movement towards");
 			}
 
 			if(Input.GetKeyUp(AssignedKeys[0]))
 			{
 				MyPlayer.StopLeftMovement();
-				Debug.Log("Left Key UP");
 			}
 			
 			// Right Movement
