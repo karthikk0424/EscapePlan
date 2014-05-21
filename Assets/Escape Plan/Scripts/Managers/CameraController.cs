@@ -40,7 +40,6 @@ public class CameraController : MonoBehaviour
 
 	private void HandleOnReset ()
 	{
-		Debug.Log("called");
 		this.transform.localPosition = StaticVariablesContainer.DEFAULT_CAMERA_POSITION;
 	}
 
@@ -69,44 +68,5 @@ public class CameraController : MonoBehaviour
 	internal void SetCameraToThisPosition(Vector3 _pos)
 	{
 		this.transform.localPosition = _pos;
-	}
-
-
-	//Move to game Manager
-//	private LevelEnum currentLevel = LevelEnum.Level1;
-/*
-	public void ChangeCameraToLevel(string levelName, bool reset)
-	{
-		Vector3 cameraPosition = StaticVariablesContainer.DEFAULT_CAMERA_POSITION;
-		if(!reset)
-		{
-			LevelEnum levelTrigger = (LevelEnum) System.Enum.Parse (typeof(LevelEnum), levelName);
-
-			switch(levelTrigger)
-			{
-				case LevelEnum.Level0:
-					cameraPosition = new Vector3 (0, -20, -10 );
-					break;
-	
-				case LevelEnum.Level2:
-					cameraPosition = new Vector3 (0, -40, -10 );
-					break;
-			}
-		}
-		transform.position = cameraPosition;
-	}
-
-	private List<GameObject> TweenerList = new List<GameObject>();
-
-	public void RegisterToPlayAnimation(GameObject item)
-	{
-		TweenerList.Add(item);
-		Debug.Log("+++++ Registered gameObject is " + item.gameObject.name );
-	}
-
-	public void ClearEventList()
-	{
-		TweenerList.Clear();
-	}
-	*/
+	}	
 }

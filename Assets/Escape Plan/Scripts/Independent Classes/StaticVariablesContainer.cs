@@ -12,7 +12,7 @@ public sealed class StaticVariablesContainer
 	public const string Level1 = "Level1";
 	public const string Level2 = "Level2";
 	public const float RESPAWN_DELAY = 3.0f; 
-
+	public const string WeaponHub = "WeaponHub";
 
 	#region Tags
 	public const string MainPlayer = "Player";
