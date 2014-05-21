@@ -7,13 +7,13 @@ public class GameManager : MonoBehaviour
 	[Range (1,10)]
 	public int LevelNumber = 0;
 	public GameObject TransitionScene,UIEscapPlan;
-	public GameObject[]  FireAnimation;
 	public KeyCode[] AssignedKeys;
+	public GameObject[]  FireAnimation;
 	public GameGUI EscapePlanGUI;
 
 	private int totalChipsThisScene = 0;
 	private GameObject currentSceneInstance;
-	private GameObject PlayerSpawnPoint;
+	private Vector3 playerSpawnPoint;
 	private bool detectINPUT = false;
 
 	//PAUSE the game - Observer Pattern. 
@@ -28,11 +28,13 @@ public class GameManager : MonoBehaviour
 
 	private Quaternion rotationCoin = Quaternion.identity;
 
+
+	#region MonoBehaviour Methods - Start & End
 	private void Awake()
 	{
 		if(instance != null)
 		{
-			// Duplicate
+			// Duplicate instance
 			Destroy(this.gameObject);
 		}
 
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour
 		// Fetch user data and start from that level, else load the default level 0;
 		LoadLevel(LevelNumber);
 
-		if((AssignedKeys[0] != null) || (AssignedKeys[0] == KeyCode.None))
+		if(AssignedKeys.Length < 1)
 		{
 			AssignedKeys = new KeyCode[4];
 			// Left Movement
@@ -70,13 +72,14 @@ public class GameManager : MonoBehaviour
 	private void Start()
 	{
 		detectINPUT = true;
-		StartCoroutine(MyPlayer.SetPlayerProperties(true));
+		StartCoroutine( MyPlayer.SetPlayerProperties (true));
 	}
 
 	private void OnDestroy()
 	{
 		instance = null;
 	}
+	#endregion
 
 	#region Singleton
 	private static GameManager instance;
@@ -105,14 +108,6 @@ public class GameManager : MonoBehaviour
 	#endregion
 	
 	#region Getters & Setters
-	internal int TotalChipsCollected
-	{
-		get
-		{
-			return totalChipsThisScene;
-		}
-	}
-
 	internal Vector3 PlayerPosition
 	{
 		get
@@ -132,6 +127,7 @@ public class GameManager : MonoBehaviour
 	}
 	#endregion
 
+	#region Update
 	// Update is called once per frame
 	private void Update () 
 	{
@@ -200,35 +196,9 @@ public class GameManager : MonoBehaviour
 			ToggleGameState(detectINPUT);
 		}
 	}
+	#endregion
 
-	internal void ToggleGameState(bool toPAUSE)
-	{
-		detectINPUT = toPAUSE;
-		switch(detectINPUT)
-		{
-			// Pause the game
-			case true:
-				detectINPUT = false;
-				Time.timeScale = 0.0001f;
-				EscapePlanGUI.TogglePauseMenu(true);
-				break;
-				
-				// Un Pause the game.
-			case false:
-				detectINPUT = true;
-				Time.timeScale = 1f;
-				EscapePlanGUI.TogglePauseMenu(false);
-				break;
-		}
-		
-		if(OnPauseTheGame != null)
-		{
-			OnPauseTheGame(detectINPUT);
-			
-		}
-	}
-
-	#region External calls
+	#region Collectables
 	internal void GotAChip()
 	{
 		int chipCount = DataManager.Instance.ChipLootSac;
@@ -249,6 +219,34 @@ public class GameManager : MonoBehaviour
 		DataManager.Instance.WeaponReadyStatus = true;
 	}
 
+	#endregion
+
+	#region State Changes
+	internal void ToggleGameState(bool toPAUSE)
+	{
+		detectINPUT = toPAUSE;
+		switch(detectINPUT)
+		{
+			// Pause the game
+		case true:
+			detectINPUT = false;
+			Time.timeScale = 0.0001f;
+			EscapePlanGUI.TogglePauseMenu(true);
+			break;
+			
+			// Un Pause the game.
+		case false:
+			detectINPUT = true;
+			Time.timeScale = 1f;
+			EscapePlanGUI.TogglePauseMenu(false);
+			break;
+		}
+		if(OnPauseTheGame != null)
+		{
+			OnPauseTheGame(detectINPUT);
+		}
+	}
+
 	internal void OpenDoor()
 	{
 		if(DataManager.Instance.HackKit)
@@ -260,10 +258,102 @@ public class GameManager : MonoBehaviour
 			EscapePlanGUI.UpdateInfoText("Find a hack kit");
 		}
 	}
+
 	internal void EnterLevel()
 	{
 		Destroy(currentSceneInstance);
 		LoadLevel(LevelNumber + 1);
+	}
+
+	internal void DeathForPlayer()
+	{
+		detectINPUT = false;
+		PlayFireAnimation(PlayerPosition);
+		DataManager.Instance.LifeCount--;
+		EscapePlanGUI.UpdatePlayerLife();
+		if(DataManager.Instance.LifeCount == 0)
+		{
+			Application.LoadLevel(0);
+			DataManager.Instance.HackKit = false;
+		}
+		else
+		{
+		//	MyPlayer.PlayDeathAnimation();
+			StartCoroutine( MyPlayer.SetPlayerProperties (false));
+			StartCoroutine( ResetPlayerToSpawnPoint ());
+		}
+	}
+
+	private IEnumerator ResetPlayerToSpawnPoint()
+	{
+		detectINPUT = false;
+		yield return new WaitForSeconds(StaticVariablesContainer.RESPAWN_DELAY);
+		if(OnReset != null)
+		{
+			OnReset();
+		}
+		MyPlayer.TelePortPlayer(playerSpawnPoint);
+		detectINPUT = true;
+	}
+
+	internal void AddLife()
+	{
+		if(DataManager.Instance.LifeCount < 3)
+		{
+			DataManager.Instance.LifeCount++;
+			EscapePlanGUI.UpdatePlayerLife();
+		}
+	}
+
+	internal void ToggleUserControls(bool toENABLE)
+	{
+		detectINPUT = toENABLE;
+	}
+	#endregion
+
+	#region Scene transitition
+
+	internal void MoveCameraUp(bool _toUP)
+	{
+		CameraController.Instance.MoveCamera(_toUP);
+	}
+
+	private void LoadLevel(int levelNumber)
+	{
+		currentSceneInstance = (GameObject)Instantiate(Resources.Load("Scenes/Scene_" + levelNumber.ToString()));
+		playerSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").GetComponent<Transform>().position;
+		DataManager.Instance.HackKit = false;
+		LevelTransition(false);
+	}
+
+	private void LevelTransition(bool _hideLEVEL)
+	{
+		if(_hideLEVEL)
+		{
+			currentSceneInstance.SetActive(!_hideLEVEL);
+			UIEscapPlan.SetActive(!_hideLEVEL);
+			TransitionScene.SetActive(_hideLEVEL);
+			playerSpawnPoint = StaticVariablesContainer.TRANSITION_SPAWNPOINT;
+		}
+		else
+		{
+			TransitionScene.SetActive(_hideLEVEL);
+			UIEscapPlan.SetActive(!_hideLEVEL);
+			currentSceneInstance.SetActive(!_hideLEVEL);
+		}
+		MyPlayer.TelePortPlayer(playerSpawnPoint);
+	}
+
+	private void UpdateLifeBonusTracker()
+	{
+		int BonusCounter = DataManager.Instance.BonusTrackerChipCount;
+		BonusCounter++;
+		if(BonusCounter == StaticVariablesContainer.BONUS_LIFE_TARGET)
+		{
+			AddLife();
+			BonusCounter = 0;
+		}
+		DataManager.Instance.BonusTrackerChipCount = BonusCounter;
 	}
 
 	internal void PlayFireAnimation(Vector3 _worldCoordinates)
@@ -288,90 +378,8 @@ public class GameManager : MonoBehaviour
 		FireAnimation[index].SetActive(false);
 	}
 
-	internal void DeathForPlayer()
-	{
-	//	int lifeCount = DataManager.Instance.LifeCount;
-	//	lifeCount = lifeCount - 1;
-	//	DataManager.Instance.LifeCount = lifeCount;
-		detectINPUT = false;
-		PlayFireAnimation(PlayerPosition);
-		DataManager.Instance.LifeCount--;
-		EscapePlanGUI.UpdatePlayerLife();
-		if(DataManager.Instance.LifeCount == 0)
-		{
-			Application.LoadLevel(0);
-			DataManager.Instance.HackKit = false;
-		}
-		else
-		{
-		//	MyPlayer.PlayDeathAnimation();
-			StartCoroutine(MyPlayer.SetPlayerProperties(false));
-			StartCoroutine(ResetPlayerToSpawnPoint());
-		}
-	}
 
-	private IEnumerator ResetPlayerToSpawnPoint()
-	{
-		detectINPUT = false;
-		yield return new WaitForSeconds(StaticVariablesContainer.RESPAWN_DELAY);
-		if(OnReset != null)
-		{
-			OnReset();
-		}
-		MyPlayer.TelePortPlayer(FetchSpawnPoint(PlayerSpawnPoint));
-//		CameraController.Instance.ChangeCameraToLevel(StaticVariablesContainer.Level0, true);
-	//	NPCManager.Instance.ResetPlayerLevel();
-		detectINPUT = true;
-	}
-
-	internal void AddLife()
-	{
-		if(DataManager.Instance.LifeCount < 3)
-		{
-			DataManager.Instance.LifeCount = DataManager.Instance.LifeCount + 1;
-			EscapePlanGUI.UpdatePlayerLife();
-		}
-	}
-
-	internal void ToggleUserControls(bool toENABLE)
-	{
-		detectINPUT = toENABLE;
-	}
-	#endregion
-
-	#region Scene transion
-
-	internal void MoveCameraUp(bool _toUP)
-	{
-		CameraController.Instance.MoveCamera(_toUP);
-	}
-	private void LoadLevel(int levelNumber)
-	{
-		currentSceneInstance = (GameObject)Instantiate(Resources.Load("Scenes/Scene_" + levelNumber.ToString()));
-		PlayerSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
-		DataManager.Instance.HackKit = false;
-		LevelTransition(false);
-	}
-
-	private void LevelTransition(bool _hideLEVEL)
-	{
-		Vector2 playerPosition = FetchSpawnPoint(PlayerSpawnPoint);
-		if(_hideLEVEL)
-		{
-			currentSceneInstance.SetActive(!_hideLEVEL);
-			UIEscapPlan.SetActive(!_hideLEVEL);
-			TransitionScene.SetActive(_hideLEVEL);
-			playerPosition = StaticVariablesContainer.TRANSITION_SPAWNPOINT;
-		}
-		else
-		{
-			TransitionScene.SetActive(_hideLEVEL);
-			UIEscapPlan.SetActive(!_hideLEVEL);
-			currentSceneInstance.SetActive(!_hideLEVEL);
-		}
-		MyPlayer.TelePortPlayer(playerPosition);
-	}
-
+	/*
 	private void ToggleScene(bool hide)
 	{
 		currentSceneInstance.SetActive(hide);
@@ -386,25 +394,7 @@ public class GameManager : MonoBehaviour
 	{
 		TransitionScene.SetActive(hide);
 	}
-	
-	private void UpdateLifeBonusTracker()
-	{
-		int BonusCounter = DataManager.Instance.BonusTrackerChipCount;
-		BonusCounter = BonusCounter + 1;
-		if(BonusCounter == StaticVariablesContainer.BONUS_LIFE_TARGET)
-		{
-			AddLife();
-			BonusCounter = 0;
-		}
-		DataManager.Instance.BonusTrackerChipCount = BonusCounter;
-	}
-	#endregion
+	*/
 
-	#region Get Information from Scene
-
-	internal Vector2 FetchSpawnPoint(GameObject spawnPoint)
-	{
-		 return spawnPoint.transform.localPosition;
-	}
 	#endregion
 }

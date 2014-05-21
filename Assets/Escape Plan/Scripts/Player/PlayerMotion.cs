@@ -30,7 +30,7 @@ public sealed class PlayerMotion : MonoBehaviour
 	private Vector2 playerVelocity = Vector2.zero;
 	#endregion
 	
-	#region MonoBehaviour Methods
+	#region MonoBehaviour Methods - Start & End
 	private void Awake()
 	{
 		this.transform.name = "MainPlayer";
@@ -60,7 +60,7 @@ public sealed class PlayerMotion : MonoBehaviour
 
 	private void HandleOnReset ()
 	{
-		StartCoroutine(this.SetPlayerProperties(true));
+		StartCoroutine( this.SetPlayerProperties (true));
 	}
 
 	private IEnumerator Start()
@@ -86,7 +86,6 @@ public sealed class PlayerMotion : MonoBehaviour
 		PlayerAnimator.SetBool("isALIVE", toACTIVATE);
 		yield return new WaitForSeconds(0.2f);
 		this.GetComponentInChildren<SpriteRenderer>().enabled = toACTIVATE;
-	
 	}
 	#endregion
 
@@ -341,8 +340,8 @@ public sealed class PlayerMotion : MonoBehaviour
 	/// </description>
 	internal void TelePortPlayer(Vector3 position)
 	{
-		transform.localPosition = position;
-		StartCoroutine(SetPlayerProperties(true));
+		this.transform.localPosition = position;
+		StartCoroutine (SetPlayerProperties (true));
 	}
 
 	/// <summary>
@@ -356,20 +355,14 @@ public sealed class PlayerMotion : MonoBehaviour
 	{
 		if(currentMotionState < 0)
 		{
-			Debug.Log(currentMotionState);
-
 			WeaponCache.FireForPlayer(this.transform.position, Quaternion.Euler(0,0,90), ForceOnProjectile);
 		}
 		else if(currentMotionState > 0)
 		{
-			Debug.Log(currentMotionState);
-
 			WeaponCache.FireForPlayer(this.transform.position, Quaternion.Euler(0,0,-90), ForceOnProjectile);
 		}
 		else 
 		{
-			Debug.Log(currentMotionState);
-
 			WeaponCache.FireForPlayer(this.transform.position, Quaternion.identity, ForceOnProjectile);
 		}
 	}
