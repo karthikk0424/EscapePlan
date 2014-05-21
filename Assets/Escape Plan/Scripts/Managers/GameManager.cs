@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
 	public PlayerMotion MyPlayer;
 
-	[Range (1,10)]
+	[Range (1,7)]
 	public int LevelNumber = 0;
 	public GameObject TransitionScene;
 	public KeyCode[] AssignedKeys;

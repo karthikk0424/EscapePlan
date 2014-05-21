@@ -69,13 +69,6 @@ public class EnemyUnit : MonoBehaviour
 			TriggerThisEnemy();
 		}
 	}
-	// Timer
-
-
-	// Fire
-
-
-	// Death
 
 	internal void TriggerThisEnemy()
 	{

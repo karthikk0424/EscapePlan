@@ -16,9 +16,11 @@ public class FinalBoss : MonoBehaviour
 
 	// For Guard
 	private bool canFIRE;
-	private Quaternion rotation;
-	private Vector3 radius;
-	private float currentRotation = 0f;
+
+
+	public float position = 0f;
+	public float radius = 10f;
+	private Vector3 startPosition;
 
 	// Use this for initialization
 	void Start () 
@@ -27,7 +29,7 @@ public class FinalBoss : MonoBehaviour
 		{
 			case BossUnit.Guard:
 			canFIRE = true;
-			radius = new Vector3(transform.position.x, transform.position.y, 4);
+			startPosition = this.transform.position;
 			StartCoroutine (this.fireProjectile());
 			break;
 		}
@@ -51,9 +53,9 @@ public class FinalBoss : MonoBehaviour
 		switch(ThisBoss)
 		{
 			case BossUnit.Guard:
-				currentRotation += (Time.deltaTime * 50);
-			rotation = Quaternion.Euler(transform.localPosition.x, transform.localPosition.y, currentRotation);
-				transform.localPosition = (rotation * radius);
+				position += Time.deltaTime * 1.5f; // 1.0f is the rotation speed in radians per sec.
+				Vector3 pos = new Vector3(Mathf.Sin(position), Mathf.Cos(position), 0);
+				transform.position = startPosition - pos * (2 * radius);
 				break;
 		}
 	}
@@ -113,7 +115,7 @@ public class FinalBoss : MonoBehaviour
 				// Fire at the player			
 				localTarget = transform.InverseTransformPoint(GameManager.Instance.PlayerPosition);
 				targetAngle = Mathf.Atan2(localTarget.x, localTarget.y) * Mathf.Rad2Deg;
-				directionOfFire = Quaternion.Euler(0,0,-targetAngle);
+				directionOfFire = Quaternion.Euler(0,0,(90-targetAngle));
 				WeaponCache.FireForEnemy(this.transform.position, directionOfFire, ForceOnProjectile);
 			}
 		}
