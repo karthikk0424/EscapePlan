@@ -110,6 +110,13 @@ public class FinalBoss : MonoBehaviour
 			float timer = Random.Range(1f, 4f);
 			yield return new WaitForSeconds(timer);
 			timer = Random.Range(1f,3f);
+			if(bossHitCount < 1)
+			{
+				canFIRE = false;
+				this.collider.enabled = false;
+				this.renderer.enabled = false;
+				yield break;
+			}
 			if(canFIRE)
 			{
 				// Fire at the player			
