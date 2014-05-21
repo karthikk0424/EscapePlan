@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 	public int LevelNumber = 0;
 	public GameObject TransitionScene,UIEscapPlan;
 	public KeyCode[] AssignedKeys;
-	public GameObject[]  FireAnimation;
 	public GameGUI EscapePlanGUI;
 
 	private int totalChipsThisScene = 0;
@@ -342,6 +341,7 @@ public class GameManager : MonoBehaviour
 			EscapePlanGUI.gameObject.SetActive(!_hideLEVEL);
 			TransitionScene.SetActive(_hideLEVEL);
 			playerSpawnPoint = StaticVariablesContainer.TRANSITION_SPAWNPOINT;
+			myCamera.SetCameraToThisPosition (StaticVariablesContainer.DEFAULT_CAMERA_POSITION);
 		}
 		else
 		{
@@ -350,7 +350,6 @@ public class GameManager : MonoBehaviour
 			currentSceneInstance.SetActive(!_hideLEVEL);
 		}
 		MyPlayer.TelePortPlayer(playerSpawnPoint);
-	//	myCamera.SetCameraToThisPosition (StaticVariablesContainer.DEFAULT_CAMERA_POSITION);
 	}
 
 	private void UpdateLifeBonusTracker()
