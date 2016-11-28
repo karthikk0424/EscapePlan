@@ -14,7 +14,7 @@ public sealed class ConstantVariablesContainer
 	#region Arithmetic variables
 
 	public const int CHIP_VALUE = 1;
-	public const int BONUS_LIFE_TARGET = 25;
+	public const int BONUS_LIFE_TARGET = 10;
 	public const int MAX_LIVES = 3;
 	public const int TRAP_DOOR_LEVEL = 10; 
 	public const float RESPAWN_DELAY = 3.0f; 
@@ -50,7 +50,9 @@ public sealed class ConstantVariablesContainer
 	public const string EnemyProjectile = "EnemyProjectile";
 	public const string PlayerProjectile = "PlayerProjectile";
 	public const string Enemy = "Enemy";
+    public const string HackGuard = "HackGuard";
 	public const string Ammo = "Ammo";
+
 	#endregion
 
 }

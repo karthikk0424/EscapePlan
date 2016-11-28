@@ -106,7 +106,7 @@ public sealed class PlayerMotion : MonoBehaviour
 	{
 		setAnimation(0);
 		playerVelocity = Vector2.zero;
-		this.rigidbody2D.isKinematic = (!toACTIVATE);
+		this.GetComponent<Rigidbody2D>().isKinematic = (!toACTIVATE);
 		this.GetComponent<BoxCollider2D>().enabled = toACTIVATE;
 		PlayerAnimator.SetBool("isALIVE", toACTIVATE);
 		yield return new WaitForSeconds(0.2f);
@@ -193,7 +193,7 @@ public sealed class PlayerMotion : MonoBehaviour
 	/// <param name="hit">Contains info about the trigger/collider</param>
 	private void OnTriggerEnter2D(Collider2D hit)
 	{
-		switch(hit.collider2D.tag)
+		switch(hit.GetComponent<Collider2D>().tag)
 		{
 			case ConstantVariablesContainer.Chips:
 				GameManager.Instance.GotAChip();
@@ -241,7 +241,7 @@ public sealed class PlayerMotion : MonoBehaviour
 		}
 		setAnimation(2);
 		isMOVING = true;
-		myCollider.center = new Vector2(-0.37f, 0f);
+		myCollider.offset = new Vector2(-0.37f, 0f);
 	}
 
 	/// <summary>
@@ -287,7 +287,7 @@ public sealed class PlayerMotion : MonoBehaviour
 		}
 		setAnimation(-2);
 		isMOVING = true;
-		myCollider.center = new Vector2(0.24f, 0f);
+		myCollider.offset = new Vector2(0.24f, 0f);
 	}
 
 	/// <summary>

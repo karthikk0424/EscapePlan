@@ -125,10 +125,10 @@ public class FinalBoss : MonoBehaviour
 	{
 		canFIRE = false;
 		this.GetComponent<BoxCollider2D>().enabled = false;
-		this.renderer.enabled = false;
+		this.GetComponent<Renderer>().enabled = false;
 		yield return new WaitForSeconds(2f);
 		// enable fire again. 
-		this.renderer.enabled = true;
+		this.GetComponent<Renderer>().enabled = true;
 		this.GetComponent<BoxCollider2D>().enabled = true;
 		canFIRE = true;
 
@@ -156,7 +156,7 @@ public class FinalBoss : MonoBehaviour
 			{
 				canFIRE = false;
 				this.GetComponent<BoxCollider2D>().enabled = false;
-				this.renderer.enabled = false;
+				this.GetComponent<Renderer>().enabled = false;
 				NPCManager.Instance.PlayFireAnimation (this.transform.position);
 				yield break;
 			}

@@ -25,11 +25,11 @@ public class CameraController : MonoBehaviour
 	private void Awake()
 	{
 		// Default Camera Properties
-		this.camera.isOrthoGraphic = true;
-		this.camera.orthographicSize = 10;
-		this.camera.nearClipPlane = 0.3f;
-		this.camera.farClipPlane = 20f;
-		this.camera.renderingPath = RenderingPath.Forward;
+		this.GetComponent<Camera>().orthographic = true;
+		this.GetComponent<Camera>().orthographicSize = 10;
+		this.GetComponent<Camera>().nearClipPlane = 0.3f;
+		this.GetComponent<Camera>().farClipPlane = 20f;
+		this.GetComponent<Camera>().renderingPath = RenderingPath.Forward;
 	}
 
 	/// <summary>

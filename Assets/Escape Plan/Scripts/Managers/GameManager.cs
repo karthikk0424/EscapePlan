@@ -235,7 +235,10 @@ public class GameManager : MonoBehaviour
 			{
 				MyPlayer.MakeThePlayerToJump ();
 			}
-
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                addLife();
+            }
 			// Fire a projectile
 			if(Input.GetKeyDown( AssignedKeys[3]))
 			{
@@ -374,6 +377,7 @@ public class GameManager : MonoBehaviour
 	internal void EnterLevel()
 	{
 		Destroy (currentSceneInstance);
+        DataManager.Instance.WeaponReadyStatus = false;
 		loadLevel ((DataManager.Instance.CurrentLevelNumber + 1), true);
 	}
 
@@ -398,7 +402,7 @@ public class GameManager : MonoBehaviour
 	/// Adds an extra life upon reaching the optimal bonus requirements.
 	/// </summary>
 	/// <returns><c>true</c>, if life was added, <c>false</c> otherwise.</returns>
-	private bool addLife()
+	public bool addLife()
 	{
 		if(DataManager.Instance.LifeCount < 3)
 		{

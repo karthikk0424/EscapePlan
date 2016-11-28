@@ -41,7 +41,7 @@ public sealed class Projectile : WeaponBase
 	/// </summary>
 	private void AddForceToRigidBody()
 	{
-		this.transform.rigidbody2D.AddForce(projectileDirection * forceOnTheProjectile * (Time.deltaTime * 45));
+		this.transform.GetComponent<Rigidbody2D>().AddForce(projectileDirection * forceOnTheProjectile * (Time.deltaTime * 45));
 	}
 
 	/// <summary>
@@ -50,7 +50,7 @@ public sealed class Projectile : WeaponBase
 	private void AddVelocityToRigidBody()
 	{
 		//Mass = 0.01; Linear Drag = 0; Angular Drag = 1; Gravity Scale = 0; Fixed Angle = true; is Kinematic = false; 
-		this.transform.rigidbody2D.velocity = (projectileDirection * (forceOnTheProjectile * (Time.deltaTime * 45)));
+		this.transform.GetComponent<Rigidbody2D>().velocity = (projectileDirection * (forceOnTheProjectile * (Time.deltaTime * 45)));
 	}
 
 	#endregion
@@ -91,12 +91,16 @@ public sealed class Projectile : WeaponBase
 
 		switch (hit.collider.tag)
 		{
+            case ConstantVariablesContainer.HackGuard:
+                myRecyler.GetComponent<WeaponHub>().DespawnForEnemy(this.gameObject);
+                break;
 			case ConstantVariablesContainer.Ground:
 				despawnThisProjectile();
 				break;
 
 			case ConstantVariablesContainer.EnemyProjectile:
 				break;
+
 
 			case ConstantVariablesContainer.PlayerProjectile:
 				break;
